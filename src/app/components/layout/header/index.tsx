@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
 
 const navItems = [
   "Home",
@@ -40,11 +42,20 @@ export default function PremiumNavbar() {
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
           {/* LOGO */}
-          <div className="text-xl font-semibold tracking-tight">
-            <span className={scrolled ? "text-black" : "text-white"}>
-              Triage<span className="text-teal-500">Home</span>
-            </span>
-          </div>
+          <Link href="/" className="flex items-center">
+  <Image
+    src="/images/logo/triage.png"
+    alt="TriageHome Logo"
+    width={140}
+    height={40}
+    priority
+    className={`transition-all duration-500 ${
+      scrolled
+        ? "filter-none opacity-100"
+        : "brightness-0 invert opacity-90"
+    }`}
+  />
+</Link>
 
           {/* NAV ITEMS */}
           <div className="hidden md:flex items-center gap-8">
