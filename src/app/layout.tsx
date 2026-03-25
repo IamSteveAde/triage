@@ -23,13 +23,14 @@ const dmsans = DM_Sans({ subsets: ["latin"] });
 /* -------------------------------------
    METADATA — SPOTLITE AFRICA AGENCY
 ------------------------------------- */
+
 export const metadata: Metadata = {
   title: {
-    default: "Spotlite Africa Agency | Digital Marketing & Brand Growth",
-    template: "%s | Spotlite Africa Agency",
+    default: "Triage | On-Demand Home Healthcare Services",
+    template: "%s | Triage",
   },
   description:
-    "Spotlite Africa Agency is a results-driven digital marketing and brand growth agency helping registered businesses build strong brands, drive visibility, and convert attention into measurable growth.",
+    "Triage provides reliable, on-demand home healthcare by connecting you with verified nurses and care professionals—delivering trusted medical support in the comfort of your home.",
 };
 
 /* -------------------------------------

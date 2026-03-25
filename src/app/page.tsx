@@ -19,67 +19,69 @@ import Soon from "./components/soon";
 /* -------------------------------------
    METADATA — SPOTLITE AFRICA AGENCY
 ------------------------------------- */
+
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://spotliteafrica.com"),
+  metadataBase: new URL("https://triage.com"), // replace with actual domain
 
   title: {
-    default: "Spotlite Africa Agency | Digital Marketing & Brand Growth Agency",
-    template: "%s | Spotlite Africa Agency",
+    default: "Triage | On-Demand Home Healthcare & Medical Support",
+    template: "%s | Triage",
   },
 
   description:
-    "Spotlite Africa Agency is a results-driven digital marketing and brand growth agency helping registered businesses build strong brands, deploy high-converting websites, run performance marketing campaigns, and scale revenue across Africa.",
+    "Triage connects you with verified nurses, health assistants, and care professionals—delivering reliable, on-demand healthcare services in the comfort of your home.",
 
   keywords: [
-    // Core brand
-    "Spotlite Africa Agency",
-    "Spotlite Africa",
+    // Brand
+    "Triage healthcare",
+    "Triage home care",
+    "Triage Nigeria",
 
-    // High-intent agency keywords
-    "digital marketing agency Africa",
-    "digital marketing agency Nigeria",
-    "brand development agency Africa",
-    "performance marketing agency",
-    "social media marketing agency",
-    "digital advertising agency",
+    // Core healthcare intent
+    "home healthcare services Nigeria",
+    "on-demand healthcare Nigeria",
+    "home nursing services",
+    "private nurse at home",
+    "medical care at home",
 
-    // Services
-    "website design agency Africa",
-    "ecommerce marketing agency",
-    "influencer marketing agency",
-    "campaign strategy agency",
-    "growth marketing agency",
+    // Service-specific
+    "post-surgery care at home",
+    "elderly care services Nigeria",
+    "home medical assistance",
+    "in-home patient care",
+    "healthcare support services",
 
-    // Business-focused intent
-    "marketing for registered businesses",
-    "CAC business branding",
-    "marketing agency for startups Africa",
-    "business growth agency Africa",
+    // Trust & discovery
+    "verified nurses Nigeria",
+    "reliable home care Nigeria",
+    "professional caregivers Nigeria",
+    "healthcare services Lagos",
   ],
 
   openGraph: {
-    title: "Spotlite Africa Agency — Digital Marketing & Brand Growth",
+    title: "Triage — Trusted Home Healthcare, On Demand",
     description:
-      "We help registered businesses build powerful brands, attract the right audience, and convert visibility into measurable revenue through strategy-led digital marketing.",
-    url: "https://spotliteafrica.com",
-    siteName: "Spotlite Africa Agency",
+      "Access professional healthcare from the comfort of your home. Triage connects you with verified nurses and care specialists for reliable, personalized support.",
+    url: "https://triage.com", // replace with actual domain
+    siteName: "Triage",
     type: "website",
     images: [
       {
-        url: "https://spotliteafrica.com/og/og-cover.jpg",
+        url: "https://triage.com/og/og-cover.jpg", // replace with actual asset
         width: 1200,
         height: 630,
-        alt: "Spotlite Africa Agency — Digital Marketing & Brand Growth Agency",
+        alt: "Triage — On-Demand Home Healthcare Services",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Spotlite Africa Agency | Digital Marketing & Growth",
+    title: "Triage | Home Healthcare, Simplified",
     description:
-      "A digital marketing and brand growth agency helping African businesses scale visibility, conversions, and revenue.",
-    images: ["https://spotliteafrica.com/og/og-cover.jpg"],
+      "Professional healthcare at your doorstep. Book verified nurses and caregivers with ease through Triage.",
+    images: ["https://triage.com/og/og-cover.jpg"], // replace with actual asset
   },
 
   robots: {
@@ -88,10 +90,9 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://spotliteafrica.com",
+    canonical: "https://triage.com", // replace with actual domain
   },
 };
-
 /* -------------------------------------
    HOME PAGE
 ------------------------------------- */
