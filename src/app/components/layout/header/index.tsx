@@ -124,17 +124,21 @@ export default function PremiumNavbar() {
             className="fixed top-0 left-0 w-full h-screen bg-white z-40 flex flex-col items-center justify-center gap-8"
           >
             {navItems.map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.05 }}
-                className="text-2xl font-semibold text-gray-900"
-              >
-                {item.name}
-              </motion.div>
-            ))}
-
+  <motion.div
+    key={i}
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: i * 0.05 }}
+  >
+    <Link
+      href={item.href}
+      onClick={() => setMobileOpen(false)} // 👈 CLOSE MENU AFTER CLICK
+      className="text-2xl font-semibold text-gray-900"
+    >
+      {item.name}
+    </Link>
+  </motion.div>
+))}
             <button className="mt-6 px-6 py-3 rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 text-white">
               Get Started
             </button>
