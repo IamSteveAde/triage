@@ -6,14 +6,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 const navItems = [
-  "Home",
-  "Services",
-  "Solutions",
-  "TriageApp",
-  "TriageConcierge",
-  "Partnerships",
-  "About",
-  "Contact",
+  { name: "Home", href: "/" },
+  { name: "Services", href: "/services" },
+  { name: "TriageApp", href: "/triage-app" },
+  { name: "TriageConcierge", href: "/triage-concierge" },
+  { name: "Partnerships", href: "/partnerships" },
+  { name: "About", href: "/about" },
+  
 ];
 
 export default function PremiumNavbar() {
@@ -61,14 +60,14 @@ export default function PremiumNavbar() {
           <div className="hidden md:flex items-center gap-8">
 
             {navItems.map((item, i) => (
-              <div key={i} className="relative group cursor-pointer">
+             <Link key={i} href={item.href} className="relative group cursor-pointer">
 
                 <div
                   className={`flex items-center gap-2 text-sm font-medium transition ${
                     scrolled ? "text-gray-800" : "text-white"
                   }`}
                 >
-                  {item}
+                 {item.name}
 
                   {/* ARROW → rotates ↑ */}
                   <motion.span
@@ -83,8 +82,8 @@ export default function PremiumNavbar() {
 
                 {/* CENTER EXPAND LINE */}
                 <span className="absolute left-1/2 bottom-[-6px] h-[2px] w-0 bg-teal-500 transition-all duration-300 group-hover:w-full group-hover:left-0" />
-
-              </div>
+                   </Link>
+            
             ))}
 
             {/* CTA BUTTON */}
@@ -132,7 +131,7 @@ export default function PremiumNavbar() {
                 transition={{ delay: i * 0.05 }}
                 className="text-2xl font-semibold text-gray-900"
               >
-                {item}
+                {item.name}
               </motion.div>
             ))}
 
