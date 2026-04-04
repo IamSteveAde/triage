@@ -1,182 +1,124 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Who from "../components/about/who";
+import Care from "../components/about/care";
+import Value from "../components/about/value";
+import Team from "../components/about/team";
+import Cta from "../components/home/testimonial";
 
-export default function AboutPage() {
+export default function AboutHero({ children }: { children?: React.ReactNode }) {
   return (
-    <main className="relative overflow-hidden text-white">
+    <>
+    <section className="relative w-full min-h-screen overflow-hidden text-white">
 
-      {/* ===================================================== */}
-      {/* 🟢 HERO */}
-      {/* ===================================================== */}
+      {/* 🌌 FIXED BACKGROUND */}
+      <div className="fixed inset-0 -z-10">
 
-      <section className="relative h-screen flex items-center justify-center text-center px-6">
+        <img
+          src="https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=2000"
+          alt="Healthcare"
+          className="w-full h-full object-cover"
+        />
 
-        {/* BACKGROUND IMAGE */}
-        <div className="absolute inset-0 -z-10">
-          <img
-            src="https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=2000"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/70" />
-          <div className="absolute inset-0 bg-gradient-to-br from-teal-500/20 via-blue-500/20 to-transparent" />
-        </div>
+        {/* overlays */}
+        <div className="absolute inset-0 bg-black/70" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#021C1A]/80 via-[#0B3C5D]/60 to-transparent" />
+
+        {/* soft glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(0,255,200,0.15),transparent_60%)]" />
+
+      </div>
+
+      {/* 🌊 FLOATING ELEMENTS */}
+      <div className="absolute inset-0 pointer-events-none">
 
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          animate={{ y: [0, -30, 0] }}
+          transition={{ repeat: Infinity, duration: 8 }}
+          className="absolute w-72 h-72 bg-teal-400/10 blur-[120px] rounded-full top-20 left-10"
+        />
+
+        <motion.div
+          animate={{ y: [0, 40, 0] }}
+          transition={{ repeat: Infinity, duration: 10 }}
+          className="absolute w-96 h-96 bg-cyan-400/10 blur-[140px] rounded-full bottom-10 right-10"
+        />
+
+      </div>
+
+      {/* CONTENT */}
+      <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 min-h-screen">
+
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
-          className="max-w-3xl"
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-4xl"
         >
-          <h1 className="text-4xl text-white md:text-6xl font-semibold leading-tight">
-            Redefining how care
+
+          {/* SMALL LABEL */}
+          <p className="text-teal-300 uppercase tracking-widest text-sm mb-6">
+            About TriageHome
+          </p>
+
+          {/* HEADLINE */}
+          <h1 className="text-4xl md:text-6xl font-semibold leading-[1.05] tracking-tight">
+
+            <span className="text-white">
+              Redefining how care
+            </span>
+
             <br />
-            <span className="bg-gradient-to-r from-cyan-300 via-teal-300 to-blue-300 bg-clip-text text-white/70">
+
+            <span className="bg-gradient-to-r from-cyan-300 via-teal-300 to-blue-300 bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(0,255,200,0.35)]">
               reaches you
             </span>
+
           </h1>
 
-          <p className="mt-6 text-lg text-white/70">
-            At TriageHome, we believe healthcare should come to you — simple,
-            fast, and built around your life.
+          {/* SUBTEXT */}
+          <p className="mt-6 text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">
+            At TriageHome, we’re building a smarter, more human way to experience healthcare — one that comes to you, adapts to you, and works around your life.
           </p>
+
+          {/* MICROCOPY */}
+          <p className="mt-4 text-white/50 italic">
+            No waiting rooms. No uncertainty. Just care, where you are.
+          </p>
+
         </motion.div>
 
-      </section>
+        {/* ⬇️ SCROLL INDICATOR */}
+        <motion.div
+          animate={{ y: [0, 12, 0] }}
+          transition={{ repeat: Infinity, duration: 1.6 }}
+          className="absolute bottom-10 flex flex-col items-center gap-2 text-white/60"
+        >
 
-      {/* ===================================================== */}
-      {/* 🌀 ORBIT SECTION (SIGNATURE) */}
-      {/* ===================================================== */}
+          <span className="text-xs tracking-widest uppercase">
+            Scroll
+          </span>
 
-      <section className="relative py-32 px-6 bg-[#020617] overflow-hidden">
+          <div className="w-[2px] h-10 bg-gradient-to-b from-white to-transparent" />
 
-        <div className="max-w-6xl mx-auto text-center relative">
+        </motion.div>
 
-          <h2 className="text-4xl text-white md:text-5xl font-semibold mb-16">
-            Care, designed around you
-          </h2>
+      </div>
 
-          {/* ORBIT CONTAINER */}
-          <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] mx-auto">
+      {/* 🧩 NEXT SECTIONS SLOT */}
+      <div className="relative z-10">
+       
+        
+      </div>
 
-            {/* CENTER */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-teal-400 to-cyan-400 flex items-center justify-center text-black font-semibold">
-                Triage
-              </div>
-            </div>
+    </section>
 
-            {/* ORBIT RING */}
-            <div className="absolute inset-0 border border-white/10 rounded-full" />
-
-            {/* ORBIT ITEMS */}
-            {[0, 1, 2, 3].map((i) => (
-              <motion.div
-                key={i}
-                animate={{ rotate: 360 }}
-                transition={{
-                  repeat: Infinity,
-                  duration: 10 + i * 2,
-                  ease: "linear",
-                }}
-                className="absolute inset-0"
-              >
-                <div
-                  className="absolute top-0 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-white/10 backdrop-blur-xl border border-white/20"
-                />
-              </motion.div>
-            ))}
-
-          </div>
-
-          <p className="mt-16 text-white/70 max-w-2xl mx-auto text-lg">
-            We combine technology, people, and care to create a seamless
-            healthcare experience — one that moves with you, adapts to you, and
-            supports you at every stage.
-          </p>
-
-        </div>
-
-      </section>
-
-      {/* ===================================================== */}
-      {/* 🔵 MISSION / VISION */}
-      {/* ===================================================== */}
-
-      <section className="relative py-32 px-6 bg-gradient-to-br from-[#F0FDFA] via-[#ECFEFF] to-[#F9FFFE] text-gray-900">
-
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16">
-
-          {/* MISSION */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-          >
-            <h3 className="text-3xl text-black/70 font-semibold">
-              Our Mission
-            </h3>
-
-            <p className="mt-6 text-black/70 text-lg text-gray-600">
-              To make quality healthcare accessible at home — removing barriers,
-              reducing delays, and improving lives through faster, smarter care.
-            </p>
-
-          </motion.div>
-
-          {/* VISION */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-          >
-            <h3 className="text-3xl text-black/70 font-semibold">
-              Our Vision
-            </h3>
-
-            <p className="mt-6 text-lg text-black/70 text-gray-600">
-              A world where healthcare is not a place you go, but a service that
-              comes to you — seamlessly integrated into everyday life.
-            </p>
-
-          </motion.div>
-
-        </div>
-
-      </section>
-
-      {/* ===================================================== */}
-      {/* 🔴 FINAL CTA */}
-      {/* ===================================================== */}
-
-      <section className="relative py-32 px-6 text-center text-white">
-
-        <div className="absolute inset-0 bg-gradient-to-br from-[#021C1A] via-[#0B3C5D] to-[#020617]" />
-
-        <div className="relative z-10 max-w-3xl mx-auto">
-
-          <h2 className="text-4xl text-white md:text-5xl font-semibold">
-            Join us in redefining healthcare
-          </h2>
-
-          <p className="mt-6 text-white/70 text-lg">
-            Whether you're seeking care or looking to partner, we’re building
-            something meaningful — and you can be part of it.
-          </p>
-
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
-
-            <button className="px-8 py-4 rounded-full bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-medium">
-              Get Started
-            </button>
-
-            <button className="px-8 py-4 rounded-full border border-white/20">
-              Partner With Us
-            </button>
-
-          </div>
-
-        </div>
-
-      </section>
-
-    </main>
+     <Who />
+        <Care />
+        <Value />
+        <Team />
+         <Cta />
+         </>
   );
 }

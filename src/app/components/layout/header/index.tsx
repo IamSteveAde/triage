@@ -7,11 +7,12 @@ import Link from "next/link";
 
 const navItems = [
   { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
   { name: "Services", href: "/services" },
   { name: "TriageApp", href: "/triage-app" },
   { name: "TriageConcierge", href: "/triage-concierge" },
   { name: "Partnerships", href: "/partnerships" },
-  { name: "About", href: "/about" },
+  { name: "Contact", href: "/contact" },
   
 ];
 

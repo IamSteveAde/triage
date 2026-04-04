@@ -9,21 +9,23 @@ const slides = [
     desc: "Experience intelligent, on-demand care delivered to your home.",
     cta: "Get Care Now",
     image: "/images/hero/slde1.png",
+    link: "https://wa.me/2349134664547?text=Hi%20Triage%2C%20I%20need%20care%20immediately.%20Please%20send%20a%20healthcare%20professional%20to%20my%20location.",
   },
   {
     title: "Care for the people you love",
     desc: "Trusted professionals for your family, whenever it matters most.",
     cta: "Book Care",
     image: "/images/hero/slde2.png",
+    link: "https://wa.me/2349134664547?text=Hello%20Triage%2C%20I%E2%80%99m%20looking%20for%20care%20for%20a%20loved%20one.%20Please%20guide%20me.",
   },
   {
     title: "Smarter healthcare for businesses",
     desc: "Elevate employee wellbeing with seamless medical access.",
     cta: "Partner With Us",
     image: "/images/hero/slde4.png",
+    link: "https://wa.me/2349134664547?text=Hi%2C%20I%E2%80%99d%20like%20to%20discuss%20healthcare%20solutions%20for%20my%20company.",
   },
 ];
-
 const AUTO_DELAY = 6500;
 
 export default function HeroSlider() {
@@ -112,13 +114,21 @@ export default function HeroSlider() {
 
             <div className="mt-8 md:mt-10 flex gap-4 flex-wrap">
 
-              <button className="px-6 md:px-8 py-3 md:py-4 rounded-full bg-gradient-to-r from-teal-500 to-cyan-400 text-black font-medium">
-                {slides[index].cta}
-              </button>
+              <a
+  href={slides[index].link}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="px-6 md:px-8 py-3 md:py-4 rounded-full bg-gradient-to-r from-teal-500 to-cyan-400 text-black font-medium inline-block"
+>
+  {slides[index].cta}
+</a>
 
-              <button className="px-6 md:px-8 py-3 md:py-4 rounded-full border border-white/20">
-                Learn More →
-              </button>
+              <a
+  href="/about"
+  className="px-6 md:px-8 py-3 md:py-4 rounded-full border border-white/20 inline-block"
+>
+  Learn More →
+</a>
 
             </div>
 
@@ -130,21 +140,21 @@ export default function HeroSlider() {
       {/* 🔥 FIXED ARROWS */}
 
       {/* DESKTOP ARROWS */}
-      <div className="hidden md:flex absolute inset-y-0 w-full justify-between items-center px-6 z-20">
+      <div className="hidden md:flex absolute inset-y-0 w-full justify-between items-center px-6 z-20 pointer-events-none">
 
         <button
-          onClick={prevSlide}
-          className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-xl border border-white/20"
-        >
-          ←
-        </button>
+  onClick={prevSlide}
+  className="pointer-events-auto w-14 h-14 rounded-full bg-white/10 backdrop-blur-xl border border-white/20"
+>
+  ←
+</button>
 
-        <button
-          onClick={nextSlide}
-          className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-xl border border-white/20"
-        >
-          →
-        </button>
+<button
+  onClick={nextSlide}
+  className="pointer-events-auto w-14 h-14 rounded-full bg-white/10 backdrop-blur-xl border border-white/20"
+>
+  →
+</button>
 
       </div>
 

@@ -94,10 +94,8 @@ export default function SolutionsSection() {
 
                     {/* CTA */}
                     <div className="mt-5 flex items-center gap-2 text-teal-600 text-sm font-medium group cursor-pointer">
-                      <span>Learn more</span>
-                      <span className="transition-transform group-hover:translate-x-1">
-                        →
-                      </span>
+                     
+                      
                     </div>
 
                   </div>

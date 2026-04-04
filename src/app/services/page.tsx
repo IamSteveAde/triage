@@ -105,30 +105,27 @@ export default function ServicesHero({ children }: { children?: React.ReactNode 
 
           {/* RIGHT SIDE (SLOT FOR <core /> OR ANY COMPONENT) */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 40 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.9 }}
-            className="relative hidden lg:block"
-          >
+  initial={{ opacity: 0, scale: 0.95, y: 40 }}
+  animate={{ opacity: 1, scale: 1, y: 0 }}
+  transition={{ duration: 0.9 }}
+  className="relative hidden lg:flex justify-center"
+>
+  <div className="relative w-[280px] rounded-3xl p-4 bg-white/5 backdrop-blur-2xl border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.4)]">
 
-            <div className="relative rounded-3xl p-6 bg-white/5 backdrop-blur-2xl border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.4)]">
+    {/* GLOW */}
+    <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(0,255,200,0.15),transparent_70%)] opacity-40" />
 
-              {/* GLOW */}
-              <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(0,255,200,0.15),transparent_70%)] opacity-40" />
+    {/* SLOT CONTENT */}
+    <div className="relative z-10">
+      <img
+        src="/images/hero/appi.png"
+        alt="Triage App Preview"
+        className="w-full h-auto rounded-2xl object-contain"
+      />
+    </div>
 
-              {/* SLOT CONTENT */}
-              <div className="relative z-10">
-                  <img
-    src="/images/hero/apps.png" // 👈 replace with your image
-    alt="Triage App Preview"
-    className="w-full h-auto rounded-2xl object-cover"
-  />
-              </div>
-
-            </div>
-
-          </motion.div>
-
+  </div>
+</motion.div>
         </div>
 
       </div>

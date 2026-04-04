@@ -9,6 +9,7 @@ const routes = [
     cta: "Book Now",
     gradient: "from-[#0F9D8A] to-[#14B8A6]",
     image: "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1200",
+    link: "https://wa.me/2349134664547?text=Hi%20Triage%2C%20I%20need%20care%20immediately.%20Please%20send%20a%20healthcare%20professional%20to%20my%20location.",
   },
   {
     title: "Care for a Loved One",
@@ -16,6 +17,7 @@ const routes = [
     cta: "Start Care",
     gradient: "from-[#7C3AED] to-[#A855F7]",
     image: "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=1200",
+    link: "https://wa.me/2349134664547?text=Hello%20Triage%2C%20I%E2%80%99m%20looking%20for%20ongoing%20care%20for%20a%20loved%20one.%20Can%20you%20guide%20me%20on%20the%20next%20steps%3F",
   },
   {
     title: "For My Company",
@@ -23,6 +25,7 @@ const routes = [
     cta: "Partner With Us",
     gradient: "from-[#2563EB] to-[#06B6D4]",
     image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200",
+    link: "https://wa.me/2349134664547?text=Hi%2C%20I%E2%80%99d%20like%20to%20explore%20healthcare%20solutions%20for%20my%20company.%20Can%20we%20discuss%20partnership%20options%3F",
   },
   {
     title: "Join as a Provider",
@@ -30,9 +33,9 @@ const routes = [
     cta: "Apply Now",
     gradient: "from-[#F97316] to-[#EF4444]",
     image: "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1200",
+    link: "https://wa.me/2349134664547?text=Hello%2C%20I%E2%80%99m%20interested%20in%20joining%20Triage%20as%20a%20healthcare%20provider.%20Please%20share%20the%20application%20process.",
   },
 ];
-
 export default function RoutingSection() {
   return (
     <section className="relative py-28 px-6 overflow-hidden">
@@ -81,12 +84,12 @@ export default function RoutingSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
           {routes.map((route, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ y: -12, scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 180, damping: 15 }}
-              className="group rounded-3xl overflow-hidden shadow-lg cursor-pointer"
-            >
+            <a href={route.link} target="_blank" rel="noopener noreferrer">
+  <motion.div
+    whileHover={{ y: -12, scale: 1.02 }}
+    transition={{ type: "spring", stiffness: 180, damping: 15 }}
+    className="group rounded-3xl overflow-hidden shadow-lg cursor-pointer"
+  >
 
               {/* IMAGE (NORMAL — NO EFFECTS) */}
               <div className="h-44 overflow-hidden">
@@ -126,7 +129,8 @@ export default function RoutingSection() {
 
               </div>
 
-            </motion.div>
+              </motion.div>
+</a>
           ))}
 
         </div>

@@ -1,0 +1,122 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+
+const images = [
+  "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1200",
+  "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1200",
+  "https://images.unsplash.com/photo-1580281657527-47e2d5c4d7b2?q=80&w=1200",
+];
+
+export default function WhoWeAre() {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <section className="relative py-32 px-6 overflow-hidden">
+
+      {/* 🌈 BACKGROUND */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white via-[#F0FDFA] to-[#ECFEFF]" />
+
+      {/* 🌀 ORBIT BACKGROUND SYSTEM */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+
+        {/* Rings */}
+        {[300, 450, 600].map((size, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full border border-teal-400/10"
+            style={{ width: size, height: size }}
+          />
+        ))}
+
+        {/* Moving particle */}
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ repeat: Infinity, duration: 12, ease: "linear" }}
+          className="absolute w-[450px] h-[450px]"
+        >
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-4 bg-teal-400 rounded-full shadow-[0_0_20px_rgba(0,255,200,0.8)]" />
+        </motion.div>
+
+      </div>
+
+      {/* CONTENT */}
+      <div className="relative z-10 max-w-7xl  mx-auto grid md:grid-cols-2 gap-16 items-center">
+
+        {/* 🖼️ LEFT — SLIDESHOW */}
+        <div className="relative">
+
+          <div className="relative h-[500px] rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.15)]">
+
+            {images.map((img, i) => (
+              <motion.img
+                key={i}
+                src={img}
+                alt="Healthcare"
+                className="absolute inset-0 w-full h-full object-cover"
+                animate={{
+                  opacity: i === index ? 1 : 0,
+                  scale: i === index ? 1 : 1.05,
+                }}
+                transition={{ duration: 1 }}
+              />
+            ))}
+
+            {/* overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+
+          </div>
+
+          {/* floating glow */}
+          <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-teal-400/20 blur-[80px] rounded-full" />
+
+        </div>
+
+        {/* ✍️ RIGHT — TEXT */}
+        <div className="max-w-xl">
+
+          <h2 className="text-4xl md:text-5xl font-semibold leading-tight">
+
+            <span className="text-gray-900">
+              Healthcare,
+            </span>
+
+            <br />
+
+            <span className="bg-gradient-to-r from-teal-500 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              redesigned for real life
+            </span>
+
+          </h2>
+
+          <p className="mt-6 text-black text-lg leading-relaxed">
+            TriageHome is a modern healthcare platform built to make quality care accessible at home.
+          </p>
+
+          <p className="mt-4 text-black text-lg leading-relaxed">
+            We combine technology, clinical expertise, and human-centered design to remove the friction people experience when trying to access healthcare.
+          </p>
+
+          <p className="mt-4 text-black text-lg leading-relaxed">
+            Whether it’s immediate care, ongoing support, or long-term wellness — we bring trusted professionals directly to you, when you need them.
+          </p>
+
+          {/* subtle divider */}
+          <div className="mt-8 w-20 h-[2px] bg-gradient-to-r from-teal-400 to-cyan-400" />
+
+        </div>
+
+      </div>
+
+    </section>
+  );
+}
