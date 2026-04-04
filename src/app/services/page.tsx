@@ -8,10 +8,10 @@ import CTA from "../components/home/testimonial";
 export default function ServicesHero({ children }: { children?: React.ReactNode }) {
   return (
     <>
-    <section className="relative h-screen w-full overflow-hidden text-white">
+   <section className="relative min-h-[100svh] w-full overflow-hidden text-white flex items-center py-20">
 
       {/* 🌌 FIXED BACKGROUND */}
-      <div className="fixed inset-0 -z-10">
+    <div className="absolute inset-0 -z-10">
 
         <img
           src="https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=2000"
@@ -33,7 +33,7 @@ export default function ServicesHero({ children }: { children?: React.ReactNode 
       {/* CONTENT */}
       <div className="relative z-10 flex h-full items-center">
 
-        <div className="max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-7xl mx-auto px-6  py-12 w-full grid lg:grid-cols-2 gap-12 items-center">
 
           {/* TEXT SIDE */}
           <motion.div
@@ -108,14 +108,14 @@ export default function ServicesHero({ children }: { children?: React.ReactNode 
   initial={{ opacity: 0, scale: 0.95, y: 40 }}
   animate={{ opacity: 1, scale: 1, y: 0 }}
   transition={{ duration: 0.9 }}
-  className="relative hidden lg:flex justify-center"
+  className="relative flex justify-center lg:justify-end mt-12 lg:mt-0 order-2 lg:order-none"
 >
-  <div className="relative w-[280px] rounded-3xl p-4 bg-white/5 backdrop-blur-2xl border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.4)]">
+  <div className="relative w-[220px] sm:w-[260px] md:w-[300px] lg:w-[280px] rounded-3xl p-3 sm:p-4 bg-white/5 backdrop-blur-2xl border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.4)]">
 
     {/* GLOW */}
-    <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(0,255,200,0.15),transparent_70%)] opacity-40" />
+    <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(0,255,200,0.15),transparent_70%)] opacity-40 pointer-events-none" />
 
-    {/* SLOT CONTENT */}
+    {/* IMAGE */}
     <div className="relative z-10">
       <img
         src="/images/hero/appi.png"

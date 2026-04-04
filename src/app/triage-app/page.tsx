@@ -77,14 +77,14 @@ export default function TriageAppPage() {
   initial={{ opacity: 0, scale: 0.95, y: 40 }}
   animate={{ opacity: 1, scale: 1, y: 0 }}
   transition={{ duration: 0.9 }}
-  className="relative hidden lg:flex justify-center"
+  className="relative flex justify-center lg:justify-end mt-12 lg:mt-0"
 >
-  <div className="relative w-[280px] rounded-3xl p-4 bg-white/5 backdrop-blur-2xl border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.4)]">
+  <div className="relative w-[220px] sm:w-[260px] md:w-[300px] lg:w-[280px] rounded-3xl p-3 sm:p-4 bg-white/5 backdrop-blur-2xl border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.4)]">
 
     {/* GLOW */}
-    <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(0,255,200,0.15),transparent_70%)] opacity-40" />
+    <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(0,255,200,0.15),transparent_70%)] opacity-40 pointer-events-none" />
 
-    {/* SLOT CONTENT */}
+    {/* IMAGE */}
     <div className="relative z-10">
       <img
         src="/images/hero/appi.png"
