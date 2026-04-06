@@ -16,7 +16,7 @@ export default function TriagePodsPage() {
 
           {/* Background Image */}
           <img
-            src="https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=2000"
+            src="images/blog/13.webp"
             className="absolute inset-0 w-full h-full object-cover"
           />
 
@@ -46,7 +46,7 @@ export default function TriagePodsPage() {
               </h1>
 
               <p className="mt-6 text-white/80 text-lg max-w-2xl mx-auto">
-                TriagePods bring hospitals closer to people — unlocking access,
+                TriagePods bring hospitals closer to people, unlocking access,
                 speed, and scale across Africa.
               </p>
 
@@ -79,7 +79,7 @@ export default function TriagePodsPage() {
           <motion.img
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            src="https://images.unsplash.com/photo-1600959907703-125ba1374a12?q=80&w=2000"
+            src="images/blog/13.webp"
             className="rounded-3xl shadow-2xl border border-white/10"
           />
 
@@ -92,7 +92,7 @@ export default function TriagePodsPage() {
             </h2>
 
             <p className="mt-4 text-white/70">
-              Modular, mobile, and fully equipped — delivering consultations,
+              Modular, mobile, and fully equipped, delivering consultations,
               diagnostics, and care anywhere.
             </p>
           </motion.div>
@@ -155,7 +155,7 @@ export default function TriagePodsPage() {
           </h2>
 
           <p className="mt-4 text-white/90">
-            Not by building more hospitals — but by bringing care closer.
+            Not by building more hospitals, but by bringing care closer.
           </p>
         </motion.div>
 

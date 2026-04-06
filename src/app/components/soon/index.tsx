@@ -53,7 +53,7 @@ export default function JoinTriageSection() {
 
               <p className="mt-6 text-white/80 text-lg max-w-md leading-relaxed">
                 Experience a smarter, more connected way to access home healthcare.  
-                Built for comfort, speed, and peace of mind — right where you are.
+                Built for comfort, speed, and peace of mind, right where you are.
               </p>
 
               {/* 📱 STORE BUTTONS */}
@@ -87,7 +87,7 @@ export default function JoinTriageSection() {
               <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.4)]">
 
                 <img
-                  src="https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1200"
+                  src="images/blog/11.jpg"
                   alt="Triage Home Care"
                   className="w-full h-[360px] md:h-[420px] object-cover"
                 />

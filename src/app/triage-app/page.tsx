@@ -8,7 +8,7 @@ export default function TriageAppPage() {
     <main className="relative overflow-hidden text-white">
 
       {/* ===================================================== */}
-      {/* 🟢 SECTION 1 — HERO */}
+      {/* 🟢 SECTION 1  HERO */}
       {/* ===================================================== */}
 
       <section className="relative min-h-screen flex items-center px-6 py-24 overflow-hidden">
@@ -45,7 +45,7 @@ export default function TriageAppPage() {
             </h1>
 
             <p className="mt-6 text-lg md:text-xl text-white/70 leading-relaxed max-w-xl">
-              Get trusted medical care at home in minutes — book, track, and receive care seamlessly with the Triage App.
+              Get trusted medical care at home in minutes, book, track, and receive care seamlessly with the Triage App.
             </p>
 
             <p className="mt-4 text-white/50 italic">
@@ -100,7 +100,7 @@ export default function TriageAppPage() {
       </section>
 
       {/* ===================================================== */}
-      {/* 🔵 SECTION 2 — WHY TRIAGE */}
+      {/* 🔵 SECTION 2  WHY TRIAGE */}
       {/* ===================================================== */}
 
       <section className="relative py-32 px-6">
@@ -127,7 +127,7 @@ export default function TriageAppPage() {
               {
                 icon: MapPin,
                 title: "Real-Time Tracking",
-                desc: "Know exactly when your provider will arrive — just like tracking a ride.",
+                desc: "Know exactly when your provider will arrive, just like tracking a ride.",
               },
               {
                 icon: ShieldCheck,
@@ -177,7 +177,7 @@ export default function TriageAppPage() {
       </section>
 
       {/* ===================================================== */}
-      {/* 🟣 SECTION 3 — FINAL CTA */}
+      {/* 🟣 SECTION 3 FINAL CTA */}
       {/* ===================================================== */}
 
       <section className="relative py-32 px-6 text-center overflow-hidden">

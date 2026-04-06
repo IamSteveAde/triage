@@ -17,7 +17,7 @@ import Soon from "./components/soon";
 
 
 /* -------------------------------------
-   METADATA — SPOTLITE AFRICA AGENCY
+   METADATA SPOTLITE AFRICA AGENCY
 ------------------------------------- */
 
 
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   ],
 
   openGraph: {
-    title: "Triage — Trusted Home Healthcare, On Demand",
+    title: "Triage, Trusted Home Healthcare, On Demand",
     description:
       "Access professional healthcare from the comfort of your home. Triage connects you with verified nurses and care specialists for reliable, personalized support.",
     url: "https://triage.com", // replace with actual domain
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
         url: "https://triage.com/og/og-cover.jpg", // replace with actual asset
         width: 1200,
         height: 630,
-        alt: "Triage — On-Demand Home Healthcare Services",
+        alt: "Triage On-Demand Home Healthcare Services",
       },
     ],
   },
@@ -99,7 +99,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main>
-      {/* Audio welcome — brief, professional, plays once per visit */}
+      {/* Audio welcome, brief, professional, plays once per visit */}
      
 
       {/* Core hero & positioning */}

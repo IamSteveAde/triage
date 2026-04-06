@@ -31,7 +31,7 @@ const steps = [
   {
     icon: HeartHandshake,
     title: "Ongoing Support",
-    desc: "We stay with you — from first request to long-term care and follow-ups.",
+    desc: "We stay with you, from first request to long-term care and follow-ups.",
   },
   {
     icon: ShieldCheck,
@@ -71,7 +71,7 @@ export default function ConciergePage() {
           </motion.h1>
 
           <p className="mt-6 text-lg text-white/70 max-w-2xl mx-auto">
-            A dedicated healthcare concierge that manages your needs end-to-end — from booking care to ongoing support.
+            A dedicated healthcare concierge that manages your needs end-to-end, from booking care to ongoing support.
           </p>
 
           <p className="mt-4 text-white/50 italic">
@@ -192,7 +192,7 @@ export default function ConciergePage() {
           </h2>
 
           <p className="mt-6 text-white/70 text-lg">
-            With Triage Concierge, healthcare becomes effortless — giving you more time, clarity, and confidence.
+            With Triage Concierge, healthcare becomes effortless, giving you more time, clarity, and confidence.
           </p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">

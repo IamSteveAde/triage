@@ -75,7 +75,7 @@ export default function AudioConciergeModal() {
                 {/* MESSAGE */}
                 <p className="mt-4 text-white/80 leading-relaxed">
                   Would you like a quick guided introduction to how we deliver
-                  trusted care at home — and how you can get started in minutes?
+                  trusted care at home, and how you can get started in minutes?
                 </p>
 
                 {/* BUTTONS */}

@@ -88,9 +88,7 @@ export default function PremiumNavbar() {
             ))}
 
             {/* CTA BUTTON */}
-            <button className="ml-4 px-5 py-2 rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 text-white text-sm font-medium shadow-md hover:shadow-lg transition">
-              Get Started
-            </button>
+          
 
           </div>
 

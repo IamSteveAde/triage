@@ -3,41 +3,59 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 
+import type { FormEvent } from "react";
+
 export default function BookingSection() {
   const [service, setService] = useState("Home Care");
   const [time, setTime] = useState("Now");
 
+const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+ const form = e.currentTarget;
+    const location = (form.elements.namedItem("Location") as HTMLInputElement).value;
+  const name = (form.elements.namedItem("Name") as HTMLInputElement).value;
+  const phone = (form.elements.namedItem("Phone") as HTMLInputElement).value;
+
+    // Optional validation
+    if (!service || !time) {
+      alert("Please select service and time");
+      return;
+    }
+
+    const message = `
+Hello, I’d like to request care service.
+
+*New Booking Request*
+
+*Service:* ${service}
+*Time:* ${time}
+*Location:* ${location}
+
+*Name:* ${name}
+*Phone:* ${phone}
+    `;
+
+    const url = `https://wa.me/2349134664547?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
+  };
+
   return (
     <section className="relative py-32 px-6 overflow-hidden text-white">
 
-      {/* 🌌 BLUE-FIRST BRAND BACKGROUND */}
+      {/* 🌌 BACKGROUND */}
       <div className="absolute inset-0 z-0">
-
-        {/* main gradient (blue → teal → green) */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#020617] via-[#0B3C5D] to-[#022C22]" />
-
-        {/* deep blue glow */}
         <div className="absolute w-[600px] h-[600px] bg-blue-500/30 blur-[140px] rounded-full -top-40 -left-40" />
-
-        {/* cyan glow */}
         <div className="absolute w-[500px] h-[500px] bg-cyan-400/25 blur-[140px] rounded-full top-[40%] right-[-100px]" />
-
-        {/* green glow */}
         <div className="absolute w-[500px] h-[500px] bg-teal-400/25 blur-[140px] rounded-full bottom-[-120px] left-[30%]" />
-
-        {/* subtle radial blend */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_70%)]" />
-
-        {/* grid */}
         <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(0deg,white_1px,transparent_1px),linear-gradient(90deg,white_1px,transparent_1px)] bg-[size:60px_60px]" />
-
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto">
 
         {/* HEADER */}
         <div className="text-center mb-16">
-
           <h2 className="text-4xl md:text-5xl font-semibold tracking-tight">
             <span className="bg-gradient-to-r from-blue-300 via-cyan-300 to-teal-300 bg-clip-text text-transparent">
               Get care in minutes
@@ -45,9 +63,8 @@ export default function BookingSection() {
           </h2>
 
           <p className="mt-4 text-white/70 text-lg">
-            Tell us what you need — we’ll handle the rest.
+            Tell us what you need, we’ll handle the rest.
           </p>
-
         </div>
 
         {/* FORM CARD */}
@@ -58,14 +75,7 @@ export default function BookingSection() {
           className="p-8 md:p-10 rounded-3xl bg-white/10 backdrop-blur-2xl border border-white/10 shadow-[0_20px_80px_rgba(0,0,0,0.6)]"
         >
 
-          <form
-            action="https://formsubmit.co/adediranstephen2000@gmail.com"
-            method="POST"
-            className="space-y-6"
-          >
-
-            <input type="hidden" name="_subject" value="New Booking Request" />
-            <input type="hidden" name="_captcha" value="false" />
+          <form onSubmit={handleSubmit} className="space-y-6">
 
             {/* SERVICE */}
             <div>

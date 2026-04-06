@@ -16,7 +16,7 @@ const steps = [
   },
   {
     title: "Receive Care",
-    desc: "A qualified provider arrives at your doorstep — fast, safe, and reliable.",
+    desc: "A qualified provider arrives at your doorstep, fast, safe, and reliable.",
     icon: Truck,
   },
 ];
@@ -43,7 +43,7 @@ export default function HowItWorks() {
           </h2>
 
           <p className="mt-4 text-gray-300 text-base md:text-lg">
-            From request to care — seamless, reliable, and fast.
+            From request to care, seamless, reliable, and fast.
           </p>
         </div>
 

@@ -79,7 +79,7 @@ export default function AboutHero({ children }: { children?: React.ReactNode }) 
 
           {/* SUBTEXT */}
           <p className="mt-6 text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">
-            At TriageHome, we’re building a smarter, more human way to experience healthcare — one that comes to you, adapts to you, and works around your life.
+            At TriageHome, we’re building a smarter, more human way to experience healthcare, one that comes to you, adapts to you, and works around your life.
           </p>
 
           {/* MICROCOPY */}

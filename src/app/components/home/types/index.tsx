@@ -7,21 +7,21 @@ const offers = [
     title: "Standard Care",
     desc: "Book a qualified nurse instantly through our app. Get reliable, professional care at home, with transparent pricing and seamless management.",
     cta: "Join the waitlist",
-    image: "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1200",
+    image: "images/blog/3.jpg",
     glow: "from-teal-400/20 to-cyan-400/10",
   },
   {
     title: "TriageConcierge",
     desc: "Your personal health expert manages everything. Enjoy discreet, priority care with dedicated coordination wherever you are.",
     cta: "Join the waitlist",
-    image: "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=1200",
+ image: "images/blog/10.jpg",
     glow: "from-purple-400/20 to-pink-400/10",
   },
   {
     title: "Partnerships",
     desc: "We support hospitals with on-demand clinical staff and help organizations deliver better healthcare experiences to their people.",
     cta: "Join the waitlist",
-    image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200",
+ image: "images/blog/9.jpg",
     glow: "from-blue-400/20 to-cyan-400/10",
   },
 ];
@@ -57,7 +57,7 @@ export default function WhatWeOffer() {
             What We Offer
           </h2>
           <p className="mt-4 text-white/70 text-lg">
-            Designed to meet you wherever you are — from everyday care to elite support.
+            Designed to meet you wherever you are, from everyday care to elite support.
           </p>
         </div>
 

@@ -65,7 +65,7 @@ export default function ServicesHero({ children }: { children?: React.ReactNode 
 
             {/* SUBTEXT */}
             <p className="mt-6 text-lg md:text-xl text-gray-300 leading-relaxed">
-              From everyday wellness to urgent care, we bring trusted professionals directly to you — quickly, safely, and reliably.
+              From everyday wellness to urgent care, we bring trusted professionals directly to you, quickly, safely, and reliably.
             </p>
 
             {/* CTA */}

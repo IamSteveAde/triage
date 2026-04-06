@@ -17,7 +17,7 @@ export default function PartnershipPage() {
         <div className="absolute inset-0 -z-10">
 
           <img
-            src="https://images.unsplash.com/photo-1581595219315-a187dd40c322?q=80&w=2000"
+            src="images/blog/11.jpg"
             className="w-full h-full object-cover"
           />
 
@@ -65,7 +65,7 @@ export default function PartnershipPage() {
       </section>
 
       {/* ===================================================== */}
-      {/* 🔵 SECTION 2 — VALUE */}
+      {/* 🔵 SECTION 2 VALUE */}
       {/* ===================================================== */}
 
       <section className="relative py-32 px-6 bg-gradient-to-br from-[#F0FDFA] via-[#ECFEFF] to-[#F9FFFE]">
@@ -118,7 +118,7 @@ export default function PartnershipPage() {
       </section>
 
       {/* ===================================================== */}
-      {/* 🟣 SECTION 3 — ALTERNATING STORY */}
+      {/* 🟣 SECTION 3  ALTERNATING STORY */}
       {/* ===================================================== */}
 
       <section className="relative py-32 px-6 bg-white">
@@ -130,19 +130,19 @@ export default function PartnershipPage() {
               title: "Expand your care beyond the hospital",
               desc: "Enable your patients to continue receiving professional care at home, improving outcomes and satisfaction.",
               image:
-                "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=1200",
+                "images/blog/14.webp",
             },
             {
               title: "Empower your workforce with healthcare access",
               desc: "Give your employees direct access to medical care, reducing downtime and increasing productivity.",
               image:
-                "https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=1200",
+             "images/blog/10.jpg",
             },
             {
               title: "Scale without operational strain",
               desc: "Leverage our network and technology to grow your healthcare reach without additional infrastructure.",
               image:
-                "https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=1200",
+               "images/blog/12.webp",
             },
           ].map((item, i) => {
             const isLeft = i % 2 === 0;

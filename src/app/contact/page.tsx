@@ -49,7 +49,7 @@ export default function ContactPage() {
           </h1>
 
           <p className="mt-6 text-white/70 text-lg">
-            Whether you need immediate care, ongoing support, or have a question — our team is ready to assist you.
+            Whether you need immediate care, ongoing support, or have a question, our team is ready to assist you.
           </p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">
@@ -92,7 +92,7 @@ export default function ContactPage() {
                   <Icon size={20} />
                 </div>
 
-                <h3 className="font-semibold text-lg">{item.title}</h3>
+                <h3 className="font-semibold text-black/70 text-lg">{item.title}</h3>
 
                 <p className="mt-2 text-gray-600">{item.desc}</p>
               </motion.div>

@@ -61,7 +61,7 @@ export default function EmergingPage() {
           </h2>
 
           <p className="mt-6 text-white/60 text-lg">
-            Without structure, clarity, and direction — everything that follows becomes reactive.
+            Without structure, clarity, and direction, everything that follows becomes reactive.
           </p>
 
         </div>

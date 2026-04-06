@@ -111,7 +111,7 @@ export default function EcosystemSection() {
 
         {/* FOOTNOTE */}
         <p className="mt-16 text-center text-white/50 max-w-xl mx-auto">
-          Every part of Triage works together — so your care is never fragmented.
+          Every part of Triage works together, so your care is never fragmented.
         </p>
 
       </div>

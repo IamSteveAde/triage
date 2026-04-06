@@ -22,7 +22,7 @@ const values = [
   },
   {
     title: "Trust & Accountability",
-    desc: "We hold ourselves to the highest standards — ensuring every interaction is safe and reliable.",
+    desc: "We hold ourselves to the highest standards, ensuring every interaction is safe and reliable.",
     icon: ShieldCheck,
   },
   {
@@ -32,7 +32,7 @@ const values = [
   },
   {
     title: "Accessibility",
-    desc: "We are committed to expanding access to quality healthcare — regardless of location.",
+    desc: "We are committed to expanding access to quality healthcare, regardless of location.",
     icon: Globe,
   },
 ];
@@ -79,7 +79,7 @@ export default function MissionVisionValues() {
               </h3>
 
               <p className="mt-6 text-gray-600 text-lg text-black/70 leading-relaxed">
-                To make quality healthcare accessible at home — removing barriers, reducing delays, and improving lives through faster, smarter care.
+                To make quality healthcare accessible at home, removing barriers, reducing delays, and improving lives through faster, smarter care.
               </p>
 
             </div>
@@ -104,13 +104,13 @@ export default function MissionVisionValues() {
 
               <h3 className="text-3xl md:text-4xl text-black/70 font-semibold leading-tight">
                 A world where care
-                <span className="block bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-teal-500 text-transparent">
+                <span className="block bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-teal-500 ">
                   comes to you
                 </span>
               </h3>
 
               <p className="mt-6 text-gray-600 text-lg text-black/70 leading-relaxed">
-                A world where healthcare is not a place you go, but a service that comes to you — seamlessly integrated into everyday life.
+                A world where healthcare is not a place you go, but a service that comes to you, seamlessly integrated into everyday life.
               </p>
 
             </div>

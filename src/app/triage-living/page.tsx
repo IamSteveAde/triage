@@ -15,7 +15,7 @@ export default function TriageLivingPage() {
 
           {/* Background */}
           <img
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2000"
+            src="images/blog/8.jpg"
             className="absolute inset-0 w-full h-full object-cover"
           />
 
@@ -46,7 +46,7 @@ export default function TriageLivingPage() {
 
               <p className="mt-6 text-white/80 text-lg max-w-2xl mx-auto">
                 TriageLiving blends clinical excellence with wellness,
-                hospitality, and Eastern healing — creating a new standard
+                hospitality, and Eastern healing, creating a new standard
                 for assisted living.
               </p>
 
@@ -81,7 +81,7 @@ export default function TriageLivingPage() {
           <motion.img
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            src="https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=2000"
+         src="images/blog/5.jpg"
             className="rounded-3xl shadow-2xl border border-white/10"
           />
 
@@ -94,7 +94,7 @@ export default function TriageLivingPage() {
             </h2>
 
             <p className="mt-4 text-white/70">
-              Designed for comfort, dignity, and healing — TriageLiving merges
+              Designed for comfort, dignity, and healing, TriageLiving merges
               healthcare with hospitality, creating spaces people actually
               want to live in.
             </p>
@@ -153,7 +153,7 @@ export default function TriageLivingPage() {
           <motion.img
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=2000"
+          src="images/blog/11.jpg"
             className="rounded-3xl shadow-2xl w-full h-[500px] object-cover"
           />
         </div>
@@ -173,7 +173,7 @@ export default function TriageLivingPage() {
           </h2>
 
           <p className="mt-4 text-white/90 text-lg">
-            This is living — with care, dignity, and peace of mind.
+            This is living, with care, dignity, and peace of mind.
           </p>
         </motion.div>
 

@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const images = [
-  "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1200",
-  "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1200",
-  "https://images.unsplash.com/photo-1580281657527-47e2d5c4d7b2?q=80&w=1200",
+  "images/blog/11.jpg",
+ "images/blog/8.jpg",
+  "images/blog/2.jpg",
 ];
 
 export default function WhoWeAre() {
@@ -52,7 +52,7 @@ export default function WhoWeAre() {
       {/* CONTENT */}
       <div className="relative z-10 max-w-7xl  mx-auto grid md:grid-cols-2 gap-16 items-center">
 
-        {/* 🖼️ LEFT — SLIDESHOW */}
+        {/* 🖼️ LEFT SLIDESHOW */}
         <div className="relative">
 
           <div className="relative h-[500px] rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.15)]">
@@ -81,7 +81,7 @@ export default function WhoWeAre() {
 
         </div>
 
-        {/* ✍️ RIGHT — TEXT */}
+        {/* ✍️ RIGHT TEXT */}
         <div className="max-w-xl">
 
           <h2 className="text-4xl md:text-5xl font-semibold leading-tight">
@@ -107,7 +107,7 @@ export default function WhoWeAre() {
           </p>
 
           <p className="mt-4 text-black text-lg leading-relaxed">
-            Whether it’s immediate care, ongoing support, or long-term wellness — we bring trusted professionals directly to you, when you need them.
+            Whether it’s immediate care, ongoing support, or long-term wellness, we bring trusted professionals directly to you, when you need them.
           </p>
 
           {/* subtle divider */}

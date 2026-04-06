@@ -64,7 +64,7 @@ export default function WhatsAppConcierge() {
 
       {/* 🟢 WHATSAPP BUTTON */}
       <motion.a
-        href="https://wa.me/234XXXXXXXXXX" // 👈 PUT YOUR NUMBER HERE
+        href="https://wa.me/2349134664547" // 👈 PUT YOUR NUMBER HERE
         target="_blank"
         rel="noopener noreferrer"
         whileHover={{ scale: 1.08 }}

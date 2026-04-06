@@ -8,21 +8,21 @@ const solutions = [
     desc: "Connect patients with verified nurses, health assistants, and community health workers—delivering reliable, on-demand care right at home.",
     tag: "Available Soon",
     image:
-      "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1600",
+      "images/blog/12.webp",
   },
   {
     title: "TriagePods",
     desc: "Prefab care units designed to reach the last mile—bringing structured, accessible healthcare services closer to underserved communities.",
     tag: "Coming Soon",
-    image:
-      "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=1600",
+     image:
+      "images/blog/13.webp",
   },
   {
     title: "TriageLiving",
     desc: "A 24/7 assisted-living model blending clinical care, wellness, and hospitality—creating a new standard for long-term living.",
     tag: "Coming Soon",
-    image:
-      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1600",
+     image:
+      "images/blog/3.jpg",
   },
 ];
 

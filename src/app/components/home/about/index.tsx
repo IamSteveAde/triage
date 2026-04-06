@@ -8,7 +8,7 @@ const routes = [
     desc: "A healthcare professional at your doorstep within minutes.",
     cta: "Book Now",
     gradient: "from-[#0F9D8A] to-[#14B8A6]",
-    image: "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1200",
+    image: "/images/blog/4.jpg",
     link: "https://wa.me/2349134664547?text=Hi%20Triage%2C%20I%20need%20care%20immediately.%20Please%20send%20a%20healthcare%20professional%20to%20my%20location.",
   },
   {
@@ -16,7 +16,7 @@ const routes = [
     desc: "Reliable ongoing care for your family members.",
     cta: "Start Care",
     gradient: "from-[#7C3AED] to-[#A855F7]",
-    image: "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=1200",
+    image: "/images/blog/2.jpg",
     link: "https://wa.me/2349134664547?text=Hello%20Triage%2C%20I%E2%80%99m%20looking%20for%20ongoing%20care%20for%20a%20loved%20one.%20Can%20you%20guide%20me%20on%20the%20next%20steps%3F",
   },
   {
@@ -24,7 +24,7 @@ const routes = [
     desc: "Give your team access to seamless healthcare support.",
     cta: "Partner With Us",
     gradient: "from-[#2563EB] to-[#06B6D4]",
-    image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200",
+    image: "/images/blog/10.jpg",
     link: "https://wa.me/2349134664547?text=Hi%2C%20I%E2%80%99d%20like%20to%20explore%20healthcare%20solutions%20for%20my%20company.%20Can%20we%20discuss%20partnership%20options%3F",
   },
   {
@@ -32,7 +32,7 @@ const routes = [
     desc: "Work with Triage and reach more patients.",
     cta: "Apply Now",
     gradient: "from-[#F97316] to-[#EF4444]",
-    image: "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1200",
+   image: "/images/blog/5.jpg",
     link: "https://wa.me/2349134664547?text=Hello%2C%20I%E2%80%99m%20interested%20in%20joining%20Triage%20as%20a%20healthcare%20provider.%20Please%20share%20the%20application%20process.",
   },
 ];
@@ -76,7 +76,7 @@ export default function RoutingSection() {
           </h2>
 
           <p className="mt-4 text-gray-600 text-lg">
-            Choose what you need — we’ll take care of the rest.
+            Choose what you need, we’ll take care of the rest.
           </p>
         </div>
 
@@ -91,7 +91,7 @@ export default function RoutingSection() {
     className="group rounded-3xl overflow-hidden shadow-lg cursor-pointer"
   >
 
-              {/* IMAGE (NORMAL — NO EFFECTS) */}
+              {/* IMAGE (NORMAL NO EFFECTS) */}
               <div className="h-44 overflow-hidden">
                 <img
                   src={route.image}
