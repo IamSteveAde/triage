@@ -28,17 +28,17 @@ const features = [
 
 export default function TrustSection() {
   return (
-    <section className="relative py-28 px-6 overflow-hidden text-gray-900">
+    <section className="relative py-28 px-6 overflow-hidden text-triage-navy">
 
-      {/* 🌤️ BRIGHT BACKGROUND */}
+      {/* 🌤️ BACKGROUND */}
       <div className="absolute inset-0 z-0">
 
-        {/* Base light gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#FFFFFF] via-[#F8FAFC] to-[#F1F5F9]" />
+        {/* clean light background */}
+        <div className="absolute inset-0 bg-triage-gray-50" />
 
-        {/* Soft ambient brand glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(20,184,166,0.08),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(6,182,212,0.08),transparent_50%)]" />
+        {/* subtle radial accents */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(166,210,0,0.05),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(0,185,157,0.05),transparent_50%)]" />
 
       </div>
 
@@ -48,13 +48,11 @@ export default function TrustSection() {
         {/* HEADER */}
         <div className="text-center mb-16">
 
-          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight">
-            <span className="bg-gradient-to-r from-teal-600 via-cyan-500 to-teal-500 bg-clip-text text-transparent">
-              Care you can trust, every time
-            </span>
+          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-triage-navy">
+            Care you can trust, every time
           </h2>
 
-          <p className="mt-4 text-gray-600 text-lg">
+          <p className="mt-4 text-triage-gray-600 text-lg">
             Verified professionals. Reliable response. Peace of mind.
           </p>
 
@@ -71,35 +69,35 @@ export default function TrustSection() {
                 key={i}
                 whileHover={{ y: -6 }}
                 transition={{ type: "spring", stiffness: 200, damping: 18 }}
-                className="group relative p-8 rounded-2xl bg-white/70 backdrop-blur-xl border border-black/5 shadow-sm hover:shadow-xl transition-all"
+                className="group relative p-8 rounded-2xl bg-white border border-triage-gray-200 shadow-sm hover:shadow-xl transition-all"
               >
 
-                {/* Subtle gradient hover */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br from-teal-500/5 via-cyan-400/5 to-transparent" />
+                {/* subtle hover overlay */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-triage-orange/5" />
 
                 {/* CONTENT */}
                 <div className="relative z-10 flex gap-5">
 
                   {/* ICON */}
-                  <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-teal-500/10 to-cyan-400/10 text-teal-600">
+                  <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-triage-orange/10 text-triage-orange">
                     <Icon size={22} />
                   </div>
 
                   {/* TEXT */}
                   <div>
-                    <h3 className="text-lg text-black/70 font-semibold">
+                    <h3 className="text-lg text-triage-navy font-semibold">
                       {feature.title}
                     </h3>
 
-                    <p className="mt-2 text-gray-600 leading-relaxed">
+                    <p className="mt-2 text-triage-gray-600 leading-relaxed">
                       {feature.desc}
                     </p>
                   </div>
 
                 </div>
 
-                {/* Border glow */}
-                <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-teal-200 transition duration-500" />
+                {/* border hover */}
+                <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-triage-orange/30 transition duration-500" />
 
               </motion.div>
             );

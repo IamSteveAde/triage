@@ -10,9 +10,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
-    ...extendedConfig
+      ...extendedConfig,
+
+      fontFamily: {
+        heading: ["Raleway", "sans-serif"],
+        body: ["Nunito", "sans-serif"],
+      },
     },
   },
   plugins: [],
 };
+
 export default config;

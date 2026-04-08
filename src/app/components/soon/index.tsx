@@ -7,27 +7,24 @@ export default function JoinTriageSection() {
     <section className="relative py-32 px-6 overflow-hidden">
 
       {/* 🌍 OUTER BACKGROUND */}
-      <div className="absolute inset-0 bg-[#F8FAFC]" />
+      <div className="absolute inset-0 bg-triage-gray-50" />
 
-      {/* 🧊 CONTENT WRAPPER (NOT FULL WIDTH) */}
+      {/* 🧊 CONTENT WRAPPER */}
       <div className="relative z-10 max-w-7xl mx-auto">
 
         <div className="relative rounded-[32px] overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.15)]">
 
-          {/* 🎨 DEEP BRAND BACKGROUND */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#052E2B] via-[#064E4A] to-[#021C1A]" />
+          {/* 🔷 NAVY BASE (PRIMARY) */}
+          <div className="absolute inset-0 bg-triage-navy" />
 
-          {/* 🌕 SOFT CIRCLE ELEMENTS */}
+          {/* 🌌 SUBTLE BRAND TEXTURE */}
           <div className="absolute inset-0">
 
-            {/* big glow */}
-            <div className="absolute w-[500px] h-[500px] bg-teal-400/20 blur-[120px] rounded-full -top-40 -left-40" />
+            {/* soft lime radial */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(166,210,0,0.06),transparent_70%)]" />
 
-            {/* second circle */}
-            <div className="absolute w-[400px] h-[400px] bg-cyan-400/20 blur-[120px] rounded-full bottom-[-100px] right-[-80px]" />
-
-            {/* subtle center glow */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,255,200,0.08),transparent_70%)]" />
+            {/* subtle grid */}
+            <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(0deg,white_1px,transparent_1px),linear-gradient(90deg,white_1px,transparent_1px)] bg-[size:60px_60px]" />
 
           </div>
 
@@ -42,12 +39,12 @@ export default function JoinTriageSection() {
               viewport={{ once: true }}
             >
 
-              {/* small label */}
-              <p className="text-teal-300 text-sm uppercase tracking-widest mb-4">
+              {/* label */}
+              <p className="text-triage-lime text-sm uppercase tracking-widest mb-4">
                 Triage Home Care
               </p>
 
-              <h2 className="text-4xl text-white md:text-5xl font-semibold leading-tight">
+              <h2 className="text-4xl md:text-5xl font-semibold text-white leading-tight">
                 Join TriageHome
               </h2>
 
@@ -60,13 +57,13 @@ export default function JoinTriageSection() {
               <div className="mt-10 flex flex-wrap gap-4">
 
                 {/* GOOGLE PLAY */}
-                <div className="px-6 py-4 rounded-xl bg-white/10 backdrop-blur-md border border-white/20">
+                <div className="px-6 py-4 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-triage-orange transition">
                   <p className="text-xs text-white/60">Coming soon on</p>
                   <p className="text-lg font-semibold">Google Play</p>
                 </div>
 
                 {/* APP STORE */}
-                <div className="px-6 py-4 rounded-xl bg-white/10 backdrop-blur-md border border-white/20">
+                <div className="px-6 py-4 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-triage-orange transition">
                   <p className="text-xs text-white/60">Coming soon on</p>
                   <p className="text-lg font-semibold">App Store</p>
                 </div>
@@ -83,6 +80,9 @@ export default function JoinTriageSection() {
               viewport={{ once: true }}
               className="relative"
             >
+
+              {/* subtle glow */}
+              <div className="absolute inset-0 -z-10 rounded-2xl bg-triage-teal/10 blur-2xl" />
 
               <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.4)]">
 

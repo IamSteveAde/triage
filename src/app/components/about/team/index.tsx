@@ -10,8 +10,8 @@ const team = [
     degree: "Ph.D.",
     image: "images/blog/ifunanya.webp",
     linkedin: "https://www.linkedin.com/in/ifunanya-nwokedi-ph-d-b30a3815?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    gradient: "from-teal-400/20 via-cyan-400/10 to-transparent",
-    accent: "text-teal-600",
+    color: "text-triage-teal",
+    bg: "bg-triage-teal/5",
   },
   {
     name: "Femi Akinpelu",
@@ -19,41 +19,40 @@ const team = [
     degree: "LL.B, LL.M",
     image: "images/blog/femi.webp",
     linkedin: "https://linkedin.com/in/femi-akinpelu-5a4024a5",
-    gradient: "from-purple-400/20 via-indigo-400/10 to-transparent",
-    accent: "text-purple-600",
+    color: "text-triage-purple",
+    bg: "bg-triage-purple/5",
   },
   {
     name: "Babatunde Oduola-Owoo",
     title: "Medical Advisor",
     degree: "M.D.",
-   image: "images/blog/tunde.webp",
+    image: "images/blog/tunde.webp",
     linkedin: "https://www.linkedin.com/in/babatunde-oduola-owoo-m-d-104a64147?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    gradient: "from-blue-400/20 via-cyan-400/10 to-transparent",
-    accent: "text-blue-600",
+    color: "text-triage-navy",
+    bg: "bg-triage-navy/5",
   },
 ];
 
 export default function ExecutiveTeam() {
   return (
-    <section className="relative py-32 px-6 overflow-hidden text-gray-900">
+    <section className="relative py-32 px-6 overflow-hidden text-triage-navy">
 
-      {/* 🌈 BACKGROUND */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white via-[#F0FDFA] to-[#ECFEFF]" />
+      {/* 🔷 BACKGROUND */}
+      <div className="absolute inset-0 bg-triage-gray-50" />
 
-      {/* subtle glow */}
-      <div className="absolute w-[400px] h-[400px] bg-teal-400/10 blur-[120px] rounded-full top-[-100px] left-[-100px]" />
-      <div className="absolute w-[400px] h-[400px] bg-cyan-400/10 blur-[120px] rounded-full bottom-[-100px] right-[-100px]" />
+      {/* subtle grid */}
+      <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(0deg,black_1px,transparent_1px),linear-gradient(90deg,black_1px,transparent_1px)] bg-[size:60px_60px]" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
 
         {/* HEADER */}
         <div className="text-center mb-20">
 
-          <h2 className="text-4xl md:text-5xl font-semibold">
+          <h2 className="text-4xl md:text-5xl font-semibold text-triage-navy">
             Leadership
           </h2>
 
-          <p className="mt-6 text-black max-w-2xl mx-auto text-lg">
+          <p className="mt-6 text-triage-gray-600 max-w-2xl mx-auto text-lg">
             Meet the people shaping the future of home healthcare through innovation, expertise, and vision.
           </p>
 
@@ -67,13 +66,11 @@ export default function ExecutiveTeam() {
               key={i}
               whileHover={{ y: -10 }}
               transition={{ type: "spring", stiffness: 200, damping: 18 }}
-              className="group relative rounded-3xl overflow-hidden border border-black/5 bg-white shadow-md"
+              className="group relative rounded-3xl overflow-hidden border border-triage-gray-200 bg-white shadow-md"
             >
 
-              {/* GRADIENT BACKDROP */}
-              <div
-                className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br ${member.gradient}`}
-              />
+              {/* subtle hover overlay */}
+              <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 ${member.bg}`} />
 
               {/* IMAGE */}
               <div className="relative h-[360px] overflow-hidden">
@@ -85,7 +82,7 @@ export default function ExecutiveTeam() {
                 />
 
                 {/* overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-black/50" />
 
               </div>
 
@@ -93,17 +90,17 @@ export default function ExecutiveTeam() {
               <div className="relative z-10 p-6">
 
                 {/* DEGREE */}
-                <p className={`text-sm text-black font-medium ${member.accent}`}>
+                <p className={`text-sm font-medium ${member.color}`}>
                   {member.degree}
                 </p>
 
                 {/* NAME */}
-                <h3 className="text-xl text-black font-semibold mt-1">
+                <h3 className="text-xl font-semibold mt-1 text-triage-navy">
                   {member.name}
                 </h3>
 
                 {/* TITLE */}
-                <p className="text-sm text-black mt-1">
+                <p className="text-sm text-triage-gray-600 mt-1">
                   {member.title}
                 </p>
 
@@ -111,7 +108,7 @@ export default function ExecutiveTeam() {
                 <a
                   href={member.linkedin}
                   target="_blank"
-                  className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-black hover:text-black transition"
+                  className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-triage-navy hover:text-triage-orange transition"
                 >
                   <Linkedin size={16} />
                   View Profile
@@ -119,8 +116,8 @@ export default function ExecutiveTeam() {
 
               </div>
 
-              {/* BORDER GLOW */}
-              <div className="absolute inset-0 rounded-3xl border border-transparent group-hover:border-white/40 transition duration-500" />
+              {/* border hover */}
+              <div className="absolute inset-0 rounded-3xl border border-transparent group-hover:border-triage-orange/30 transition duration-500" />
 
             </motion.div>
           ))}

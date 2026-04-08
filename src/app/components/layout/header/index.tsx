@@ -13,7 +13,6 @@ const navItems = [
   { name: "TriageConcierge", href: "/triage-concierge" },
   { name: "Partnerships", href: "/partnerships" },
   { name: "Contact", href: "/contact" },
-  
 ];
 
 export default function PremiumNavbar() {
@@ -43,34 +42,34 @@ export default function PremiumNavbar() {
 
           {/* LOGO */}
           <Link href="/" className="flex items-center">
-  <Image
-    src="/images/logo/triage.png"
-    alt="TriageHome Logo"
-    width={140}
-    height={40}
-    priority
-    className={`transition-all duration-500 ${
-      scrolled
-        ? "filter-none opacity-100"
-        : "brightness-0 invert opacity-90"
-    }`}
-  />
-</Link>
+            <Image
+              src="/images/logo/triage.png"
+              alt="TriageHome Logo"
+              width={140}
+              height={40}
+              priority
+              className={`transition-all duration-500 ${
+                scrolled
+                  ? "filter-none opacity-100"
+                  : "brightness-0 invert opacity-90"
+              }`}
+            />
+          </Link>
 
           {/* NAV ITEMS */}
           <div className="hidden md:flex items-center gap-8">
 
             {navItems.map((item, i) => (
-             <Link key={i} href={item.href} className="relative group cursor-pointer">
+              <Link key={i} href={item.href} className="relative group">
 
                 <div
                   className={`flex items-center gap-2 text-sm font-medium transition ${
-                    scrolled ? "text-gray-800" : "text-white"
+                    scrolled ? "text-triage-navy" : "text-white"
                   }`}
                 >
-                 {item.name}
+                  {item.name}
 
-                  {/* ARROW → rotates ↑ */}
+                  {/* arrow */}
                   <motion.span
                     className="text-xs"
                     initial={{ rotate: 0 }}
@@ -81,18 +80,15 @@ export default function PremiumNavbar() {
                   </motion.span>
                 </div>
 
-                {/* CENTER EXPAND LINE */}
-                <span className="absolute left-1/2 bottom-[-6px] h-[2px] w-0 bg-teal-500 transition-all duration-300 group-hover:w-full group-hover:left-0" />
-                   </Link>
-            
-            ))}
+                {/* underline */}
+                <span className="absolute left-1/2 bottom-[-6px] h-[2px] w-0 bg-triage-orange transition-all duration-300 group-hover:w-full group-hover:left-0" />
 
-            {/* CTA BUTTON */}
-          
+              </Link>
+            ))}
 
           </div>
 
-          {/* MOBILE MENU BUTTON */}
+          {/* MOBILE BUTTON */}
           <div
             className="md:hidden cursor-pointer"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -105,10 +101,8 @@ export default function PremiumNavbar() {
 
         </div>
 
-        {/* 🔥 ANIMATED GRADIENT LINE */}
-        <div className="absolute bottom-0 left-0 w-full h-[1px] overflow-hidden">
-          <div className="w-[200%] h-full bg-gradient-to-r from-teal-400 via-cyan-400 to-teal-400 animate-gradientMove" />
-        </div>
+        {/* CLEAN BORDER (NO GRADIENT) */}
+        <div className="absolute bottom-0 left-0 w-full h-[1px] bg-white/10" />
 
       </motion.header>
 
@@ -122,50 +116,39 @@ export default function PremiumNavbar() {
             transition={{ duration: 0.4 }}
             className="fixed top-0 left-0 w-full h-screen bg-white z-40 flex flex-col items-center justify-center gap-8"
           >
-            {navItems.map((item, i) => (
-  <motion.div
-    key={i}
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ delay: i * 0.05 }}
-  >
-    <Link
-      href={item.href}
-      onClick={() => setMobileOpen(false)} // 👈 CLOSE MENU AFTER CLICK
-      className="text-2xl font-semibold text-gray-900"
-    >
-      {item.name}
-    </Link>
-  </motion.div>
-))}
-            <button className="mt-6 px-6 py-3 rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 text-white">
-              Get Started
-            </button>
 
+            {navItems.map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.05 }}
+              >
+                <Link
+                  href={item.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="text-2xl font-semibold text-triage-navy"
+                >
+                  {item.name}
+                </Link>
+              </motion.div>
+            ))}
+
+            {/* CTA */}
+            
+
+            {/* CLOSE */}
             <div
               onClick={() => setMobileOpen(false)}
-              className="absolute top-6 right-6 text-2xl"
+              className="absolute top-6 right-6 text-2xl text-triage-navy"
             >
               ✕
             </div>
+
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* 🔁 GRADIENT ANIMATION STYLE */}
-      <style jsx>{`
-        @keyframes gradientMove {
-          0% {
-            transform: translateX(0%);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        .animate-gradientMove {
-          animation: gradientMove 4s linear infinite;
-        }
-      `}</style>
     </>
   );
 }

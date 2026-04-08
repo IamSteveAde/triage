@@ -8,24 +8,25 @@ const slides = [
     title: "Healthcare, at your doorstep",
     desc: "Experience intelligent, on-demand care delivered to your home.",
     cta: "Get Care Now",
-    image: "/images/hero/slde1.png",
+    image: "/images/hero/bg1.png",
     link: "https://wa.me/2349134664547?text=Hi%20Triage%2C%20I%20need%20care%20immediately.%20Please%20send%20a%20healthcare%20professional%20to%20my%20location.",
   },
   {
     title: "Care for the people you love",
     desc: "Trusted professionals for your family, whenever it matters most.",
     cta: "Book Care",
-    image: "/images/hero/slde2.png",
+    image: "/images/hero/bg2.png",
     link: "https://wa.me/2349134664547?text=Hello%20Triage%2C%20I%E2%80%99m%20looking%20for%20care%20for%20a%20loved%20one.%20Please%20guide%20me.",
   },
   {
     title: "Smarter healthcare for businesses",
     desc: "Elevate employee wellbeing with seamless medical access.",
     cta: "Partner With Us",
-    image: "/images/hero/slde4.png",
+    image: "/images/hero/bg3.png",
     link: "https://wa.me/2349134664547?text=Hi%2C%20I%E2%80%99d%20like%20to%20discuss%20healthcare%20solutions%20for%20my%20company.",
   },
 ];
+
 const AUTO_DELAY = 6500;
 
 export default function HeroSlider() {
@@ -72,7 +73,7 @@ export default function HeroSlider() {
     <section className="relative h-screen w-full overflow-hidden text-white">
 
       {/* BACKGROUND */}
-      <div className="fixed inset-0 z-0">
+      <div className=" inset-0 z-0">
         {slides.map((slide, i) => (
           <motion.div
             key={slide.image}
@@ -85,8 +86,8 @@ export default function HeroSlider() {
           >
             <img src={slide.image} className="w-full h-full object-cover" />
 
-            <div className="absolute inset-0 bg-black/70" />
-            <div className="absolute inset-0 bg-gradient-to-br from-teal-600/30 via-transparent to-cyan-400/20" />
+            {/* 🔥 NAVY OVERLAY (PRIMARY BRAND) */}
+            <div className="absolute inset-0 bg-triage-navy/80" />
           </motion.div>
         ))}
       </div>
@@ -102,33 +103,33 @@ export default function HeroSlider() {
             className="max-w-2xl"
           >
 
-            <h1 className="text-4xl md:text-7xl font-semibold leading-tight">
-              <span className="bg-gradient-to-r from-teal-300 via-cyan-300 to-teal-400 bg-clip-text text-transparent">
-                {slides[index].title}
-              </span>
+            <h1 className="text-4xl md:text-7xl font-semibold leading-tight text-white">
+              {slides[index].title}
             </h1>
 
-            <p className="mt-4 md:mt-6 text-base md:text-xl text-gray-300">
+            <p className="mt-4 md:mt-6 text-base md:text-xl text-white/80">
               {slides[index].desc}
             </p>
 
             <div className="mt-8 md:mt-10 flex gap-4 flex-wrap">
 
+              {/* 🔥 PRIMARY CTA (ORANGE) */}
               <a
-  href={slides[index].link}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="px-6 md:px-8 py-3 md:py-4 rounded-full bg-gradient-to-r from-teal-500 to-cyan-400 text-black font-medium inline-block"
->
-  {slides[index].cta}
-</a>
+                href={slides[index].link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 md:px-8 py-3 md:py-4 rounded-full bg-triage-orange hover:bg-[#8c5c27] text-white font-medium inline-block transition"
+              >
+                {slides[index].cta}
+              </a>
 
+              {/* SECONDARY CTA */}
               <a
-  href="/about"
-  className="px-6 md:px-8 py-3 md:py-4 rounded-full border border-white/20 inline-block"
->
-  Learn More →
-</a>
+                href="/about"
+                className="px-6 md:px-8 py-3 md:py-4 rounded-full border border-white/20 text-white inline-block hover:border-triage-orange transition"
+              >
+                Learn More →
+              </a>
 
             </div>
 
@@ -137,28 +138,26 @@ export default function HeroSlider() {
         </div>
       </div>
 
-      {/* 🔥 FIXED ARROWS */}
-
       {/* DESKTOP ARROWS */}
       <div className="hidden md:flex absolute inset-y-0 w-full justify-between items-center px-6 z-20 pointer-events-none">
 
         <button
-  onClick={prevSlide}
-  className="pointer-events-auto w-14 h-14 rounded-full bg-white/10 backdrop-blur-xl border border-white/20"
->
-  ←
-</button>
+          onClick={prevSlide}
+          className="pointer-events-auto w-14 h-14 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 hover:border-triage-orange transition"
+        >
+          ←
+        </button>
 
-<button
-  onClick={nextSlide}
-  className="pointer-events-auto w-14 h-14 rounded-full bg-white/10 backdrop-blur-xl border border-white/20"
->
-  →
-</button>
+        <button
+          onClick={nextSlide}
+          className="pointer-events-auto w-14 h-14 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 hover:border-triage-orange transition"
+        >
+          →
+        </button>
 
       </div>
 
-      {/* MOBILE ARROWS (BOTTOM) */}
+      {/* MOBILE ARROWS */}
       <div className="md:hidden absolute bottom-24 left-1/2 -translate-x-1/2 flex gap-4 z-20">
 
         <button
@@ -184,7 +183,7 @@ export default function HeroSlider() {
             key={i}
             onClick={() => setIndex(i)}
             className={`h-[4px] rounded-full ${
-              i === index ? "w-14 bg-teal-400" : "w-6 bg-white/40"
+              i === index ? "w-14 bg-triage-orange" : "w-6 bg-white/40"
             }`}
           />
         ))}

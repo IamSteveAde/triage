@@ -8,42 +8,32 @@ const offers = [
     desc: "Book a qualified nurse instantly through our app. Get reliable, professional care at home, with transparent pricing and seamless management.",
     cta: "Join the waitlist",
     image: "images/blog/3.jpg",
-    glow: "from-teal-400/20 to-cyan-400/10",
   },
   {
     title: "TriageConcierge",
     desc: "Your personal health expert manages everything. Enjoy discreet, priority care with dedicated coordination wherever you are.",
     cta: "Join the waitlist",
- image: "images/blog/10.jpg",
-    glow: "from-purple-400/20 to-pink-400/10",
+    image: "images/blog/10.jpg",
   },
   {
     title: "Partnerships",
     desc: "We support hospitals with on-demand clinical staff and help organizations deliver better healthcare experiences to their people.",
     cta: "Join the waitlist",
- image: "images/blog/9.jpg",
-    glow: "from-blue-400/20 to-cyan-400/10",
+    image: "images/blog/9.jpg",
   },
 ];
 
 export default function WhatWeOffer() {
   return (
-    <section className="relative py-36 px-6 overflow-hidden text-white">
+    <section className="relative py-36 px-6 overflow-hidden text-white bg-triage-navy">
 
-      {/* 🌌 DEEP PREMIUM BACKGROUND */}
+      {/* 🌌 BACKGROUND */}
       <div className="absolute inset-0">
 
-        {/* base */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#021C1A] via-[#052E2B] to-[#020617]" />
+        {/* subtle radial accent */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(166,210,0,0.05),transparent_70%)]" />
 
-        {/* ambient glow */}
-        <div className="absolute w-[600px] h-[600px] bg-teal-500/20 blur-[140px] rounded-full -top-40 -left-40" />
-        <div className="absolute w-[500px] h-[500px] bg-cyan-500/20 blur-[140px] rounded-full bottom-[-120px] right-[-80px]" />
-
-        {/* center radial */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,255,200,0.08),transparent_70%)]" />
-
-        {/* subtle grid */}
+        {/* grid */}
         <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(0deg,white_1px,transparent_1px),linear-gradient(90deg,white_1px,transparent_1px)] bg-[size:60px_60px]" />
 
       </div>
@@ -53,9 +43,10 @@ export default function WhatWeOffer() {
 
         {/* HEADER */}
         <div className="text-center mb-28">
-          <h2 className="text-4xl md:text-5xl text-white font-semibold">
+          <h2 className="text-4xl md:text-5xl font-semibold text-white">
             What We Offer
           </h2>
+
           <p className="mt-4 text-white/70 text-lg">
             Designed to meet you wherever you are, from everyday care to elite support.
           </p>
@@ -82,10 +73,10 @@ export default function WhatWeOffer() {
                   className={`${isLeft ? "order-1" : "order-2"} relative`}
                 >
 
-                  {/* glow plate */}
-                  <div className={`absolute inset-0 -z-10 rounded-[32px] bg-gradient-to-br ${item.glow} blur-2xl`} />
+                  {/* subtle glow (secondary, not dominant) */}
+                  <div className="absolute inset-0 -z-10 rounded-[32px] bg-triage-teal/10 blur-2xl" />
 
-                  <div className="relative rounded-[28px] overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.5)]">
+                  <div className="relative rounded-[28px] overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.6)]">
 
                     <img
                       src={item.image}
@@ -106,13 +97,12 @@ export default function WhatWeOffer() {
                   className={`${isLeft ? "order-2" : "order-1"} relative`}
                 >
 
-                  {/* luxury card */}
-                  <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-[28px] p-10 shadow-[0_20px_60px_rgba(0,0,0,0.4)]">
+                  <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-[28px] p-10">
 
-                    {/* accent line */}
-                    <div className="w-14 h-[2px] bg-gradient-to-r from-teal-400 to-cyan-400 mb-6" />
+                    {/* accent line (PRIMARY COLOR) */}
+                    <div className="w-14 h-[2px] bg-triage-orange mb-6" />
 
-                    <h3 className="text-3xl md:text-4xl font-semibold">
+                    <h3 className="text-3xl md:text-4xl font-semibold text-white">
                       {item.title}
                     </h3>
 
@@ -120,8 +110,8 @@ export default function WhatWeOffer() {
                       {item.desc}
                     </p>
 
-                    {/* CTA */}
-                    <div className="mt-8 inline-flex items-center gap-2 font-medium text-teal-300 cursor-pointer group">
+                    {/* CTA (PRIMARY COLOR) */}
+                    <div className="mt-8 inline-flex items-center gap-2 font-medium text-triage-orange cursor-pointer group">
 
                       <span>{item.cta}</span>
 

@@ -7,44 +7,44 @@ const services = [
   {
     title: "Elderly Care",
     desc: "Compassionate, dignified support for elderly or physically challenged patients, from daily assistance and companionship to medication management and regular health monitoring, helping them live independently at home.",
-    image: "/images/blog/1.jpg",
-    gradient: "from-[#0F9D8A] via-[#14B8A6] to-[#0EA5E9]",
+    image: "/images/blog/elderly-care.webp",
+    color: "bg-triage-teal",
   },
   {
     title: "Post-Surgery Care",
     desc: "Professional recovery support with vital signs monitoring, surgical site care, medication reminders, and early detection of complications, ensuring a smooth and safe healing process.",
-   image: "/images/blog/8.jpg",
-    gradient: "from-[#7C3AED] via-[#A855F7] to-[#EC4899]",
+    image: "/images/blog/8.jpg",
+    color: "bg-triage-purple",
   },
   {
     title: "Chronic Disease Management",
     desc: "Ongoing support for conditions like diabetes and hypertension, including regular monitoring, medication guidance, and patient education to help maintain stability and improve quality of life.",
-    image: "/images/blog/3.jpg",
-    gradient: "from-[#2563EB] via-[#3B82F6] to-[#06B6D4]",
+    image: "/images/blog/chronic-health.webp",
+    color: "bg-triage-navy",
   },
   {
     title: "IV Therapy",
     desc: "Safe administration of prescribed IV fluids, vitamins, and medications in the comfort of your home, delivered by trained healthcare professionals.",
-    image: "/images/blog/7.jpg",
-    gradient: "from-[#F97316] via-[#FB923C] to-[#EF4444]",
+    image: "/images/blog/ivtherapy.webp",
+    color: "bg-triage-orange",
   },
   {
     title: "Wellness Check",
     desc: "A complete health review including vital signs check, risk assessment, and lifestyle consultation, helping you stay proactive about your health.",
-    image: "/images/hero/slde1.png",
-    gradient: "from-[#16A34A] via-[#22C55E] to-[#4ADE80]",
+    image: "/images/blog/wellness-check.webp",
+    color: "bg-triage-lime",
   },
   {
     title: "Health Screening",
     desc: "Quick and reliable on-the-spot tests including malaria, typhoid, HIV, blood pressure, glucose, and BMI, giving you clarity and peace of mind instantly.",
-   image: "/images/blog/2.jpg",
-    gradient: "from-[#DB2777] via-[#EC4899] to-[#F472B6]",
+    image: "/images/blog/health-screening.webp",
+    color: "bg-[#ffbf00]", // Amber
   },
   {
     title: "Wound Care",
     desc: "Expert wound assessment, cleaning, dressing, and infection monitoring, ensuring proper healing and reducing the risk of complications.",
-    image: "/images/blog/6.jpg",
-    gradient: "from-[#6366F1] via-[#818CF8] to-[#A5B4FC]",
+    image: "/images/blog/7.jpg",
+    color: "bg-triage-teal",
   },
 ];
 
@@ -55,7 +55,7 @@ export default function WhatWeDoTabs() {
     <section className="relative py-28 px-6 overflow-hidden">
 
       {/* 🌍 BACKGROUND */}
-      <div className="absolute inset-0 bg-[#F8FAFC]" />
+      <div className="absolute inset-0 bg-triage-gray-50" />
 
       {/* subtle grid */}
       <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(0deg,#000_1px,transparent_1px),linear-gradient(90deg,#000_1px,transparent_1px)] bg-[size:60px_60px]" />
@@ -84,17 +84,17 @@ export default function WhatWeDoTabs() {
         {/* HEADER */}
         <div className="text-center mb-14">
 
-          <h2 className="text-4xl md:text-5xl font-semibold text-gray-900">
+          <h2 className="text-4xl md:text-5xl font-semibold text-triage-navy">
             What We Do
           </h2>
 
-          <p className="mt-4 text-gray-600 text-lg">
+          <p className="mt-4 text-triage-gray-600 text-lg">
             Personalized healthcare services designed around your needs.
           </p>
 
         </div>
 
-        {/* 🧠 TABS (FULLY RESPONSIVE) */}
+        {/* 🧠 TABS */}
         <div className="flex flex-wrap justify-center gap-3 mb-16">
 
           {services.map((tab, i) => (
@@ -104,19 +104,11 @@ export default function WhatWeDoTabs() {
               className={`px-5 py-3 rounded-xl text-sm font-medium transition-all duration-300 border
               ${
                 active === i
-                  ? "text-white shadow-lg"
-                  : "text-gray-600 bg-white border-gray-200 hover:bg-gray-50"
+                  ? `${tab.color} text-white border-transparent shadow-lg`
+                  : "text-triage-gray-600 bg-white border-triage-gray-200 hover:border-triage-orange"
               }`}
             >
-              <span
-                className={`${
-                  active === i
-                    ? `bg-gradient-to-r ${tab.gradient} bg-clip-text text-transparent`
-                    : ""
-                }`}
-              >
-                {tab.title}
-              </span>
+              {tab.title}
             </button>
           ))}
 
@@ -130,7 +122,7 @@ export default function WhatWeDoTabs() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -30, scale: 0.98 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className={`rounded-3xl p-8 md:p-12 bg-gradient-to-br ${services[active].gradient} text-white shadow-xl`}
+            className={`rounded-3xl p-8 md:p-12 ${services[active].color} text-white shadow-xl`}
           >
 
             <div className="grid md:grid-cols-2 gap-10 items-center">

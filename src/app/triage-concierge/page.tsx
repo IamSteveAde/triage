@@ -50,27 +50,27 @@ export default function ConciergePage() {
 
       <section className="relative min-h-screen flex items-center px-6 overflow-hidden">
 
-        <div className="absolute inset-0 bg-gradient-to-br from-[#020617] via-[#0B3C5D] to-[#021C1A]" />
+        {/* NAVY BACKGROUND */}
+        <div className="absolute inset-0 bg-triage-navy" />
 
-        {/* glow */}
-        <div className="absolute w-[700px] h-[700px] bg-cyan-400/20 blur-[140px] rounded-full -top-40 -left-40" />
-        <div className="absolute w-[500px] h-[500px] bg-teal-400/20 blur-[140px] rounded-full bottom-[-120px] right-[-80px]" />
+        {/* subtle lime glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(166,210,0,0.08),transparent_60%)]" />
 
         <div className="relative z-10 max-w-6xl mx-auto text-center">
 
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl text-white md:text-6xl font-semibold"
+            className="text-4xl md:text-6xl text-white font-semibold"
           >
-           <span className="bg-gradient-to-r from-cyan-200 via-teal-300 to-blue-200 bg-clip-text text-white drop-shadow-[0_0_20px_rgba(0,255,200,0.35)]">
-  Healthcare,
-</span>
+            <span className="text-triage-teal">
+              Healthcare,
+            </span>
             <br />
             handled for you.
           </motion.h1>
 
-          <p className="mt-6 text-lg text-white/70 max-w-2xl mx-auto">
+          <p className="mt-6 text-lg text-white/80 max-w-2xl mx-auto">
             A dedicated healthcare concierge that manages your needs end-to-end, from booking care to ongoing support.
           </p>
 
@@ -84,12 +84,12 @@ export default function ConciergePage() {
             <a
               href={whatsappLink}
               target="_blank"
-              className="px-8 py-4 rounded-full bg-gradient-to-r from-green-400 to-emerald-500 text-black font-medium"
+              className="px-8 py-4 rounded-full bg-triage-orange text-white font-medium"
             >
               Speak on WhatsApp
             </a>
 
-            <button className="px-8 py-4 rounded-full border border-white/20">
+            <button className="px-8 py-4 rounded-full border border-white/20 hover:border-triage-orange transition">
               Get Started
             </button>
 
@@ -104,14 +104,15 @@ export default function ConciergePage() {
       </section>
 
       {/* ===================================================== */}
-      {/* 🔵 TIMELINE EXPERIENCE */}
+      {/* 🔵 TIMELINE */}
       {/* ===================================================== */}
 
       <section className="relative py-32 px-6">
 
-        <div className="absolute inset-0 bg-gradient-to-br from-[#F9FFFE] via-[#F0FDFA] to-[#ECFEFF]" />
+        {/* LIGHT BACKGROUND */}
+        <div className="absolute inset-0 bg-triage-gray-50" />
 
-        <div className="relative z-10 max-w-5xl mx-auto text-gray-900">
+        <div className="relative z-10 max-w-5xl mx-auto text-triage-navy">
 
           <h2 className="text-4xl md:text-5xl font-semibold text-center mb-24">
             A smarter, more personal way to access care
@@ -120,7 +121,7 @@ export default function ConciergePage() {
           <div className="relative">
 
             {/* vertical line */}
-            <div className="absolute left-6 md:left-1/2 top-0 h-full w-[2px] bg-gradient-to-b from-teal-400 via-cyan-400 to-transparent" />
+            <div className="absolute left-6 md:left-1/2 top-0 h-full w-[2px] bg-triage-orange/40" />
 
             <div className="space-y-24">
 
@@ -129,23 +130,20 @@ export default function ConciergePage() {
                 const isLeft = i % 2 === 0;
 
                 return (
-                  <div
-                    key={i}
-                    className="relative flex flex-col md:flex-row items-center"
-                  >
+                  <div key={i} className="relative flex flex-col md:flex-row items-center">
 
                     {/* LEFT */}
                     <div className={`md:w-1/2 ${isLeft ? "md:pr-12 text-right" : "md:order-2 md:pl-12 text-left"}`}>
                       <motion.div
                         initial={{ opacity: 0, y: 60 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        className="bg-white rounded-2xl p-6 shadow-lg border border-black/5"
+                        className="bg-white rounded-2xl p-6 shadow-sm border border-triage-gray-200"
                       >
                         <h3 className="text-xl text-black font-semibold">
                           {step.title}
                         </h3>
 
-                        <p className="mt-3 text-black/70">
+                        <p className="mt-3 text-triage-gray-600">
                           {step.desc}
                         </p>
                       </motion.div>
@@ -154,15 +152,13 @@ export default function ConciergePage() {
                     {/* CENTER DOT */}
                     <div className="relative z-10 flex items-center justify-center">
 
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-teal-400 to-cyan-400 flex items-center justify-center shadow-[0_0_30px_rgba(0,255,200,0.5)]">
-
+                      <div className="w-12 h-12 rounded-full bg-triage-orange flex items-center justify-center shadow-md">
                         <Icon className="text-white" size={20} />
-
                       </div>
 
                     </div>
 
-                    {/* RIGHT SPACER */}
+                    {/* RIGHT */}
                     <div className="md:w-1/2" />
 
                   </div>
@@ -183,15 +179,16 @@ export default function ConciergePage() {
 
       <section className="relative py-32 px-6 text-center">
 
-        <div className="absolute inset-0 bg-gradient-to-br from-[#021C1A] via-[#0B3C5D] to-[#020617]" />
+        {/* NAVY BACKGROUND */}
+        <div className="absolute inset-0 bg-triage-navy" />
 
         <div className="relative z-10 max-w-3xl mx-auto">
 
-          <h2 className="text-4xl text-white md:text-5xl font-semibold">
+          <h2 className="text-4xl md:text-5xl text-white font-semibold">
             Let us take care of everything
           </h2>
 
-          <p className="mt-6 text-white/70 text-lg">
+          <p className="mt-6 text-white/80 text-lg">
             With Triage Concierge, healthcare becomes effortless, giving you more time, clarity, and confidence.
           </p>
 
@@ -200,7 +197,7 @@ export default function ConciergePage() {
             <a
               href={whatsappLink}
               target="_blank"
-              className="px-8 py-4 rounded-full bg-gradient-to-r from-green-400 to-emerald-500 text-black font-medium"
+              className="px-8 py-4 rounded-full bg-triage-orange text-white font-medium"
             >
               Request Concierge Access
             </a>
@@ -208,7 +205,7 @@ export default function ConciergePage() {
             <a
               href={whatsappLink}
               target="_blank"
-              className="px-8 py-4 rounded-full border border-white/20"
+              className="px-8 py-4 rounded-full border border-white/20 hover:border-triage-orange transition"
             >
               Speak to a Specialist
             </a>

@@ -6,23 +6,22 @@ import { HeartPulse, Sparkles, Hotel, ArrowRight } from "lucide-react";
 
 export default function TriageLivingPage() {
   return (
-    <main className="bg-[#020617] text-white overflow-hidden">
+    <main className="bg-triage-navy text-white overflow-hidden">
 
       {/* ================= HERO ================= */}
       <section className="relative h-[130vh]">
 
         <div className="sticky top-0 h-screen">
 
-          {/* Background */}
           <img
             src="images/blog/8.jpg"
             className="absolute inset-0 w-full h-full object-cover"
           />
 
-          {/* Soft wellness overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#021C1A]/80 via-[#0B3C5D]/70 to-[#020617]/90" />
+          {/* NAVY OVERLAY */}
+          <div className="absolute inset-0 bg-triage-navy/90" />
 
-          {/* subtle grid */}
+          {/* GRID */}
           <div
             className="absolute inset-0 opacity-10"
             style={{
@@ -32,83 +31,73 @@ export default function TriageLivingPage() {
             }}
           />
 
-          {/* Content */}
           <div className="relative z-10 h-full flex items-center justify-center text-center px-6">
-            <motion.div
-              initial={{ opacity: 0, y: 60 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              className="max-w-4xl"
-            >
-              <h1 className="text-4xl md:text-6xl font-semibold leading-tight bg-gradient-to-r from-teal-300 via-cyan-300 to-blue-400 bg-clip-text text-transparent">
+            <motion.div initial={{ opacity: 0, y: 60 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl">
+
+              <h1 className="text-4xl md:text-6xl font-semibold text-triage-teal">
                 Care, reimagined as living
               </h1>
 
               <p className="mt-6 text-white/80 text-lg max-w-2xl mx-auto">
-                TriageLiving blends clinical excellence with wellness,
-                hospitality, and Eastern healing, creating a new standard
-                for assisted living.
+                TriageLiving blends clinical excellence with wellness and hospitality.
               </p>
 
               <div className="mt-10 flex justify-center gap-4 flex-wrap">
 
                 <Link href="/contact">
-                  <button className="px-6 py-3 rounded-full bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-medium hover:scale-105 transition flex items-center gap-2">
+                  <button className="px-6 py-3 rounded-full bg-triage-orange text-white flex items-center gap-2">
                     Reserve early access <ArrowRight size={18} />
                   </button>
                 </Link>
 
                 <Link href="/about">
-                  <button className="px-6 py-3 rounded-full border border-white/30 hover:bg-white hover:text-black transition">
+                  <button className="px-6 py-3 rounded-full border border-white/30 hover:border-triage-orange transition">
                     Explore the concept
                   </button>
                 </Link>
 
               </div>
+
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ================= INTRO ================= */}
-      <section className="relative -mt-32 pt-40 pb-24 px-6 bg-[#020617]">
+      {/* ================= INTRO (WHITE SECTION) ================= */}
+      <section className="relative -mt-32 pt-40 pb-24 px-6 bg-white">
 
-        {/* glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-gradient-to-r from-teal-500/20 via-cyan-500/20 to-blue-500/20 blur-3xl" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[250px] bg-triage-teal/10 blur-3xl" />
 
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center relative z-10">
 
           <motion.img
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
-         src="images/blog/5.jpg"
-            className="rounded-3xl shadow-2xl border border-white/10"
+            src="images/blog/5.jpg"
+            className="rounded-3xl shadow-xl border border-gray-200"
           />
 
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-          >
-            <h2 className="text-4xl font-semibold bg-gradient-to-r from-teal-300 via-cyan-300 to-blue-400 bg-clip-text text-transparent">
+          <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }}>
+
+            <h2 className="text-4xl font-semibold text-triage-navy">
               Not a facility. A lifestyle.
             </h2>
 
-            <p className="mt-4 text-white/70">
-              Designed for comfort, dignity, and healing, TriageLiving merges
-              healthcare with hospitality, creating spaces people actually
-              want to live in.
+            <p className="mt-4 text-triage-gray-600">
+              Designed for comfort, dignity, and healing, TriageLiving merges healthcare with hospitality.
             </p>
+
           </motion.div>
 
         </div>
       </section>
 
       {/* ================= FEATURES ================= */}
-      <section className="py-24 px-6 bg-gradient-to-br from-[#021C1A] via-[#020617] to-[#0B3C5D]">
+      <section className="py-24 px-6 bg-triage-navy">
 
         <div className="max-w-6xl mx-auto">
 
-          <h2 className="text-center text-4xl font-semibold mb-16 bg-gradient-to-r from-teal-300 via-cyan-300 to-blue-400 bg-clip-text text-transparent">
+          <h2 className="text-center text-4xl font-semibold mb-16 text-triage-teal">
             A new category of care
           </h2>
 
@@ -123,7 +112,7 @@ export default function TriageLivingPage() {
               {
                 icon: Sparkles,
                 title: "Eastern Healing",
-                desc: "Mindfulness, balance, and long-term wellbeing.",
+                desc: "Mindfulness, balance, and wellbeing.",
               },
               {
                 icon: Hotel,
@@ -134,9 +123,9 @@ export default function TriageLivingPage() {
               <motion.div
                 key={i}
                 whileHover={{ y: -8 }}
-                className="p-8 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 hover:border-teal-400/40 transition"
+                className="p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-triage-orange/40 transition"
               >
-                <item.icon className="text-teal-300 mb-4" />
+                <item.icon className="text-triage-lime mb-4" />
                 <h3 className="font-semibold">{item.title}</h3>
                 <p className="mt-2 text-sm text-white/60">{item.desc}</p>
               </motion.div>
@@ -146,14 +135,14 @@ export default function TriageLivingPage() {
         </div>
       </section>
 
-      {/* ================= IMAGE BREAK ================= */}
-      <section className="py-24 px-6 bg-[#020617]">
+      {/* ================= IMAGE ================= */}
+      <section className="py-24 px-6 bg-triage-navy">
 
         <div className="max-w-6xl mx-auto">
           <motion.img
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-          src="images/blog/11.jpg"
+            src="images/blog/11.jpg"
             className="rounded-3xl shadow-2xl w-full h-[500px] object-cover"
           />
         </div>
@@ -161,32 +150,28 @@ export default function TriageLivingPage() {
       </section>
 
       {/* ================= IMPACT ================= */}
-      <section className="py-24 px-6 text-center bg-gradient-to-r from-teal-500 via-cyan-500 to-blue-500 text-white">
+      <section className="py-24 px-6 text-center bg-white text-triage-navy">
 
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="max-w-3xl mx-auto"
-        >
-          <h2 className="text-4xl font-semibold">
-            This is not assisted living.
-          </h2>
+  <motion.div className="max-w-3xl mx-auto">
 
-          <p className="mt-4 text-white/90 text-lg">
-            This is living, with care, dignity, and peace of mind.
-          </p>
-        </motion.div>
+    <h2 className="text-4xl !text-triage-navy font-semibold">
+      This is not assisted living.
+    </h2>
 
-      </section>
+    <p className="mt-4 !text-triage-gray-600 text-lg">
+      This is living, with care, dignity, and peace of mind.
+    </p>
+
+  </motion.div>
+
+</section>
 
       {/* ================= FINAL CTA ================= */}
-      <section className="py-24 px-6 bg-[#020617] text-center relative">
+      <section className="py-24 px-6 bg-triage-navy text-center">
 
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-        >
-          <h2 className="text-4xl font-semibold bg-gradient-to-r from-teal-300 via-cyan-300 to-blue-400 bg-clip-text text-transparent">
+        <motion.div>
+
+          <h2 className="text-4xl font-semibold text-triage-teal">
             Experience the future of living
           </h2>
 
@@ -197,18 +182,19 @@ export default function TriageLivingPage() {
           <div className="mt-8 flex justify-center gap-4 flex-wrap">
 
             <Link href="/contact">
-              <button className="px-8 py-4 rounded-full bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-500 text-black font-semibold hover:scale-105 transition flex items-center gap-2">
+              <button className="px-8 py-4 rounded-full bg-triage-orange text-white flex items-center gap-2">
                 Join the waitlist <ArrowRight size={18} />
               </button>
             </Link>
 
             <Link href="/about">
-              <button className="px-6 py-4 rounded-full border border-white/20 hover:bg-white hover:text-black transition">
+              <button className="px-6 py-4 rounded-full border border-white/20 hover:border-triage-orange transition">
                 Learn more
               </button>
             </Link>
 
           </div>
+
         </motion.div>
 
       </section>

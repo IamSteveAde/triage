@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&family=Nunito:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,10 +37,10 @@ html {
 
 
 @layer components {
-    body {
-        @apply text-base overflow-x-hidden font-normal;
-        -webkit-text-size-adjust: 100%;
-    }
+body {
+    @apply text-base overflow-x-hidden font-normal font-body;
+    -webkit-text-size-adjust: 100%;
+}
     html{
         @apply overflow-x-hidden;
     }
@@ -58,27 +60,34 @@ html {
     select {
         @apply block outline-none text-base font-normal text-midnight_text m-0 rounded-[0.375rem] w-full placeholder:text-gray;
     }
+    h1, h2, h3, h4, h5 {
+    @apply font-heading;
+}
 
-    h1 {
-        @apply md:text-[51px] md:leading-[1.2] text-[28px] leading-[1.2] font-bold text-midnight_text dark:text-white;
-    }
+   h1 {
+    font-family: 'Raleway', sans-serif;
+    @apply md:text-[51px] md:leading-[1.2] text-[28px] leading-[1.2] font-bold text-midnight_text dark:text-white;
+}
 
-    h2 {
-        @apply md:text-[40px] leading-[1.2] text-2xl font-bold text-midnight_text dark:text-white;
-    }
+h2 {
+    font-family: 'Raleway', sans-serif;
+    @apply md:text-[40px] leading-[1.2] text-2xl font-bold text-midnight_text dark:text-white;
+}
 
-    h3 {
-        @apply md:text-[28px] leading-[1.2] text-lg font-bold text-white dark:text-primary;
-    }
+h3 {
+    font-family: 'Raleway', sans-serif;
+    @apply md:text-[28px] leading-[1.2] text-lg font-bold text-white dark:text-primary;
+}
 
-    h4 {
-        @apply text-2xl font-bold text-midnight_text dark:text-primary;
-    }
+h4 {
+    font-family: 'Raleway', sans-serif;
+    @apply text-2xl font-bold text-midnight_text dark:text-primary;
+}
 
-    h5 {
-        @apply text-[22px] leading-[1.2] font-medium text-midnight_text dark:text-primary;
-    }
-
+h5 {
+    font-family: 'Raleway', sans-serif;
+    @apply text-[22px] leading-[1.2] font-medium text-midnight_text dark:text-primary;
+}
     .m_icon {
         @apply inline-block h-[3.8125rem] w-[3.4375rem] bg-no-repeat bg-cover object-cover;
     }

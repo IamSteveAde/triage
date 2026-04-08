@@ -27,22 +27,25 @@ export default function HowItWorks() {
 
       {/* 🌌 BACKGROUND */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#041F1E] via-[#063F3B] to-[#020617]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(20,184,166,0.15),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(6,182,212,0.15),transparent_50%)]" />
+
+        {/* NAVY BASE */}
+        <div className="absolute inset-0 bg-triage-navy" />
+
+        {/* subtle radial accents */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(166,210,0,0.08),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(0,185,157,0.08),transparent_50%)]" />
+
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto">
 
         {/* HEADER */}
         <div className="text-center mb-16 md:mb-20">
-          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
-            <span className="bg-gradient-to-r from-teal-300 via-cyan-300 to-teal-400 bg-clip-text text-transparent">
-              Care, in three simple steps
-            </span>
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-white">
+            Care, in three simple steps
           </h2>
 
-          <p className="mt-4 text-gray-300 text-base md:text-lg">
+          <p className="mt-4 text-white/70 text-base md:text-lg">
             From request to care, seamless, reliable, and fast.
           </p>
         </div>
@@ -51,10 +54,10 @@ export default function HowItWorks() {
         <div className="relative">
 
           {/* MOBILE LINE */}
-          <div className="absolute left-4 top-0 h-full w-[2px] bg-gradient-to-b from-teal-500/40 via-cyan-400/30 to-transparent md:hidden" />
+          <div className="absolute left-4 top-0 h-full w-[2px] bg-triage-orange/40 md:hidden" />
 
           {/* DESKTOP LINE */}
-          <div className="hidden md:block absolute left-1/2 top-0 h-full w-[2px] -translate-x-1/2 bg-gradient-to-b from-teal-500/40 via-cyan-400/30 to-transparent" />
+          <div className="hidden md:block absolute left-1/2 top-0 h-full w-[2px] -translate-x-1/2 bg-triage-orange/40" />
 
           <div className="space-y-12 md:space-y-20">
 
@@ -70,7 +73,7 @@ export default function HowItWorks() {
 
                     {/* DOT */}
                     <div className="relative z-10 mt-2">
-                      <div className="w-4 h-4 rounded-full bg-gradient-to-r from-teal-400 to-cyan-400 shadow-[0_0_15px_rgba(0,255,200,0.6)]" />
+                      <div className="w-4 h-4 rounded-full bg-triage-orange shadow-[0_0_15px_rgba(170,113,48,0.6)]" />
                     </div>
 
                     {/* CARD */}
@@ -81,9 +84,9 @@ export default function HowItWorks() {
                       className="flex-1 group relative p-6 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10"
                     >
 
-                      <div className="mb-4 inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-teal-400 to-cyan-400">
+                      <div className="mb-4 inline-flex items-center justify-center w-10 h-10 rounded-xl bg-triage-orange">
 
-                        <Icon className="w-5 h-5 text-[#022c22]" />
+                        <Icon className="w-5 h-5 text-white" />
 
                       </div>
 
@@ -91,7 +94,7 @@ export default function HowItWorks() {
                         {step.title}
                       </h3>
 
-                      <p className="mt-2 text-gray-300 text-sm">
+                      <p className="mt-2 text-white/70 text-sm">
                         {step.desc}
                       </p>
 
@@ -112,9 +115,9 @@ export default function HowItWorks() {
                           className="group relative p-8 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10"
                         >
 
-                          <div className="mb-5 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-teal-400 to-cyan-400">
+                          <div className="mb-5 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-triage-orange">
 
-                            <Icon className="w-6 h-6 text-[#022c22]" />
+                            <Icon className="w-6 h-6 text-white" />
 
                           </div>
 
@@ -122,7 +125,7 @@ export default function HowItWorks() {
                             {step.title}
                           </h3>
 
-                          <p className="mt-3 text-gray-300">
+                          <p className="mt-3 text-white/70">
                             {step.desc}
                           </p>
 
@@ -132,7 +135,7 @@ export default function HowItWorks() {
 
                     {/* CENTER DOT */}
                     <div className="relative z-10 flex items-center justify-center">
-                      <div className="w-5 h-5 rounded-full bg-gradient-to-r from-teal-400 to-cyan-400 shadow-[0_0_20px_rgba(0,255,200,0.6)]" />
+                      <div className="w-5 h-5 rounded-full bg-triage-orange shadow-[0_0_20px_rgba(170,113,48,0.6)]" />
                     </div>
 
                     {/* RIGHT */}
@@ -145,9 +148,9 @@ export default function HowItWorks() {
                           className="group relative p-8 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10"
                         >
 
-                          <div className="mb-5 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-teal-400 to-cyan-400">
+                          <div className="mb-5 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-triage-orange">
 
-                            <Icon className="w-6 h-6 text-[#022c22]" />
+                            <Icon className="w-6 h-6 text-white" />
 
                           </div>
 
@@ -155,7 +158,7 @@ export default function HowItWorks() {
                             {step.title}
                           </h3>
 
-                          <p className="mt-3 text-gray-300">
+                          <p className="mt-3 text-white/70">
                             {step.desc}
                           </p>
 
