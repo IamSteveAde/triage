@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { FaInstagram, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -31,7 +32,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
 
             <img
-              src="/images/logo/triage.png"
+              src="/images/logo/th.svg"
               alt="Triage Home Logo"
               className="h-8 w-auto invert brightness-0"
             />
@@ -44,16 +45,25 @@ export default function Footer() {
             {/* SOCIALS */}
             <div className="mt-6 flex gap-4">
 
-              <a href="#" className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 border border-white/10 hover:border-triage-orange hover:bg-white/20 transition">
-                T
+              <a
+                href="#"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 border border-white/10 hover:border-triage-orange hover:bg-white/20 transition"
+              >
+                <FaInstagram size={16} />
               </a>
 
-              <a href="#" className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 border border-white/10 hover:border-triage-orange hover:bg-white/20 transition">
-                I
+              <a
+                href="#"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 border border-white/10 hover:border-triage-orange hover:bg-white/20 transition"
+              >
+                <FaFacebookF size={16} />
               </a>
 
-              <a href="#" className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 border border-white/10 hover:border-triage-orange hover:bg-white/20 transition">
-                L
+              <a
+                href="#"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 border border-white/10 hover:border-triage-orange hover:bg-white/20 transition"
+              >
+                <FaLinkedinIn size={16} />
               </a>
 
             </div>

@@ -43,7 +43,7 @@ export default function PremiumNavbar() {
           {/* LOGO */}
           <Link href="/" className="flex items-center">
             <Image
-              src="/images/logo/triage.png"
+              src="/images/logo/th.svg"
               alt="TriageHome Logo"
               width={140}
               height={40}

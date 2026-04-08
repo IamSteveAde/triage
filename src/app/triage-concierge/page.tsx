@@ -109,70 +109,70 @@ export default function ConciergePage() {
 
       <section className="relative py-32 px-6">
 
-        {/* LIGHT BACKGROUND */}
-        <div className="absolute inset-0 bg-triage-gray-50" />
+  {/* LIGHT BACKGROUND */}
+  <div className="absolute inset-0 bg-triage-gray-50" />
 
-        <div className="relative z-10 max-w-5xl mx-auto text-triage-navy">
+  <div className="relative z-10 max-w-6xl mx-auto text-triage-navy">
 
-          <h2 className="text-4xl md:text-5xl font-semibold text-center mb-24">
-            A smarter, more personal way to access care
-          </h2>
+    {/* HEADER */}
+    <h2 className="text-4xl md:text-5xl font-semibold text-center mb-24">
+      A smarter, more personal way to access care
+    </h2>
 
-          <div className="relative">
+    <div className="relative">
 
-            {/* vertical line */}
-            <div className="absolute left-6 md:left-1/2 top-0 h-full w-[2px] bg-triage-orange/40" />
+      {/* CENTER LINE */}
+      <div className="absolute left-1/2 -translate-x-1/2 top-0 h-full w-[2px] bg-triage-orange/30" />
 
-            <div className="space-y-24">
+      <div className="space-y-24">
 
-              {steps.map((step, i) => {
-                const Icon = step.icon;
-                const isLeft = i % 2 === 0;
+        {steps.map((step, i) => {
+          const Icon = step.icon;
+          const isLeft = i % 2 === 0;
 
-                return (
-                  <div key={i} className="relative flex flex-col md:flex-row items-center">
+          return (
+            <div key={i} className="relative grid md:grid-cols-2 items-center">
 
-                    {/* LEFT */}
-                    <div className={`md:w-1/2 ${isLeft ? "md:pr-12 text-right" : "md:order-2 md:pl-12 text-left"}`}>
-                      <motion.div
-                        initial={{ opacity: 0, y: 60 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        className="bg-white rounded-2xl p-6 shadow-sm border border-triage-gray-200"
-                      >
-                        <h3 className="text-xl text-black font-semibold">
-                          {step.title}
-                        </h3>
+              {/* LEFT SIDE */}
+              <div className={`${isLeft ? "md:pr-12 text-right" : "md:order-2 md:pl-12 text-left"}`}>
+                <motion.div
+                  initial={{ opacity: 0, y: 60 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  className="bg-white rounded-2xl p-6 shadow-sm border border-triage-gray-200 inline-block"
+                >
+                  <h3 className="text-xl text-black font-semibold">
+                    {step.title}
+                  </h3>
 
-                        <p className="mt-3 text-triage-gray-600">
-                          {step.desc}
-                        </p>
-                      </motion.div>
-                    </div>
+                  <p className="mt-3 text-triage-gray-600">
+                    {step.desc}
+                  </p>
+                </motion.div>
+              </div>
 
-                    {/* CENTER DOT */}
-                    <div className="relative z-10 flex items-center justify-center">
+              {/* ICON CENTER */}
+              <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center">
 
-                      <div className="w-12 h-12 rounded-full bg-triage-orange flex items-center justify-center shadow-md">
-                        <Icon className="text-white" size={20} />
-                      </div>
+                <div className="w-14 h-14 rounded-full bg-triage-orange flex items-center justify-center shadow-md border-4 border-white">
+                  <Icon className="text-white" size={22} />
+                </div>
 
-                    </div>
+              </div>
 
-                    {/* RIGHT */}
-                    <div className="md:w-1/2" />
-
-                  </div>
-                );
-              })}
+              {/* RIGHT SIDE (EMPTY SPACE FOR BALANCE) */}
+              <div />
 
             </div>
+          );
+        })}
 
-          </div>
+      </div>
 
-        </div>
+    </div>
 
-      </section>
+  </div>
 
+</section>
       {/* ===================================================== */}
       {/* 🟣 FINAL CTA */}
       {/* ===================================================== */}
