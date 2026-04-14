@@ -8,20 +8,33 @@ export default function BookingSection() {
   const [service, setService] = useState("Home Care");
   const [time, setTime] = useState("Now");
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = e.currentTarget;
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  const form = e.currentTarget;
 
-    const location = (form.elements.namedItem("Location") as HTMLInputElement).value;
-    const name = (form.elements.namedItem("Name") as HTMLInputElement).value;
-    const phone = (form.elements.namedItem("Phone") as HTMLInputElement).value;
+  const location = (form.elements.namedItem("Location") as HTMLInputElement).value;
+  const name = (form.elements.namedItem("Name") as HTMLInputElement).value;
+  const phone = (form.elements.namedItem("Phone") as HTMLInputElement).value;
 
-    if (!service || !time) {
-      alert("Please select service and time");
-      return;
-    }
+  if (!service || !time) {
+    alert("Please select service and time");
+    return;
+  }
 
-    const message = `
+  // ✅ Google Sheets
+  fetch("https://script.google.com/macros/s/AKfycbxiVVOZY8pAxFFN26xcAQ8n5LgJjnBeELYvvWmr7SZPHPVUCDECUk6kFfJ9GLqJL0r3/exec", {
+    method: "POST",
+    body: JSON.stringify({
+      service,
+      time,
+      location,
+      name,
+      phone,
+    }),
+  }).catch((err) => console.log("Sheet error:", err));
+
+  // ✅ WhatsApp
+  const message = `
 Hello, I’d like to request care service.
 
 *New Booking Request*
@@ -32,11 +45,12 @@ Hello, I’d like to request care service.
 
 *Name:* ${name}
 *Phone:* ${phone}
-    `;
+  `;
 
-    const url = `https://wa.me/2349134664547?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank");
-  };
+  const url = `https://wa.me/2349134664547?text=${encodeURIComponent(message)}`;
+  window.open(url, "_blank");
+};
+ 
 
   return (
     <section className="relative py-32 px-6 overflow-hidden text-white bg-triage-navy">
@@ -82,7 +96,7 @@ Hello, I’d like to request care service.
               </label>
 
               <div className="flex flex-wrap gap-3">
-                {["Home Care", "Elderly Care", "Emergency Support"].map(
+                {["Elderly Care", "Post-Surgery Care", "Chronic Disease Management", "IV Therapy", "Wellness Check", "Health Screening", "Wound Care"].map(
                   (item) => (
                     <button
                       type="button"
@@ -100,7 +114,7 @@ Hello, I’d like to request care service.
                 )}
               </div>
 
-              <input type="hidden" name="Service" value={service} />
+              <input type="hidden" text-white name="Service" value={service} />
             </div>
 
             {/* LOCATION */}
@@ -111,6 +125,7 @@ Hello, I’d like to request care service.
 
               <input
                 type="text"
+                text-white
                 name="Location"
                 required
                 placeholder="Enter your address"
@@ -141,7 +156,7 @@ Hello, I’d like to request care service.
                 ))}
               </div>
 
-              <input type="hidden" name="Time" value={time} />
+              <input type="hidden" text-white name="Time" value={time} />
             </div>
 
             {/* NAME */}
@@ -153,6 +168,7 @@ Hello, I’d like to request care service.
               <input
                 type="text"
                 name="Name"
+                text-white
                 required
                 placeholder="Full name"
                 className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-triage-orange"
@@ -168,6 +184,7 @@ Hello, I’d like to request care service.
               <input
                 type="tel"
                 name="Phone"
+                text-color ="white"
                 required
                 placeholder="080..."
                 className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-triage-orange"

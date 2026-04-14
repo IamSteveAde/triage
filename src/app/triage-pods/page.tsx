@@ -1,10 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { Globe, Zap, Layers, ArrowRight, Activity } from "lucide-react";
+import { useState } from "react";
+import WaitlistModal from "../components/waitlist"; // adjust path
 
 export default function TriagePodsPage() {
+  const [open, setOpen] = useState(false);
+
   return (
     <main className="bg-triage-navy text-white overflow-hidden">
 
@@ -20,14 +23,7 @@ export default function TriagePodsPage() {
 
           <div className="absolute inset-0 bg-triage-navy/90" />
 
-          <div
-            className="absolute inset-0 opacity-10"
-            style={{
-              backgroundImage:
-                "linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)",
-              backgroundSize: "40px 40px",
-            }}
-          />
+          <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px]" />
 
           <div className="relative z-10 h-full flex items-center justify-center text-center px-6">
             <motion.div
@@ -40,34 +36,35 @@ export default function TriagePodsPage() {
               </h1>
 
               <p className="mt-6 text-white/80 text-lg max-w-2xl mx-auto">
-                TriagePods bring hospitals closer to people, unlocking access,
+                TriagePods bring care closer to people, unlocking access,
                 speed, and scale across Africa.
               </p>
 
-              <div className="mt-10 flex justify-center gap-4 flex-wrap">
+              {/* ✅ SINGLE CTA */}
+              <div className="mt-10 flex justify-center">
 
-                <Link href="/contact">
-                  <button className="px-6 py-3 rounded-full bg-triage-orange text-white font-medium flex items-center gap-2">
-                    Get early access <ArrowRight size={18} />
-                  </button>
-                </Link>
-
-                <Link href="/about">
-                  <button className="px-6 py-3 rounded-full border border-white/30 hover:border-triage-orange transition">
-                    See how it works
-                  </button>
-                </Link>
+                <button
+                  onClick={() => setOpen(true)}
+                  className="px-8 py-4 rounded-full bg-triage-orange text-white font-semibold flex items-center gap-2 hover:bg-[#8c5c27] transition"
+                >
+                  Join the waitlist <ArrowRight size={18} />
+                </button>
 
               </div>
+
+              {/* MICRO TRUST */}
+              <p className="mt-6 text-white/50 text-sm">
+                Launching soon • Be among the first to access
+              </p>
+
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ================= TRANSITION (NOW WHITE) ================= */}
+      {/* ================= WHITE TRANSITION ================= */}
       <section className="relative -mt-32 pt-40 pb-24 px-6 bg-white">
 
-        {/* subtle glow */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[250px] bg-triage-teal/10 blur-3xl" />
 
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center relative z-10">
@@ -99,14 +96,7 @@ export default function TriagePodsPage() {
       {/* ================= FEATURES ================= */}
       <section className="relative py-24 px-6 bg-triage-navy">
 
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)",
-            backgroundSize: "50px 50px",
-          }}
-        />
+        <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:50px_50px]" />
 
         <div className="max-w-6xl mx-auto relative z-10">
 
@@ -148,7 +138,7 @@ export default function TriagePodsPage() {
           </h2>
 
           <p className="mt-4 text-white/80">
-            Not by building more hospitals, but by bringing care closer.
+            By bringing care closer, not farther.
           </p>
 
         </motion.div>
@@ -156,36 +146,35 @@ export default function TriagePodsPage() {
       </section>
 
       {/* ================= FINAL CTA ================= */}
-      <section className="py-24 px-6 bg-triage-navy text-center relative">
+      <section className="py-24 px-6 bg-triage-navy text-center">
 
-        <motion.div className="relative z-10">
+        <motion.div>
 
           <h2 className="text-4xl font-semibold text-triage-teal">
-            The future of care is here
+            Be part of the future of care
           </h2>
 
           <p className="mt-4 text-white/70">
             TriagePods are launching soon.
           </p>
 
-          <div className="mt-8 flex justify-center gap-4 flex-wrap">
+          <div className="mt-10">
 
-            <Link href="/contact">
-              <button className="px-8 py-4 rounded-full bg-triage-orange text-white font-semibold flex items-center gap-2">
-                Join the waitlist <ArrowRight size={18} />
-              </button>
-            </Link>
-
-            <Link href="/about">
-              <button className="px-6 py-4 rounded-full border border-white/20 hover:border-triage-orange transition">
-                Explore Triage
-              </button>
-            </Link>
+            <button
+              onClick={() => setOpen(true)}
+              className="px-10 py-5 rounded-full bg-triage-orange text-white font-semibold text-lg hover:bg-[#8c5c27] transition"
+            >
+              Join the waitlist
+            </button>
 
           </div>
+
         </motion.div>
 
       </section>
+
+      {/* ✅ MODAL */}
+      <WaitlistModal isOpen={open} onClose={() => setOpen(false)} />
 
     </main>
   );

@@ -79,17 +79,29 @@ export default function Footer() {
             <ul className="space-y-3 text-white/70">
               <li>
                 <Link href="/services" className="hover:text-triage-orange transition">
-                  Home Care
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="hover:text-triage-orange transition">
                   Elderly Care
                 </Link>
               </li>
               <li>
                 <Link href="/services" className="hover:text-triage-orange transition">
-                  Emergency Support
+                  Post-Surgery Care
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="hover:text-triage-orange transition">
+                  Chronic Disease Management
+                </Link>  </li>
+                <li><Link href="/services" className="hover:text-triage-orange transition">
+                  IV Therapy
+                </Link>  </li>
+                <li><Link href="/services" className="hover:text-triage-orange transition">
+                  Wellness Check
+                </Link>  </li>
+                <li><Link href="/services" className="hover:text-triage-orange transition">
+                  Health Screening
+                </Link>  </li>
+                <li><Link href="/services" className="hover:text-triage-orange transition">
+                  Wound Care
                 </Link>
               </li>
             </ul>

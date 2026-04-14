@@ -89,9 +89,7 @@ export default function ConciergePage() {
               Speak on WhatsApp
             </a>
 
-            <button className="px-8 py-4 rounded-full border border-white/20 hover:border-triage-orange transition">
-              Get Started
-            </button>
+            
 
           </div>
 

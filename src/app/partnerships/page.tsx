@@ -52,13 +52,16 @@ export default function PartnershipPage() {
 
           <div className="mt-10 flex justify-center gap-4 flex-wrap">
 
-            <button className="px-8 py-4 rounded-full bg-triage-orange text-white font-medium flex items-center gap-2">
-              Partner With Us <ArrowRight size={18} />
-            </button>
+           <a
+  href="https://api.whatsapp.com/send/?phone=2349134664547&text=Hi%2C+I%E2%80%99d+like+to+explore+healthcare+solutions+for+my+company.+Can+we+discuss+partnership+options%3F&type=phone_number&app_absent=0"
+  target="_blank"
+  className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-triage-orange text-white font-medium hover:opacity-90 transition"
+>
+  Start a partnership conversation
+  <ArrowRight size={18} />
+</a>
 
-            <button className="px-8 py-4 rounded-full border border-white/20 hover:border-triage-orange transition">
-              Speak to Our Team
-            </button>
+            
 
           </div>
 
@@ -211,13 +214,14 @@ export default function PartnershipPage() {
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">
 
-            <button className="px-8 py-4 rounded-full bg-triage-orange text-white font-medium">
-              Start a Partnership
-            </button>
-
-            <button className="px-8 py-4 rounded-full border border-white/20 hover:border-triage-orange transition">
-              Contact Us
-            </button>
+           <a
+  href="https://api.whatsapp.com/send/?phone=2349134664547&text=Hi%2C+I%E2%80%99d+like+to+explore+healthcare+solutions+for+my+company.+Can+we+discuss+partnership+options%3F&type=phone_number&app_absent=0"
+  target="_blank"
+  className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-triage-orange text-white font-medium hover:opacity-90 transition"
+>
+  Start a partnership conversation
+  <ArrowRight size={18} />
+</a>
 
           </div>
 

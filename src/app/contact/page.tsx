@@ -7,17 +7,17 @@ const contactItems = [
   {
     icon: Phone,
     title: "Call Us",
-    desc: "+234 800 000 0000",
+    desc: "+234 913 466 4547",
   },
   {
     icon: Mail,
     title: "Email",
-    desc: "support@triagehome.com",
+    desc: "support@triage-home.com",
   },
   {
     icon: MapPin,
     title: "Visit",
-    desc: "Victoria Island, Lagos",
+    desc: "Chief Yesufu Abiodun Oniru Rd. V.I, Lagos",
   },
 ];
 
@@ -25,13 +25,9 @@ export default function ContactPage() {
   return (
     <main className="relative overflow-hidden">
 
-      {/* ===================================================== */}
-      {/* HERO */}
-      {/* ===================================================== */}
-
+      {/* ================= HERO ================= */}
       <section className="relative min-h-screen flex items-center justify-center text-white px-6">
 
-        {/* BACKGROUND */}
         <div className="absolute inset-0 -z-10">
 
           <img
@@ -40,10 +36,8 @@ export default function ContactPage() {
             className="w-full h-full object-cover"
           />
 
-          {/* NAVY OVERLAY */}
           <div className="absolute inset-0 bg-triage-navy/85" />
 
-          {/* subtle lime glow */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(166,210,0,0.08),transparent_60%)]" />
 
         </div>
@@ -51,17 +45,13 @@ export default function ContactPage() {
         <div className="text-center max-w-3xl">
 
           <h1 className="text-4xl md:text-6xl font-semibold leading-tight">
-
             <span className="text-white">
               Let’s talk about your care
             </span>
-
             <br />
-
             <span className="text-triage-teal">
               We’re here to help
             </span>
-
           </h1>
 
           <p className="mt-6 text-white/80 text-lg">
@@ -71,7 +61,7 @@ export default function ContactPage() {
           <div className="mt-10 flex flex-wrap justify-center gap-4">
 
             <a
-              href="https://wa.me/2348000000000?text=Hello%20Triage%2C%20I%20need%20assistance"
+              href="https://wa.me/2349134664547?text=Hello%20Triage%2C%20I%20need%20assistance"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-4 rounded-full bg-triage-orange text-white font-medium flex items-center gap-2"
@@ -92,10 +82,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ===================================================== */}
-      {/* CONTACT OPTIONS */}
-      {/* ===================================================== */}
-
+      {/* ================= CONTACT OPTIONS ================= */}
       <section className="py-24 px-6 bg-triage-gray-50">
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
 
@@ -125,10 +112,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ===================================================== */}
-      {/* FORM */}
-      {/* ===================================================== */}
-
+      {/* ================= FORM ================= */}
       <section id="form" className="py-32 px-6 bg-white">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
 
@@ -146,7 +130,23 @@ export default function ContactPage() {
             className="bg-white p-8 rounded-2xl shadow-lg border border-triage-gray-200 space-y-4"
             onSubmit={(e) => {
               e.preventDefault();
-              alert("Message sent!");
+
+              const form = e.currentTarget;
+
+              const name = (form.elements.namedItem("name") as HTMLInputElement).value;
+              const email = (form.elements.namedItem("email") as HTMLInputElement).value;
+              const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value;
+
+              const text = `New Contact Message:
+Name: ${name}
+Email: ${email}
+Message: ${message}`;
+
+              const whatsappUrl = `https://wa.me/2349134664547?text=${encodeURIComponent(text)}`;
+
+              window.open(whatsappUrl, "_blank");
+
+              form.reset();
             }}
           >
 
@@ -186,17 +186,14 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ===================================================== */}
-      {/* FINAL CTA */}
-      {/* ===================================================== */}
-
+      {/* ================= FINAL CTA ================= */}
       <section className="relative py-24 px-6 text-center text-white">
 
         <div className="absolute inset-0 bg-triage-navy" />
 
         <div className="relative z-10 max-w-3xl mx-auto">
 
-          <h2 className="text-3xl text-white md:text-4xl font-semibold">
+          <h2 className="text-3xl md:text-4xl font-semibold text-white">
             Need care urgently?
           </h2>
 
@@ -205,7 +202,7 @@ export default function ContactPage() {
           </p>
 
           <a
-            href="https://wa.me/2348000000000"
+            href="https://wa.me/2349134664547"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block mt-6 px-8 py-4 rounded-full bg-triage-orange text-white font-medium"

@@ -1,10 +1,13 @@
 "use client";
 
-import Link from "next/link";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { HeartPulse, Sparkles, Hotel, ArrowRight } from "lucide-react";
+import WaitlistModal from "../components/waitlist"; // adjust path if needed
 
 export default function TriageLivingPage() {
+  const [open, setOpen] = useState(false);
+
   return (
     <main className="bg-triage-navy text-white overflow-hidden">
 
@@ -18,10 +21,8 @@ export default function TriageLivingPage() {
             className="absolute inset-0 w-full h-full object-cover"
           />
 
-          {/* NAVY OVERLAY */}
           <div className="absolute inset-0 bg-triage-navy/90" />
 
-          {/* GRID */}
           <div
             className="absolute inset-0 opacity-10"
             style={{
@@ -32,7 +33,11 @@ export default function TriageLivingPage() {
           />
 
           <div className="relative z-10 h-full flex items-center justify-center text-center px-6">
-            <motion.div initial={{ opacity: 0, y: 60 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, y: 60 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="max-w-4xl"
+            >
 
               <h1 className="text-4xl md:text-6xl font-semibold text-triage-teal">
                 Care, reimagined as living
@@ -42,20 +47,14 @@ export default function TriageLivingPage() {
                 TriageLiving blends clinical excellence with wellness and hospitality.
               </p>
 
-              <div className="mt-10 flex justify-center gap-4 flex-wrap">
-
-                <Link href="/contact">
-                  <button className="px-6 py-3 rounded-full bg-triage-orange text-white flex items-center gap-2">
-                    Reserve early access <ArrowRight size={18} />
-                  </button>
-                </Link>
-
-                <Link href="/about">
-                  <button className="px-6 py-3 rounded-full border border-white/30 hover:border-triage-orange transition">
-                    Explore the concept
-                  </button>
-                </Link>
-
+              {/* ONLY CTA */}
+              <div className="mt-10 flex justify-center">
+                <button
+                  onClick={() => setOpen(true)}
+                  className="px-8 py-4 rounded-full bg-triage-orange text-white flex items-center gap-2 hover:opacity-90 transition"
+                >
+                  Join Waitlist <ArrowRight size={18} />
+                </button>
               </div>
 
             </motion.div>
@@ -63,7 +62,7 @@ export default function TriageLivingPage() {
         </div>
       </section>
 
-      {/* ================= INTRO (WHITE SECTION) ================= */}
+      {/* ================= INTRO ================= */}
       <section className="relative -mt-32 pt-40 pb-24 px-6 bg-white">
 
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[250px] bg-triage-teal/10 blur-3xl" />
@@ -152,19 +151,19 @@ export default function TriageLivingPage() {
       {/* ================= IMPACT ================= */}
       <section className="py-24 px-6 text-center bg-white text-triage-navy">
 
-  <motion.div className="max-w-3xl mx-auto">
+        <motion.div className="max-w-3xl mx-auto">
 
-    <h2 className="text-4xl !text-triage-navy font-semibold">
-      This is not assisted living.
-    </h2>
+          <h2 className="text-4xl font-semibold">
+            This is not assisted living.
+          </h2>
 
-    <p className="mt-4 !text-triage-gray-600 text-lg">
-      This is living, with care, dignity, and peace of mind.
-    </p>
+          <p className="mt-4 text-triage-gray-600 text-lg">
+            This is living, with care, dignity, and peace of mind.
+          </p>
 
-  </motion.div>
+        </motion.div>
 
-</section>
+      </section>
 
       {/* ================= FINAL CTA ================= */}
       <section className="py-24 px-6 bg-triage-navy text-center">
@@ -179,25 +178,22 @@ export default function TriageLivingPage() {
             TriageLiving is launching soon.
           </p>
 
-          <div className="mt-8 flex justify-center gap-4 flex-wrap">
-
-            <Link href="/contact">
-              <button className="px-8 py-4 rounded-full bg-triage-orange text-white flex items-center gap-2">
-                Join the waitlist <ArrowRight size={18} />
-              </button>
-            </Link>
-
-            <Link href="/about">
-              <button className="px-6 py-4 rounded-full border border-white/20 hover:border-triage-orange transition">
-                Learn more
-              </button>
-            </Link>
-
+          {/* ONLY CTA */}
+          <div className="mt-8 flex justify-center">
+            <button
+              onClick={() => setOpen(true)}
+              className="px-8 py-4 rounded-full bg-triage-orange text-white flex items-center gap-2 hover:opacity-90 transition"
+            >
+              Join Waitlist <ArrowRight size={18} />
+            </button>
           </div>
 
         </motion.div>
 
       </section>
+
+      {/* MODAL */}
+      <WaitlistModal isOpen={open} onClose={() => setOpen(false)} />
 
     </main>
   );
