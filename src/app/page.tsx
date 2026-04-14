@@ -22,8 +22,10 @@ import Soon from "./components/soon";
 ------------------------------------- */
 
 
+import type { Metadata } from "next";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://triage.com"), // replace with actual domain
+  metadataBase: new URL("https://triage-home.com"),
 
   title: {
     default: "Triage | On-Demand Home Healthcare & Medical Support",
@@ -34,26 +36,19 @@ export const metadata: Metadata = {
     "Triage connects you with verified nurses, health assistants, and care professionals—delivering reliable, on-demand healthcare services in the comfort of your home.",
 
   keywords: [
-    // Brand
     "Triage healthcare",
     "Triage home care",
     "Triage Nigeria",
-
-    // Core healthcare intent
     "home healthcare services Nigeria",
     "on-demand healthcare Nigeria",
     "home nursing services",
     "private nurse at home",
     "medical care at home",
-
-    // Service-specific
     "post-surgery care at home",
     "elderly care services Nigeria",
     "home medical assistance",
     "in-home patient care",
     "healthcare support services",
-
-    // Trust & discovery
     "verified nurses Nigeria",
     "reliable home care Nigeria",
     "professional caregivers Nigeria",
@@ -61,15 +56,15 @@ export const metadata: Metadata = {
   ],
 
   openGraph: {
-    title: "Triage, Trusted Home Healthcare, On Demand",
+    title: "Triage | Trusted Home Healthcare, On Demand",
     description:
       "Access professional healthcare from the comfort of your home. Triage connects you with verified nurses and care specialists for reliable, personalized support.",
-    url: "https://triage.com", // replace with actual domain
+    url: "https://triage-home.com",
     siteName: "Triage",
     type: "website",
     images: [
       {
-        url: "/images/banner.jpg", // replace with actual asset
+        url: "https://triage-home.com/images/banner.jpg", // MUST be absolute
         width: 1200,
         height: 630,
         alt: "Triage On-Demand Home Healthcare Services",
@@ -82,7 +77,7 @@ export const metadata: Metadata = {
     title: "Triage | Home Healthcare, Simplified",
     description:
       "Professional healthcare at your doorstep. Book verified nurses and caregivers with ease through Triage.",
-    images: ["/images/banner.jpg"], // replace with actual asset
+    images: ["https://triage-home.com/images/banner.jpg"], // MUST be absolute
   },
 
   robots: {
@@ -91,10 +86,9 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://triage.com", // replace with actual domain
+    canonical: "https://triage-home.com",
   },
-};
-/* -------------------------------------
+};/* -------------------------------------
    HOME PAGE
 ------------------------------------- */
 export default function Home() {
