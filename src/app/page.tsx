@@ -22,7 +22,7 @@ import Soon from "./components/soon";
 ------------------------------------- */
 
 
-import type { Metadata } from "next";
+
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://triage-home.com"),
