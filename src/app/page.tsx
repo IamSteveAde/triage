@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://triage.com/og/og-cover.jpg", // replace with actual asset
+        url: "/images/banner.jpg", // replace with actual asset
         width: 1200,
         height: 630,
         alt: "Triage On-Demand Home Healthcare Services",
@@ -82,7 +82,7 @@ export const metadata: Metadata = {
     title: "Triage | Home Healthcare, Simplified",
     description:
       "Professional healthcare at your doorstep. Book verified nurses and caregivers with ease through Triage.",
-    images: ["https://triage.com/og/og-cover.jpg"], // replace with actual asset
+    images: ["/images/banner.jpg"], // replace with actual asset
   },
 
   robots: {

@@ -66,7 +66,7 @@ export default function TriageVideoSection() {
             {/* 🎬 VIDEO PLAYER */}
             {play && (
               <video
-                src="/images/hero/triage-video.mp4"
+                src="/images/hero/explain.mp4"
                 controls
                 autoPlay
                 className="w-full h-[500px] object-cover"
