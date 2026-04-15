@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     template: "%s | Triage",
   },
   description:
-    "TriageHome provides reliable, on-demand home healthcare by connecting you with verified nurses and care professionals—delivering trusted medical support in the comfort of your home.",
+    "TriageHome provides reliable, on-demand home healthcare by connecting you with verified nurses and care professionals, delivering trusted medical support in the comfort of your home.",
 };
 
 /* -------------------------------------

@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "TriageHome connects you with verified nurses, health assistants, and care professionals—delivering reliable, on-demand healthcare services in the comfort of your home.",
+    "TriageHome connects you with verified nurses, health assistants, and care professionals, delivering reliable, on-demand healthcare services in the comfort of your home.",
 
   keywords: [
     "TriageHome healthcare",

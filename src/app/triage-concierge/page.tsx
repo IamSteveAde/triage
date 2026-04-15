@@ -209,7 +209,7 @@ export default function ConciergePage() {
           </h2>
 
           <p className="mt-6 text-white/80 text-lg">
-            With Triage Concierge, healthcare becomes effortless, giving you more time, clarity, and confidence.
+            With TriageConcierge, healthcare becomes effortless, giving you more time, clarity, and confidence.
           </p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">

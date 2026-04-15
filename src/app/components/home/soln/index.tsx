@@ -5,21 +5,21 @@ import { motion } from "framer-motion";
 const solutions = [
   {
     title: "TriageApp",
-    desc: "Connect patients with verified nurses, health assistants, and community health workers—delivering reliable, on-demand care right at home.",
+    desc: "Connect patients with verified nurses, health assistants, and community health workers, delivering reliable, on-demand care right at home.",
     tag: "Available Soon",
     image:
       "images/blog/12.webp",
   },
   {
     title: "TriagePods",
-    desc: "Prefab care units designed to reach the last mile—bringing structured, accessible healthcare services closer to underserved communities.",
+    desc: "Prefab care units designed to reach the last mile, bringing structured, accessible healthcare services closer to underserved communities.",
     tag: "Coming Soon",
      image:
       "images/blog/13.webp",
   },
   {
     title: "TriageLiving",
-    desc: "A 24/7 assisted-living model blending clinical care, wellness, and hospitality—creating a new standard for long-term living.",
+    desc: "A 24/7 assisted-living model blending clinical care, wellness, and hospitality, creating a new standard for long-term living.",
     tag: "Coming Soon",
      image:
       "images/blog/3.jpg",
@@ -46,7 +46,7 @@ export default function SolutionsSection() {
           </h2>
 
           <p className="mt-6 text-gray-600 text-lg max-w-2xl">
-            A new healthcare infrastructure—designed to move care closer,
+            A new healthcare infrastructure, designed to move care closer,
             respond faster, and elevate how people experience wellbeing.
           </p>
         </div>

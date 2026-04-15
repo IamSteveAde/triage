@@ -43,7 +43,7 @@ export default function ForEmployersAndWorkers() {
               </h3>
 
               <p className="mt-4 text-black/70 leading-relaxed max-w-md">
-                Optivance removes the stress and risk of blue-collar hiring —
+                Optivance removes the stress and risk of blue-collar hiring, 
                 giving you a dependable, scalable workforce you can trust.
               </p>
 

@@ -209,7 +209,7 @@ export default function PartnershipPage() {
           </h2>
 
           <p className="mt-6 text-white/80 text-lg">
-            Partner with Triage to expand access and improve healthcare outcomes.
+            Partner with TriageHome to expand access and improve healthcare outcomes.
           </p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">
