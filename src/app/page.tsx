@@ -28,17 +28,17 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://triage-home.com"),
 
   title: {
-    default: "Triage | On-Demand Home Healthcare & Medical Support",
-    template: "%s | Triage",
+    default: "TriageHome | On-Demand Home Healthcare & Medical Support",
+    template: "%s | TriageHome",
   },
 
   description:
-    "Triage connects you with verified nurses, health assistants, and care professionals—delivering reliable, on-demand healthcare services in the comfort of your home.",
+    "TriageHome connects you with verified nurses, health assistants, and care professionals—delivering reliable, on-demand healthcare services in the comfort of your home.",
 
   keywords: [
-    "Triage healthcare",
-    "Triage home care",
-    "Triage Nigeria",
+    "TriageHome healthcare",
+    "TriageHome care",
+    "TriageHome Nigeria",
     "home healthcare services Nigeria",
     "on-demand healthcare Nigeria",
     "home nursing services",
@@ -56,25 +56,25 @@ export const metadata: Metadata = {
   ],
 
   openGraph: {
-    title: "Triage | Trusted Home Healthcare, On Demand",
+    title: "TriageHome | Trusted Home Healthcare, On Demand",
     description:
-      "Access professional healthcare from the comfort of your home. Triage connects you with verified nurses and care specialists for reliable, personalized support.",
+      "Access professional healthcare from the comfort of your home. TriageHome connects you with verified nurses and care specialists for reliable, personalized support.",
     url: "https://triage-home.com",
-    siteName: "Triage",
+    siteName: "TriageHome",
     type: "website",
     images: [
       {
         url: "https://triage-home.com/images/banner.jpg", // MUST be absolute
         width: 1200,
         height: 630,
-        alt: "Triage On-Demand Home Healthcare Services",
+        alt: "TriageHome On-Demand Home Healthcare Services",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Triage | Home Healthcare, Simplified",
+    title: "TriageHome | Home Healthcare, Simplified",
     description:
       "Professional healthcare at your doorstep. Book verified nurses and caregivers with ease through Triage.",
     images: ["https://triage-home.com/images/banner.jpg"], // MUST be absolute

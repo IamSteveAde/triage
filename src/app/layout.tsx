@@ -26,11 +26,11 @@ const dmsans = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: "Triage | On-Demand Home Healthcare Services",
+    default: "TriageHome | On-Demand Home Healthcare Services",
     template: "%s | Triage",
   },
   description:
-    "Triage provides reliable, on-demand home healthcare by connecting you with verified nurses and care professionals—delivering trusted medical support in the comfort of your home.",
+    "TriageHome provides reliable, on-demand home healthcare by connecting you with verified nurses and care professionals—delivering trusted medical support in the comfort of your home.",
 };
 
 /* -------------------------------------
