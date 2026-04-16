@@ -29,7 +29,7 @@ const routes = [
   },
   {
     title: "Join as a Provider",
-    desc: "Work with Triage and reach more patients.",
+    desc: "Work with TriageHome and reach more patients.",
     cta: "Apply Now",
     color: "bg-triage-orange",
     image: "/images/blog/5.jpg",

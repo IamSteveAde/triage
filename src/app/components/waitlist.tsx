@@ -128,11 +128,11 @@ Service: ${service}`;
                 >
                   <option value="">Select services</option>
                   <option>Standard Care</option>
-                  <option>Triage Concierge</option>
+                  <option>TriageConcierge</option>
                   <option>Partnerships</option>
-                  <option>Triage App</option>
-                  <option>Triage Living</option>
-                  <option>Triage Pods</option>
+                  <option>TriageApp</option>
+                  <option>TriageLiving</option>
+                  <option>TriagePods</option>
                 </select>
 
                 <button

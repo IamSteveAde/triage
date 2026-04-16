@@ -46,7 +46,7 @@ export default function TriageAppPage() {
             </h1>
 
             <p className="mt-6 text-lg md:text-xl text-white/80 max-w-xl">
-              Get trusted medical care at home in minutes, book, track, and receive care seamlessly with the Triage App.
+              Get trusted medical care at home in minutes, book, track, and receive care seamlessly with the TriageHome App.
             </p>
 
             <p className="mt-4 text-white/50 italic">
@@ -98,7 +98,7 @@ export default function TriageAppPage() {
 
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-semibold">
-              Why people choose Triage
+              Why people choose TriageHome
             </h2>
           </div>
 
@@ -151,7 +151,7 @@ export default function TriageAppPage() {
           </h2>
 
           <p className="mt-6 text-white/80 text-lg">
-            Download the Triage App and experience a faster, smarter, and more human way to access healthcare.
+            Download the TriageHome App and experience a faster, smarter, and more human way to access healthcare.
           </p>
 
           <div className="mt-12 flex flex-col sm:flex-row justify-center items-center gap-4">

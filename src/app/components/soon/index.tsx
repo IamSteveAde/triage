@@ -41,7 +41,7 @@ export default function JoinTriageSection() {
 
               {/* label */}
               <p className="text-triage-lime text-sm uppercase tracking-widest mb-4">
-                Triage Home Care
+                TriageHome Care
               </p>
 
               <h2 className="text-4xl md:text-5xl font-semibold text-white leading-tight">
