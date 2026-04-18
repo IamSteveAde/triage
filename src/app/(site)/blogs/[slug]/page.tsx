@@ -54,12 +54,12 @@ export async function generateMetadata({ params }: any) {
             description: "No blog article has been found",
             author: authorName,
             robots: {
-                index: false,
-                follow: false,
+                index: true,
+                follow: true,
                 nocache: false,
                 googleBot: {
-                    index: false,
-                    follow: false,
+                    index: true,
+                    follow: true,
                     "max-video-preview": -1,
                     "max-image-preview": "large",
                     "max-snippet": -1,
