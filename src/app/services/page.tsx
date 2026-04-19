@@ -96,7 +96,7 @@ export default function ServicesHero({ children }: { children?: React.ReactNode 
 
                 <div className="relative z-10">
                   <img
-                    src="/images/hero/appi.png"
+                    src="/images/hero/appi.webp"
                     alt="Triage App Preview"
                     className="w-full h-auto rounded-2xl object-contain"
                   />

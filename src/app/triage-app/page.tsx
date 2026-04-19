@@ -79,7 +79,7 @@ export default function TriageAppPage() {
           >
             <div className="relative w-[260px] rounded-3xl p-4 bg-white/5 backdrop-blur border border-white/10 shadow-xl">
               <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(166,210,0,0.08),transparent_70%)]" />
-              <img src="/images/hero/appi.png" className="rounded-2xl relative z-10" />
+              <img src="/images/hero/appi.webp" className="rounded-2xl relative z-10" />
             </div>
           </motion.div>
 

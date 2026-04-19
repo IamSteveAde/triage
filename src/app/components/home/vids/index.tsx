@@ -39,7 +39,7 @@ export default function TriageVideoSection() {
       >
         {/* Thumbnail image */}
         <img
-          src="/images/hero/bg1.png"
+          src="/images/hero/bg1.webp"
           alt="Triage Video"
           className="w-full h-[500px] object-cover"
         />
