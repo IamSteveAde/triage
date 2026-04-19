@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const images = [
-  "images/blog/11.jpg",
-  "images/blog/8.jpg",
-  "images/blog/2.jpg",
+  "images/blog/11.webp",
+  "images/blog/8.webp",
+  "images/blog/2.webp",
 ];
 
 export default function WhoWeAre() {

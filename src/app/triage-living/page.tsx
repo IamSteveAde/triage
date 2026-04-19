@@ -17,7 +17,7 @@ export default function TriageLivingPage() {
         <div className="sticky top-0 h-screen">
 
           <img
-            src="images/blog/8.jpg"
+            src="images/blog/8.webp"
             className="absolute inset-0 w-full h-full object-cover"
           />
 
@@ -72,7 +72,7 @@ export default function TriageLivingPage() {
           <motion.img
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            src="images/blog/5.jpg"
+            src="images/blog/5.webp"
             className="rounded-3xl shadow-xl border border-gray-200"
           />
 
@@ -141,7 +141,7 @@ export default function TriageLivingPage() {
           <motion.img
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            src="images/blog/11.jpg"
+            src="images/blog/11.webp"
             className="rounded-3xl shadow-2xl w-full h-[500px] object-cover"
           />
         </div>

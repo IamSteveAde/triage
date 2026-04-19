@@ -17,7 +17,7 @@ export default function PartnershipPage() {
         <div className="absolute inset-0 -z-10">
 
           <img
-            src="images/blog/11.jpg"
+            src="images/blog/11.webp"
             className="w-full h-full object-cover"
           />
 
@@ -142,7 +142,7 @@ export default function PartnershipPage() {
             {
               title: "Empower your workforce",
               desc: "Give employees direct access to healthcare services.",
-              image: "images/blog/10.jpg",
+              image: "images/blog/10.webp",
             },
             {
               title: "Scale without operational strain",

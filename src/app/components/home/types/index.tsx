@@ -9,19 +9,19 @@ const offers = [
     title: "Standard Care",
     desc: "Book a qualified nurse instantly through our app. Get reliable, professional care at home, with transparent pricing and seamless management.",
     cta: "Join the waitlist",
-    image: "images/blog/3.jpg",
+    image: "images/blog/3.webp",
   },
   {
     title: "TriageConcierge",
     desc: "Your personal health expert manages everything. Enjoy discreet, priority care with dedicated coordination wherever you are.",
     cta: "Join the waitlist",
-    image: "images/blog/10.jpg",
+    image: "images/blog/10.webp",
   },
   {
     title: "Partnerships",
     desc: "We support hospitals with on-demand clinical staff and help organizations deliver better healthcare experiences to their people.",
     cta: "Join the waitlist",
-    image: "images/blog/9.jpg",
+    image: "images/blog/9.webp",
   },
 ];
 

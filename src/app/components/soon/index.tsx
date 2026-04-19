@@ -87,7 +87,7 @@ export default function JoinTriageSection() {
               <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.4)]">
 
                 <img
-                  src="images/blog/11.jpg"
+                  src="images/blog/11.webp"
                   alt="Triage Home Care"
                   className="w-full h-[360px] md:h-[420px] object-cover"
                 />

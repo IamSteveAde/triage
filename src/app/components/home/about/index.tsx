@@ -8,7 +8,7 @@ const routes = [
     desc: "A healthcare professional at your doorstep within minutes.",
     cta: "Book Now",
     color: "bg-triage-teal",
-    image: "/images/blog/4.jpg",
+    image: "/images/blog/4.webp",
     link: "https://wa.me/2349134664547?text=Hi%20Triage%2C%20I%20need%20care%20immediately.%20Please%20send%20a%20healthcare%20professional%20to%20my%20location.",
   },
   {
@@ -16,7 +16,7 @@ const routes = [
     desc: "Reliable ongoing care for your family members.",
     cta: "Start Care",
     color: "bg-triage-purple",
-    image: "/images/blog/2.jpg",
+    image: "/images/blog/2.webp",
     link: "https://wa.me/2349134664547?text=Hello%20Triage%2C%20I%E2%80%99m%20looking%20for%20ongoing%20care%20for%20a%20loved%20one.%20Can%20you%20guide%20me%20on%20the%20next%20steps%3F",
   },
   {
@@ -24,7 +24,7 @@ const routes = [
     desc: "Give your team access to seamless healthcare support.",
     cta: "Partner With Us",
     color: "bg-triage-navy",
-    image: "/images/blog/10.jpg",
+    image: "/images/blog/10.webp",
     link: "https://wa.me/2349134664547?text=Hi%2C%20I%E2%80%99d%20like%20to%20explore%20healthcare%20solutions%20for%20my%20company.%20Can%20we%20discuss%20partnership%20options%3F",
   },
   {
@@ -32,7 +32,7 @@ const routes = [
     desc: "Work with TriageHome and reach more patients.",
     cta: "Apply Now",
     color: "bg-triage-orange",
-    image: "/images/blog/5.jpg",
+    image: "/images/blog/5.webp",
     link: "https://wa.me/2349134664547?text=Hello%2C%20I%E2%80%99m%20interested%20in%20joining%20Triage%20as%20a%20healthcare%20provider.%20Please%20share%20the%20application%20process.",
   },
 ];

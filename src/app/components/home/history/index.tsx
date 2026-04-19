@@ -13,7 +13,7 @@ const services = [
   {
     title: "Post-Surgery Care",
     desc: "Professional recovery support with vital signs monitoring, surgical site care, medication reminders, and early detection of complications, ensuring a smooth and safe healing process.",
-    image: "/images/blog/8.jpg",
+    image: "/images/blog/8.webp",
     color: "bg-triage-purple",
   },
   {
@@ -43,7 +43,7 @@ const services = [
   {
     title: "Wound Care",
     desc: "Expert wound assessment, cleaning, dressing, and infection monitoring, ensuring proper healing and reducing the risk of complications.",
-    image: "/images/blog/7.jpg",
+    image: "/images/blog/7.webp",
     color: "bg-triage-teal",
   },
 ];

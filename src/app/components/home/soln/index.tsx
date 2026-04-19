@@ -22,7 +22,7 @@ const solutions = [
     desc: "A 24/7 assisted-living model blending clinical care, wellness, and hospitality, creating a new standard for long-term living.",
     tag: "Coming Soon",
      image:
-      "images/blog/3.jpg",
+      "images/blog/3.webp",
   },
 ];
 
