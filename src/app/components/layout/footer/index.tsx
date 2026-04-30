@@ -45,29 +45,34 @@ export default function Footer() {
             {/* SOCIALS */}
             <div className="mt-6 flex gap-4">
 
-              <a
-                href="#"
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 border border-white/10 hover:border-triage-orange hover:bg-white/20 transition"
-              >
-                <FaInstagram size={16} />
-              </a>
+  <a
+    href="https://www.instagram.com/triage.home?igsh=MWtkMnY2MjVicml1bA%3D%3D&utm_source=qr"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 border border-white/10 hover:border-triage-orange hover:bg-white/20 transition"
+  >
+    <FaInstagram size={16} />
+  </a>
 
-              <a
-                href="#"
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 border border-white/10 hover:border-triage-orange hover:bg-white/20 transition"
-              >
-                <FaFacebookF size={16} />
-              </a>
+  <a
+    href="https://www.facebook.com/share/1DoApgtZwN/?mibextid=wwXIfr"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 border border-white/10 hover:border-triage-orange hover:bg-white/20 transition"
+  >
+    <FaFacebookF size={16} />
+  </a>
 
-              <a
-                href="#"
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 border border-white/10 hover:border-triage-orange hover:bg-white/20 transition"
-              >
-                <FaLinkedinIn size={16} />
-              </a>
+  <a
+    href="https://www.linkedin.com/company/triagehome/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 border border-white/10 hover:border-triage-orange hover:bg-white/20 transition"
+  >
+    <FaLinkedinIn size={16} />
+  </a>
 
-            </div>
-
+</div>
           </div>
 
           {/* SERVICES */}
@@ -158,6 +163,11 @@ export default function Footer() {
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-white/60 text-sm">
 
           <p>© {new Date().getFullYear()} TriageHome. All rights reserved.</p>
+
+          {/* CENTER (NEW) */}
+<p className="text-sm tracking-widest uppercase font-medium bg-gradient-to-r from-triage-orange via-triage-teal to-triage-purple bg-clip-text text-transparent animate-gradient">
+  Made in Africa
+</p>
 
           <div className="flex gap-6">
             <Link href="/privacy" className="hover:text-triage-orange transition">
