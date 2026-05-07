@@ -17,7 +17,7 @@ const contactItems = [
   {
     icon: MapPin,
     title: "Visit",
-    desc: "Chief Yesufu Abiodun Oniru Rd. V.I, Lagos",
+    desc: "No 14, Chief Yesufu Abiodun Oniru Rd. V.I, Lagos",
   },
 ];
 
