@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import History from "../components/home/history";
 import Types from "../components/home/types";
 import CTA from "../components/home/testimonial";
+import Plan from "../components/plans";
 
 export default function ServicesHero({ children }: { children?: React.ReactNode }) {
   return (
@@ -121,8 +122,10 @@ export default function ServicesHero({ children }: { children?: React.ReactNode 
         </div>
 
       </section>
-
+      
       <History />
+      <Plan />
+
       <Types />
       <CTA />
     </>

@@ -13,6 +13,7 @@ import Soln from "./components/home/soln";
 import Faq from "./components/home/faq";
 import Vid from "./components/home/vids";
 import Soon from "./components/soon";
+import Plan from "./components/plans";
 
 
 // Global components
@@ -162,6 +163,7 @@ export default function Home() {
        <Soon />
         <Typess />
         <Vid />
+        <Plan />
            <Soln />
               <Faq />
 
