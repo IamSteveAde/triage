@@ -98,7 +98,7 @@ export default function AccessPlansSection() {
             </h2>
 
             <p className="mt-5 max-w-2xl text-sm leading-relaxed text-[#49606B] sm:text-base lg:text-lg">
-              Choose a care experience tailored to your needs — from proactive
+              Choose a care experience tailored to your needs, from proactive
               wellness support to premium recovery and concierge healthcare
               access.
             </p>

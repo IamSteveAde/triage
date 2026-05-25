@@ -157,6 +157,10 @@ export default function Footer() {
 
             <ul className="space-y-3 text-white/70">
               <li>
+                <Link href="/get-access-plans" className="hover:text-triage-orange transition">
+                  Get Access Plans
+                </Link></li>
+                <li>
                 <Link href="/about" className="hover:text-triage-orange transition">
                   About
                 </Link>
