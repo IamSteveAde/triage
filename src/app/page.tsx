@@ -160,10 +160,11 @@ export default function Home() {
       {/* Workforce scope / industries / roles */}
       <Listing />
        <History />
+       <Plan />
        <Soon />
         <Typess />
         <Vid />
-        <Plan />
+        
            <Soln />
               <Faq />
 
