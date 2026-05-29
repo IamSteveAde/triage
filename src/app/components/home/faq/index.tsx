@@ -42,6 +42,26 @@ const faqs = [
     answer:
       "We partner with hospitals and organizations to provide on-demand clinical staff and structured healthcare support for teams and clients.",
   },
+  {
+    question: "Is TriageHome a full-time salaried job?",
+    answer:
+      "TriageHome operates as a flexible and mobile healthcare network. Providers earn based on completed shifts, home visits, availability, location, and service type rather than a fixed monthly salary. This creates more flexibility and higher earning potential for healthcare professionals.",
+  },
+  {
+    question: "Why does the onboarding and verification process take time?",
+    answer:
+      "Because TriageHome delivers healthcare directly to clients, every provider (medical doctor, nurse and health assistant) must pass a strict verification process including professional license verification, police clearance, identity checks, and mandatory medical fitness screening.\n\nSelected medical screening typically includes:\n\n• Full medical examination (general fitness to work)\n• Hepatitis B & C screening\n• HIV screening\n• Tuberculosis (TB) screening\n• Urinalysis and general lab tests\n• Drug and substance screening (where required)\n\nThese checks ensure client safety, clinical readiness, and professional standards before any provider is activated on the platform.",
+  },
+  {
+    question: "Is training compulsory before I can start working?",
+    answer:
+      "Yes. All approved applicants must complete mandatory onboarding training focused on ethics, client safety, professionalism, technology usage, and TriageHome service standards before they begin accepting appointments.",
+  },
+  {
+    question: "What is the salary or earning range?",
+    answer:
+      "TriageHome does not operate a fixed salary structure. Earnings depend on availability, experience, location, demand, and the number of completed appointments or home visits.\n\nOn average, clinical providers may earn:\n\n• Entry/mid-level nurses: ₦150,000 – ₦350,000+ monthly equivalent\n• Highly active or specialized providers: ₦400,000+\n• Per shift/home visit structure can range from ₦12,000 – ₦40,000 depending on complexity and duration\n\nAdditional earning opportunities include:\n\n• Flexible scheduling based on availability\n• Performance-based growth\n• Bonuses for reliability and patient satisfaction\n• Access to premium/private clients\n• Increased earnings during peak demand periods",
+  },
 ];
 
 export default function FAQSection() {
@@ -121,9 +141,9 @@ export default function FAQSection() {
                       transition={{ duration: 0.4 }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 pb-6 text-gray-600 leading-relaxed">
-                        {faq.answer}
-                      </div>
+                     <div className="px-6 pb-6 text-gray-600 leading-relaxed whitespace-pre-line">
+  {faq.answer}
+</div>
                     </motion.div>
                   )}
                 </AnimatePresence>
