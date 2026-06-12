@@ -156,6 +156,10 @@ export default function Footer() {
             </h4>
 
             <ul className="space-y-3 text-white/70">
+            <li>
+                <Link href="/clinical-providers" className="hover:text-triage-orange transition">
+                  Clinical Providers
+                </Link></li>
               <li>
                 <Link href="/get-access-plans" className="hover:text-triage-orange transition">
                   Get Access Plans
