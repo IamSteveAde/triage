@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     description:
       "Professional health screenings, preventive healthcare assessments, wellness checks, and routine health evaluations delivered directly to your home.",
 
-    url: "https://www.triage-home.com/services/health-screening",
+    url: "https://www.triage-home.com/access-plans/health-screening",
 
     siteName: "TriageHome",
 
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://www.triage-home.com/health-screening",
+    canonical: "https://www.triage-home.com/access-plans/health-screening",
   },
 
   robots: {

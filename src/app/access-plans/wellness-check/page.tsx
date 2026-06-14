@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     description:
       "Professional wellness checks, health assessments, vital monitoring, and preventive healthcare support delivered directly to your home.",
 
-    url: "https://www.triage-home.com/services/wellness-check",
+    url: "https://www.triage-home.com/access-plans/wellness-check",
 
     siteName: "TriageHome",
 
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://www.triage-home.com/wellness-check",
+    canonical: "https://www.triage-home.com/access-plans/wellness-check",
   },
 
   robots: {

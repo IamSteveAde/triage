@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     description:
       "Personalized chronic disease management and home healthcare support for diabetes, hypertension, and long-term conditions delivered directly to your home.",
 
-    url: "https://www.triage-home.com/services/chronic-disease-management",
+    url: "https://www.triage-home.com/access-plans/chronic-disease-management",
 
     siteName: "TriageHome",
 
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
 
   alternates: {
     canonical:
-      "https://www.triage-home.com/chronic-disease-management",
+      "https://www.triage-home.com/access-plans/chronic-disease-management",
   },
 
   robots: {

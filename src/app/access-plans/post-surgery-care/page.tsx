@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     description:
       "Recover comfortably at home with professional post-surgery care, wound management, medication support, and home nursing services from TriageHome.",
 
-    url: "https://www.triage-home.com/services/post-surgery-care",
+    url: "https://www.triage-home.com/access-plans/post-surgery-care",
 
     siteName: "TriageHome",
 
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://www.triage-home.com/post-surgery-care",
+    canonical: "https://www.triage-home.com/access-plans/post-surgery-care",
   },
 
   robots: {

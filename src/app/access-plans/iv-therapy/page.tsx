@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     description:
       "Safe and professional IV therapy, hydration drips, vitamin infusions, and wellness support delivered directly to your home.",
 
-    url: "https://www.triage-home.com/services/iv-therapy",
+    url: "https://www.triage-home.com/access-plans/iv-therapy",
 
     siteName: "TriageHome",
 
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://www.triage-home.com/iv-therapy",
+    canonical: "https://www.triage-home.com/access-plans/iv-therapy",
   },
 
   robots: {

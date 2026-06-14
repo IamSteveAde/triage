@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     description:
       "Professional wound dressing, recovery support, infection monitoring, and home nursing services delivered directly to your home.",
 
-    url: "https://www.triage-home.com/services/wound-care",
+    url: "https://www.triage-home.com/access-plans/wound-care",
 
     siteName: "TriageHome",
 
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://www.triage-home.com/wound-care",
+    canonical: "https://www.triage-home.com/access-plans/wound-care",
   },
 
   robots: {

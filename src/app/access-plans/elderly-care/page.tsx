@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     description:
       "Trusted in-home elderly care and professional providers for seniors. Personalized support, wellness monitoring, companionship, and home healthcare services delivered with compassion.",
 
-    url: "https://www.triage-home.com/services/elderly-care",
+    url: "https://www.triage-home.com/access-plans/elderly-care",
 
     siteName: "TriageHome",
 
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://www.triage-home.com/services/elderly-care",
+    canonical: "https://www.triage-home.com/access-plans/elderly-care",
   },
 
   robots: {
