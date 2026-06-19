@@ -221,6 +221,9 @@ export default function Footer() {
             <Link href="/terms" className="hover:text-triage-orange transition">
               Terms and condition
             </Link>
+            <Link href="/delete-account" className="hover:text-triage-orange transition">
+              Delete Account
+            </Link>
           </div>
 
         </div>
