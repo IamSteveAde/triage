@@ -174,15 +174,15 @@ export default function DeleteAccountPage() {
                 TriageHome Support
               </p>
               <a
-                href="mailto:triagehome@gmail.com"
+                href="mailto:support@triage-home.com"
                 className="font-nunito font-bold text-[#02385a] text-sm hover:text-[#aa7130] transition-colors"
               >
-                📧 triagehome@gmail.com
+                📧 support@triage-home.com
               </a>
             </div>
 
             <a
-              href={`mailto:triagehome@gmail.com?subject=Account%20Deletion%20Request&body=Hello%20TriageHome%20Support%2C%0D%0A%0D%0AI%20would%20like%20to%20formally%20request%20the%20permanent%20deletion%20of%20my%20account%20and%20all%20associated%20data.%0D%0A%0D%0AMy%20registered%20email%20is%3A%20%5BInsert%20your%20email%20address%20here%5D%0D%0A%0D%0AThank%20you.`}
+              href={`mailto:support@triage-home.com?subject=Account%20Deletion%20Request&body=Hello%20TriageHome%20Support%2C%0D%0A%0D%0AI%20would%20like%20to%20formally%20request%20the%20permanent%20deletion%20of%20my%20account%20and%20all%20associated%20data.%0D%0A%0D%0AMy%20registered%20email%20is%3A%20%5BInsert%20your%20email%20address%20here%5D%0D%0A%0D%0AThank%20you.`}
               className="flex items-center justify-center gap-2 w-full bg-red-600 hover:bg-red-700 text-white font-raleway font-bold text-sm px-6 py-3.5 rounded-xl transition-colors"
             >
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
