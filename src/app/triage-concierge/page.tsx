@@ -4,123 +4,223 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import Image from "next/image";
 
-// ─── Constants ────────────────────────────────────────────────────────────────
+// ─── Config ───────────────────────────────────────────────────────────────────
 
 const WHATSAPP =
-  "https://wa.me/2349134664547?text=Hello%20TriageConcierge%2C%20I%20would%20like%20to%20learn%20more%20about%20a%20Concierge%20Plan.";
+  "https://wa.me/2349134664547?text=Hello%20TriageConcierge%2C%20I%20would%20like%20to%20learn%20more.";
 
-const INCLUDED = [
-  { icon: "🏥", title: "Dedicated PM Representative", desc: "One trusted contact coordinating your care, appointments, providers, and wellness needs end-to-end.", color: "#02385a", light: "#e8f0f7" },
-  { icon: "👨‍⚕️", title: "Clinical Support Network", desc: "Access to nurses, doctors, physiotherapists, pharmacists, and health assistants when needed.", color: "#00b99d", light: "#e6f9f7" },
-  { icon: "🏨", title: "Hospital & Specialist Navigation", desc: "Priority coordination, appointment support, hospital accompaniment, and follow-up management.", color: "#aa7130", light: "#fdf3e8" },
-  { icon: "🛡️", title: "Preventive Health Monitoring", desc: "Regular wellness checks, medication management, risk monitoring, and proactive health oversight.", color: "#b745d8", light: "#f7eafd" },
-  { icon: "📊", title: "Digital Health Snapshot", desc: "A living record of appointments, recommendations, wellness trends, and care activities.", color: "#a6d200", light: "#f4fadf" },
-  { icon: "✈️", title: "Travel & Mobility Support", desc: "Health planning before travel, support during recovery, and continuity of care across locations.", color: "#02385a", light: "#e8f0f7" },
-  { icon: "🌿", title: "Wellness & Lifestyle Services", desc: "Nutrition guidance, fitness support, companionship services, and healthy living coaching.", color: "#00b99d", light: "#e6f9f7" },
-  { icon: "👨‍👩‍👧", title: "Family & Stakeholder Updates", desc: "Secure reporting and visibility for approved family members, employers, or designated representatives.", color: "#aa7130", light: "#fdf3e8" },
-  { icon: "🚨", title: "Emergency Coordination", desc: "Rapid escalation and coordination support when urgent situations arise.", color: "#b745d8", light: "#f7eafd" },
-  { icon: "💳", title: "HMO & Insurance Liaison", desc: "Seamless claims processing, pre-authorisation support, and direct communication with your HMO.", color: "#a6d200", light: "#f4fadf" },
+// ─── Premium SVG Icons (no emoji, Apple/Stripe style) ─────────────────────────
+
+const Icons = {
+  Shield: () => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+    </svg>
+  ),
+  Globe: () => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+    </svg>
+  ),
+  Calendar: () => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+      <line x1="16" y1="2" x2="16" y2="6" />
+      <line x1="8" y1="2" x2="8" y2="6" />
+      <line x1="3" y1="10" x2="21" y2="10" />
+    </svg>
+  ),
+  Pulse: () => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+    </svg>
+  ),
+  Phone: () => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+      <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+      <line x1="12" y1="18" x2="12.01" y2="18" strokeWidth="2" />
+    </svg>
+  ),
+  Bell: () => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+      <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+      <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+    </svg>
+  ),
+  UserShield: () => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+      <circle cx="12" cy="7" r="4" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </svg>
+  ),
+  Home: () => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
+      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+      <polyline points="9 22 9 12 15 12 15 22" />
+    </svg>
+  ),
+  ArrowRight: () => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+      <line x1="5" y1="12" x2="19" y2="12" />
+      <polyline points="12 5 19 12 12 19" />
+    </svg>
+  ),
+  Check: () => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5">
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
+  ),
+  ChevronDown: () => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+      <polyline points="6 9 12 15 18 9" />
+    </svg>
+  ),
+};
+
+// ─── Data ─────────────────────────────────────────────────────────────────────
+
+const SEGMENTS = [
+  {
+    tag: "Diaspora Families",
+    headline: "Trusted oversight for the ones you left behind.",
+    body: "You live abroad. Your parents are in Lagos. You need more than a phone call, you need a verified team, regular health updates, and someone who escalates when it matters.",
+    services: ["Regular health snapshots", "Emergency escalation", "Verified provider visits", "Family reporting dashboard", "Care coordination from anywhere"],
+    // Replace with: mum-twins-nyc-highrise.jpg, African woman on a video call in NYC high-rise apartment
+    image: "/images/hero/ss.png",
+    imageFallback: "bg-gradient-to-br from-[#02385a] to-[#024a78]",
+  },
+  {
+    tag: "Executives & VIP Professionals",
+    headline: "Healthcare that works around your schedule.",
+    body: "Your diary is full. Your health shouldn't suffer for it. A dedicated coordinator arranges everything, diagnostics, specialist referrals, travel health, post-op recovery, without interrupting your day.",
+    services: ["Personal healthcare coordinator", "Home diagnostics", "Priority specialist referrals", "Travel health support", "Medication management"],
+    // Replace with: executive-leaving-meeting.jpg, Executive leaving a meeting, provider managing logistics behind the scenes
+    image: "/images/hero/man.png",
+    imageFallback: "bg-gradient-to-br from-[#1a0a00] to-[#3d1f00]",
+  },
+  {
+    tag: "Family Offices & HNIs",
+    headline: "A trusted healthcare partner for your entire household.",
+    body: "Your family's health is too important to leave to chance. One partner. One coordinator. Complete oversight for every member of your household, from annual wellness planning to live-in care.",
+    services: ["Multi-member access plans", "Elder care oversight", "Household health records", "Annual wellness planning", "Live-in caregiver coordination"],
+    // Replace with: multigenerational-luxury-home.jpg, Multigenerational family in luxury home, discreet provider in background
+    image: "/images/hero/fam.png",
+    imageFallback: "bg-gradient-to-br from-[#0a1a0a] to-[#1a3a1a]",
+  },
 ];
 
-const WHY = [
-  { reason: "Elite Clinical Network", benefit: "Vetted providers with professional indemnity", icon: "⭐" },
-  { reason: "Single Point of Contact", benefit: "No more chasing multiple doctors or hospitals", icon: "🎯" },
-  { reason: "Proactive, Not Reactive", benefit: "Preventive approach that catches issues early", icon: "🔍" },
-  { reason: "Global Best Practices", benefit: "Modelled on successful international homecare systems", icon: "🌍" },
-  { reason: "Complete Privacy", benefit: "Discreet, confidential service for high-net-worth individuals", icon: "🔒" },
-  { reason: "HMO Integration", benefit: "Seamless coordination with your health insurance", icon: "🤝" },
-  { reason: "24/7 Support", benefit: "Always available when you need us", icon: "⏰" },
+const PM_REP_DUTIES = [
+  { icon: Icons.Calendar, text: "Arranges appointments and manages your calendar" },
+  { icon: Icons.UserShield, text: "Coordinates nurses, doctors, and specialists" },
+  { icon: Icons.Pulse, text: "Tracks health updates and vital records" },
+  { icon: Icons.Bell, text: "Escalates emergencies immediately" },
+  { icon: Icons.Globe, text: "Provides regular reports to your family" },
+  { icon: Icons.Shield, text: "Ensures care plans are followed precisely" },
 ];
 
-const SERVES = [
-  "Executives and business leaders",
-  "Diplomats and international professionals",
-  "Corporate and HMO members",
-  "Public figures and faith leaders",
-  "Individuals recovering from surgery",
-  "Frequent travellers",
-  "Diaspora professionals coordinating care remotely",
-  "Anyone seeking a more personalised healthcare experience",
+const JOURNEY_STEPS = [
+  { number: "01", title: "Consultation", desc: "A private assessment of your lifestyle, medical history, and care needs." },
+  { number: "02", title: "Care Assessment", desc: "We evaluate your health baseline and identify priorities." },
+  { number: "03", title: "Personalised Plan", desc: "A care plan built around your schedule, location, and preferences." },
+  { number: "04", title: "Provider Matching", desc: "Your PM Rep and clinical team are carefully selected for you." },
+  { number: "05", title: "Ongoing Monitoring", desc: "Regular check-ins, health snapshots, and proactive oversight." },
+  { number: "06", title: "Family Reporting", desc: "Regular updates to approved family members, wherever they are." },
+];
+
+const CITIES = [
+  { name: "Lagos", x: 46, y: 52, primary: true },
+  { name: "Abuja", x: 48, y: 48 },
+  { name: "London", x: 47, y: 22 },
+  { name: "Houston", x: 20, y: 38 },
+  { name: "Atlanta", x: 23, y: 37 },
+  { name: "Toronto", x: 25, y: 30 },
+  { name: "Doha", x: 60, y: 40 },
+  { name: "Dubai", x: 62, y: 42 },
+  { name: "New Delhi", x: 66, y: 38 },
+  { name: "Johannesburg", x: 52, y: 67 },
 ];
 
 const PLANS = [
   {
-    name: "TriagePostOp",
-    tag: "Recovery",
-    desc: "Structured support for recovery after surgery, procedures, or hospitalisation.",
+    name: "Assure",
+    price: "₦120,000",
+    period: "/month",
+    tag: "Essentials",
+    tagline: "Monthly oversight for peace of mind.",
+    features: [
+      "Monthly wellness oversight",
+      "Care coordinator support",
+      "Scheduled nurse check-ins",
+      "Health reporting",
+    ],
     accent: "#00b99d",
-    features: ["Post-surgery home nursing", "Wound care management", "Medication monitoring", "Recovery milestone tracking"],
-    image: "/images/blog/8.webp",
+    cta: "Get Started",
   },
   {
-    name: "TriagePassport",
-    tag: "Remote Care",
-    desc: "Ongoing health oversight, coordination, and visibility for busy professionals managing care remotely.",
+    name: "Passport",
+    price: "₦450,000",
+    period: "/month",
+    tag: "Premium",
+    tagline: "Full concierge. Complete coordination.",
+    features: [
+      "Everything in Assure",
+      "Priority provider access",
+      "Specialist coordination",
+      "Family reporting dashboard",
+      "Concierge healthcare support",
+    ],
     accent: "#aa7130",
-    features: ["Cross-border health coordination", "Family health reporting", "Remote provider management", "Digital health records"],
-    image: "/images/blog/11.webp",
+    cta: "Get Started",
     featured: true,
   },
   {
-    name: "TriageComfort+",
-    tag: "Premium Wellness",
-    desc: "A curated concierge experience combining preventive health, care coordination, wellness support, and lifestyle services.",
-    accent: "#b745d8",
-    features: ["Dedicated PM Representative", "Lifestyle health coaching", "Priority specialist access", "Comprehensive wellness plan"],
-    image: "/images/blog/3.webp",
+    name: "PostOp",
+    price: "Custom",
+    period: "",
+    tag: "Recovery",
+    tagline: "Structured support after surgery.",
+    features: [
+      "Post-surgery home nursing",
+      "Wound care management",
+      "Medication monitoring",
+      "Recovery milestone tracking",
+      "PM Rep throughout recovery",
+    ],
+    accent: "#02385a",
+    cta: "Request Quote",
   },
 ];
 
-const STEPS = [
-  {
-    number: "01",
-    title: "Concierge Consultation",
-    desc: "A private, deep-dive assessment of your lifestyle, medical history, and daily schedule to map out your unique health baseline.",
-    image: "/images/blog/2.webp",
-    tag: "Day 1",
-  },
-  {
-    number: "02",
-    title: "Your Coordinator Match",
-    desc: "We assign your dedicated PM Rep and match you with a tailored team from our clinical support network based on your specific health profile.",
-    image: "/images/blog/4.webp",
-    tag: "Within 24hrs",
-  },
-  {
-    number: "03",
-    title: "Activation",
-    desc: "Your secure, NDPR-compliant digital health dashboard is activated. Your PM Rep begins orchestrating your schedule, dispatching trained providers, and logging your health trends seamlessly.",
-    image: "/images/blog/5.webp",
-    tag: "Ongoing",
-  },
+const WHY_ICONS = [
+  { Icon: Icons.Shield, title: "Elite Clinical Network", desc: "Vetted providers with professional indemnity." },
+  { Icon: Icons.Bell, title: "Single Point of Contact", desc: "Your PM Rep handles every moving part." },
+  { Icon: Icons.Pulse, title: "Proactive, Not Reactive", desc: "Preventive oversight catches issues early." },
+  { Icon: Icons.Globe, title: "Global Access", desc: "Coordinate care from anywhere in the world." },
+  { Icon: Icons.UserShield, title: "Complete Privacy", desc: "Discreet, confidential for HNIs." },
+  { Icon: Icons.Home, title: "Care at Home", desc: "Clinical expertise delivered to your door." },
+  { Icon: Icons.Phone, title: "Digital Reporting", desc: "Real-time updates via your TriageSnapshot." },
+  { Icon: Icons.Calendar, title: "HMO Integration", desc: "Seamless coordination with your insurer." },
 ];
 
-const SNAPSHOT_FEATURES = [
-  { icon: "⚡", title: "Instant delivery", desc: "Results sent to your WhatsApp the moment your provider submits." },
-  { icon: "📊", title: "Full vital tracking", desc: "Temperature, BP, pulse, blood sugar, SpO₂, BMI and more — all in one place." },
-  { icon: "🔒", title: "Private & secure", desc: "NDPR-compliant. Only you and your PM Rep can access your records." },
-  { icon: "📄", title: "PDF Health Passport", desc: "Download a clean, professional summary of every session." },
-  { icon: "👨‍⚕️", title: "Provider notes", desc: "Clinical observations and recommendations logged directly by your provider." },
-  { icon: "📈", title: "Health trends", desc: "Track how your vitals change over time and catch early warning signs." },
+const SNAPSHOT_POINTS = [
+  "Vital signs captured at every visit",
+  "Medications and dosage history",
+  "Clinical assessments and provider notes",
+  "Visit records and care timeline",
+  "Shareable with family or specialists",
 ];
 
 // ─── Animation helpers ────────────────────────────────────────────────────────
 
-function FadeUp({
-  children,
-  delay = 0,
-  className = "",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-}) {
+function FadeUp({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 36 }}
+      initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay }}
       className={className}
     >
       {children}
@@ -128,519 +228,604 @@ function FadeUp({
   );
 }
 
-function FadeIn({
-  children,
-  delay = 0,
-  className = "",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-}) {
+function FadeIn({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.7, delay }}
+      transition={{ duration: 0.8, delay }}
       className={className}
     >
       {children}
     </motion.div>
+  );
+}
+
+// ─── Placeholder image (used while real photos are dropped in) ────────────────
+
+function PlaceholderImage({
+  label,
+  gradient,
+  className = "",
+}: {
+  label: string;
+  gradient: string;
+  className?: string;
+}) {
+  return (
+    <div className={`${gradient} ${className} flex items-end justify-start`}>
+      <div className="m-5 bg-black/30 backdrop-blur-sm rounded-lg px-3 py-1.5">
+        <p className="text-white/60 text-[10px] font-mono font-semibold tracking-wider uppercase">
+          📸 {label}
+        </p>
+      </div>
+    </div>
   );
 }
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function ConciergePage() {
+  const [activeSegment, setActiveSegment] = useState(0);
   const [activeWhy, setActiveWhy] = useState<number | null>(null);
   const heroRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
   return (
-    <main className="relative overflow-hidden font-nunito">
+    <main className="relative overflow-x-hidden font-nunito bg-white text-[#0f172a]">
 
-      {/* ================================================================ */}
-      {/* HERO */}
-      {/* ================================================================ */}
+      {/* ================================================================
+          HERO, Full bleed. Elegant African executive on a video call.
+          Replace /images/concierge/hero.jpg with:
+          "Elegant African executive in London on a video call, checking
+           on elderly parents in Lagos. TriageConcierge dashboard visible
+           on tablet. Feeling: reassurance, trust, oversight."
+      ================================================================ */}
 
-      <section
-        ref={heroRef}
-        className="relative flex min-h-screen items-end overflow-hidden pb-24 px-6"
-      >
+      <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden">
+
+        {/* Background */}
         <motion.div style={{ y: heroY }} className="absolute inset-0 z-0">
-          <Image
-            src="/images/hero/bg1.png"
-            alt="TriageConcierge premium healthcare"
-            fill
-            className="object-cover object-center"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#02385a] via-[#02385a]/85 to-[#02385a]/40" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#02385a]/60 via-transparent to-transparent" />
+          {/* REPLACE THIS DIV with:
+              <Image src="/images/concierge/hero.jpg" alt="TriageConcierge" fill className="object-cover object-center" priority />
+          */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0a0f1e] via-[#02385a] to-[#061428]" />
+          <div className="absolute inset-0 flex items-center justify-center opacity-10">
+            <div className="w-[600px] h-[600px] rounded-full border border-white/20" />
+            <div className="absolute w-[400px] h-[400px] rounded-full border border-white/10" />
+          </div>
+          {/* Caption for placeholder */}
+          <div className="absolute bottom-32 right-8 bg-black/40 backdrop-blur-sm rounded-lg px-3 py-1.5 z-10">
+            <p className="text-white/50 text-[10px] font-mono uppercase tracking-wider">
+              📸 Replace: African executive in London on video call, parents in Lagos visible on screen
+            </p>
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0f1e]/95 via-[#0a0f1e]/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e]/80 via-transparent to-transparent" />
         </motion.div>
 
-        <div className="absolute top-20 right-20 w-96 h-96 rounded-full bg-gradient-to-br from-[#b745d8]/25 via-[#00b99d]/15 to-transparent blur-3xl pointer-events-none z-10" />
-        <div className="absolute bottom-40 right-40 w-64 h-64 rounded-full bg-[#aa7130]/20 blur-3xl pointer-events-none z-10" />
+        {/* Subtle gold grid lines */}
+         {/* Background Image */}
+<Image
+  src="/images/hero/peace.png"
+  alt="TriageConcierge"
+  fill
+  className="object-cover object-center"
+  priority
+/>
 
-        <motion.div
-          style={{ opacity: heroOpacity }}
-          className="relative z-20 mx-auto max-w-6xl w-full"
-        >
-          <div className="max-w-3xl">
+{/* Dark Overlay */}
+<div className="absolute inset-0 bg-black/60 z-[1]" />
+
+        <motion.div style={{ opacity: heroOpacity }} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full pt-32 pb-24">
+          <div className="max-w-2xl">
+
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 bg-[#aa7130]/25 border border-[#aa7130]/50 backdrop-blur-sm rounded-full px-4 py-2 mb-8"
+              className="inline-flex items-center gap-3 mb-10"
             >
-              <div className="w-2 h-2 rounded-full bg-[#aa7130] animate-pulse" />
-              <span className="font-raleway font-bold text-[11px] tracking-[0.14em] uppercase text-amber-300">
-                TriageConcierge · Premium Care Coordination
+              <div className="w-8 h-[1px] bg-[#aa7130]" />
+              <span className="font-raleway font-semibold text-[11px] tracking-[0.22em] uppercase text-[#aa7130]">
+                TriageConcierge
               </span>
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="font-raleway font-extrabold text-white leading-[1.05] mb-6"
-              style={{ fontSize: "clamp(44px, 7vw, 80px)" }}
+              transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="font-raleway font-extrabold text-white leading-[1.04] tracking-tight mb-7"
+              style={{ fontSize: "clamp(42px, 6.5vw, 78px)" }}
             >
-              Healthcare.
+              Healthcare
               <br />
-              <span
-                style={{
-                  background: "linear-gradient(90deg, #00b99d, #a6d200)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
-              >
-                Coordinated.
+              <span style={{
+                background: "linear-gradient(135deg, #aa7130 0%, #d4a050 50%, #aa7130 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}>
+                coordinated.
               </span>
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.25 }}
-              className="text-white/75 text-xl leading-relaxed max-w-xl mb-3"
+              transition={{ duration: 0.7, delay: 0.25 }}
+              className="text-white/60 text-lg leading-[1.85] max-w-lg mb-10 font-light"
             >
-              For people who value their time, their wellbeing, and the
-              confidence that everything is taken care of.
-            </motion.p>
-
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="text-white/45 text-base italic mb-12"
-            >
-              Personal. Proactive. Always available.
+              A dedicated coordinator. Verified providers. Real-time health updates.
+              For individuals, executives, and families who need trusted oversight,
+              whether across town or across the world.
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
               className="flex flex-wrap gap-4 mb-16"
             >
               <a
                 href={WHATSAPP}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 rounded-2xl bg-[#aa7130] hover:bg-[#8c5c22] px-8 py-4 font-raleway font-bold text-sm text-white transition-all duration-200 shadow-lg shadow-[#aa7130]/30"
+                className="group inline-flex items-center gap-3 bg-[#aa7130] hover:bg-[#8c5c22] text-white font-raleway font-semibold text-sm tracking-wide px-8 py-4 rounded-full transition-all duration-200"
               >
-                Let's Talk Today
-                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none">
-                  <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                Request a Consultation
+                <Icons.ArrowRight />
               </a>
               <a
                 href="#plans"
-                className="inline-flex items-center gap-2 rounded-2xl border border-white/25 hover:border-[#00b99d] backdrop-blur-sm px-8 py-4 font-raleway font-bold text-sm text-white transition-all duration-200"
+                className="inline-flex items-center gap-2 border border-white/20 hover:border-[#aa7130]/60 text-white/80 hover:text-white font-raleway font-semibold text-sm tracking-wide px-8 py-4 rounded-full transition-all duration-200"
               >
                 View Access Plans
               </a>
             </motion.div>
 
+            {/* 4 stats in a row */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.65 }}
-              className="flex flex-wrap gap-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+              className="flex flex-wrap gap-x-10 gap-y-4 border-t border-white/10 pt-10"
             >
               {[
-                { value: "24/7", label: "Support available" },
-                { value: "3", label: "Concierge plans" },
-                { value: "₦450K", label: "Starting from / month" },
-                { value: "100%", label: "Confidential service" },
+                { v: "24/7", l: "Support" },
+                { v: "₦120K", l: "From / month" },
+                { v: "3", l: "Access plans" },
+                { v: "10+", l: "Global cities" },
               ].map((s) => (
-                <div key={s.label}>
-                  <p className="font-raleway font-extrabold text-white text-2xl leading-none mb-1">
-                    {s.value}
-                  </p>
-                  <p className="text-white/45 text-[12px] font-semibold">{s.label}</p>
+                <div key={s.l}>
+                  <p className="font-raleway font-extrabold text-white text-xl leading-none mb-1">{s.v}</p>
+                  <p className="text-white/35 text-xs font-semibold tracking-wide uppercase">{s.l}</p>
                 </div>
               ))}
             </motion.div>
           </div>
         </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
-          className="absolute bottom-8 right-8 z-20 flex flex-col items-center gap-2"
-        >
-          <span
-            className="text-white/30 text-[10px] tracking-widest uppercase font-raleway font-bold"
-            style={{ writingMode: "vertical-rl" }}
-          >
-            Scroll
-          </span>
-          <div className="w-[1px] h-12 bg-gradient-to-b from-white/30 to-transparent" />
-        </motion.div>
       </section>
 
-      {/* ================================================================ */}
-      {/* WHAT IS TRIAGEHOME CONCIERGE */}
-      {/* ================================================================ */}
+      {/* ================================================================
+          WHO WE SERVE, 3 client segments, tab-switched
+      ================================================================ */}
 
-      <section className="relative bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 min-h-[600px]">
-          <FadeIn className="relative min-h-[400px] lg:min-h-full">
-            <Image
-              src="/images/blog/3.webp"
-              alt="TriageConcierge care coordination"
-              fill
-              className="object-cover"
-            />
-            <div className="absolute bottom-8 left-8 bg-[#aa7130] rounded-2xl px-5 py-4 shadow-2xl max-w-xs">
-              <p className="font-raleway font-extrabold text-white text-2xl leading-none mb-1">
-                PM Rep
-              </p>
-              <p className="text-white/80 text-sm font-nunito">
-                Your dedicated Peace of Mind Representative — one person, all your care.
-              </p>
-            </div>
-          </FadeIn>
-
-          <div className="px-10 py-20 lg:px-16 flex flex-col justify-center">
-            <FadeUp>
-              <p className="text-[#aa7130] font-raleway font-bold text-[11px] tracking-[0.18em] uppercase mb-4">
-                What is TriageConcierge?
-              </p>
-              <h2
-                className="font-raleway font-extrabold text-[#02385a] leading-[1.15] mb-6"
-                style={{ fontSize: "clamp(28px, 3.5vw, 42px)" }}
-              >
-                A smarter, more personal way to access care.
-              </h2>
-            </FadeUp>
-
-            <FadeUp delay={0.1}>
-              <div className="space-y-4 text-slate-600 text-[15px] leading-[1.9] mb-10">
-                <p>
-                  Modern life is complex. Appointments, medications, hospital visits,
-                  wellness goals, specialist referrals, travel, recovery — often require
-                  far more coordination than most people have time for.
-                </p>
-                <p>
-                  TriageConcierge was designed to simplify that experience. Whether
-                  you're a busy executive, diplomat, professional athlete, corporate
-                  client, or managing care from abroad, we provide a trusted layer of
-                  health oversight that keeps everything on track.
-                </p>
-                <p>
-                  At the center of every plan is a dedicated{" "}
-                  <span className="font-bold text-[#02385a]">
-                    Peace of Mind Representative (PM Rep)
-                  </span>{" "}
-                  — your personal health coordinator ensuring every detail of your
-                  wellbeing is organised, monitored, and managed.
-                </p>
-              </div>
-            </FadeUp>
-
-            <FadeUp delay={0.2}>
-              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
-                <p className="text-[#aa7130] font-raleway font-bold text-[11px] tracking-[0.18em] uppercase mb-3">
-                  What your PM Rep does
-                </p>
-                <p className="text-slate-600 text-[15px] leading-[1.85]">
-                  From scheduling appointments to coordinating providers, tracking
-                  wellness goals, arranging follow-up care, and keeping approved
-                  stakeholders informed — they ensure nothing gets missed.
-                </p>
-                <p className="font-raleway font-bold text-[#02385a] text-base mt-4">
-                  Healthcare works best when someone is connecting the dots.
-                </p>
-              </div>
-            </FadeUp>
-          </div>
-        </div>
-      </section>
-
-      {/* ================================================================ */}
-      {/* WHAT'S INCLUDED */}
-      {/* ================================================================ */}
-
-      <section
-        className="relative px-6 py-28 overflow-hidden"
-        style={{ background: "#f8fbfd" }}
-      >
-        <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-[#02385a]/[0.03] blur-3xl pointer-events-none" />
+      <section className="bg-[#fafafa] border-y border-slate-100 py-28 px-6">
         <div className="max-w-7xl mx-auto">
-          <FadeUp className="text-center mb-16">
-            <p className="text-[#aa7130] font-raleway font-bold text-[11px] tracking-[0.18em] uppercase mb-4">
-              What's Included
+          <FadeUp className="mb-14">
+            <p className="text-[#aa7130] font-raleway font-semibold text-[11px] tracking-[0.22em] uppercase mb-4">
+              Who We Serve
             </p>
             <h2
-              className="font-raleway font-extrabold text-[#02385a] leading-[1.15] mb-4 mx-auto"
-              style={{ fontSize: "clamp(28px, 4vw, 44px)", maxWidth: 600 }}
+              className="font-raleway font-extrabold text-[#0f172a] leading-[1.12] max-w-xl"
+              style={{ fontSize: "clamp(28px, 3.5vw, 44px)" }}
             >
-              Everything covered.
-              <br />
-              Nothing missed.
+              Supporting executives, families and professionals across continents.
             </h2>
-            <p className="text-slate-500 text-[16px] leading-relaxed max-w-lg mx-auto">
-              Every TriageConcierge plan is built around comprehensive, end-to-end
-              health coordination.
-            </p>
           </FadeUp>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-            {INCLUDED.map((item, i) => {
-              const isWide = i === 0 || i === 9;
-              return (
-                <FadeUp
-                  key={i}
-                  delay={i * 0.035}
-                  className={isWide ? "lg:col-span-2" : "lg:col-span-1"}
-                >
-                  <div
-                    className="group relative rounded-2xl p-6 h-full flex flex-col border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl cursor-default"
-                    style={{ background: item.light, borderColor: `${item.color}20` }}
-                  >
-                    <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-5 flex-shrink-0"
-                      style={{ background: `${item.color}15` }}
-                    >
-                      {item.icon}
-                    </div>
-                    <h3
-                      className="font-raleway font-bold text-base mb-2"
-                      style={{ color: item.color }}
-                    >
-                      {item.title}
-                    </h3>
-                    <p className="text-slate-600 text-sm leading-relaxed flex-1">
-                      {item.desc}
-                    </p>
-                    <div
-                      className="absolute bottom-0 left-6 right-6 h-[2px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      style={{ background: item.color }}
-                    />
-                  </div>
-                </FadeUp>
-              );
-            })}
+          {/* Tab selectors */}
+          <div className="flex flex-wrap gap-3 mb-10">
+            {SEGMENTS.map((seg, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => setActiveSegment(i)}
+                className="font-raleway font-semibold text-[13px] tracking-wide px-5 py-2.5 rounded-full border transition-all duration-200 focus:outline-none"
+                style={{
+                  background: activeSegment === i ? "#02385a" : "transparent",
+                  color: activeSegment === i ? "#fff" : "#64748b",
+                  borderColor: activeSegment === i ? "#02385a" : "#e2e8f0",
+                }}
+              >
+                {seg.tag}
+              </button>
+            ))}
           </div>
+
+          {/* Segment content */}
+          {SEGMENTS.map((seg, i) => (
+            <motion.div
+              key={i}
+              initial={false}
+              animate={{ opacity: activeSegment === i ? 1 : 0, y: activeSegment === i ? 0 : 8 }}
+              transition={{ duration: 0.4 }}
+              className={`grid lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden border border-slate-200 ${activeSegment === i ? "flex" : "hidden"} flex-col lg:flex-row`}
+              style={{ display: activeSegment === i ? undefined : "none" }}
+            >
+              {/* Image */}
+              <div className="relative min-h-[340px] lg:min-h-[500px]">
+                {/* REPLACE with real image based on seg.image path */}
+                <Image
+  src={seg.image}
+  alt={seg.tag}
+  fill
+  className="object-cover object-center"
+/>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/5 lg:bg-gradient-to-r lg:from-transparent lg:to-white" />
+              </div>
+
+              {/* Content */}
+              <div className="bg-white px-10 py-12 lg:px-14 flex flex-col justify-center">
+                <p className="text-[#aa7130] font-raleway font-semibold text-[11px] tracking-[0.22em] uppercase mb-4">
+                  {seg.tag}
+                </p>
+                <h3
+                  className="font-raleway font-extrabold text-[#0f172a] leading-[1.15] mb-5"
+                  style={{ fontSize: "clamp(22px, 2.5vw, 32px)" }}
+                >
+                  {seg.headline}
+                </h3>
+                <p className="text-slate-500 text-[15px] leading-[1.85] mb-8">
+                  {seg.body}
+                </p>
+                <div className="flex flex-col gap-3 mb-10">
+                  {seg.services.map((s) => (
+                    <div key={s} className="flex items-center gap-3">
+                      <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-[#aa7130]"
+                        style={{ background: "rgba(170,113,48,0.1)" }}>
+                        <Icons.Check />
+                      </div>
+                      <span className="text-slate-600 text-sm">{s}</span>
+                    </div>
+                  ))}
+                </div>
+                <a
+                  href={WHATSAPP}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 font-raleway font-semibold text-sm text-[#aa7130] hover:text-[#8c5c22] transition-colors"
+                >
+                  Talk to a coordinator <Icons.ArrowRight />
+                </a>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </section>
 
-      {/* ================================================================ */}
-      {/* WHY CHOOSE */}
-      {/* ================================================================ */}
+      {/* ================================================================
+          PM REP, Define who this is. Two-column split.
+          Replace /images/concierge/pm-rep.jpg with:
+          "Provider with an iPad briefing an executive in a modern office"
+      ================================================================ */}
 
-      <section className="relative bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-0 min-h-[700px]">
-          <div className="px-10 py-24 lg:px-16 flex flex-col justify-center">
+      <section className="bg-[#02385a] overflow-hidden">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 min-h-[620px]">
+
+          {/* Left, content */}
+          <div className="px-10 py-20 lg:px-16 flex flex-col justify-center">
             <FadeUp>
-              <p className="text-[#aa7130] font-raleway font-bold text-[11px] tracking-[0.18em] uppercase mb-4">
-                Why TriageConcierge
-              </p>
+              <div className="inline-flex items-center gap-3 mb-8">
+                <div className="w-8 h-[1px] bg-[#aa7130]" />
+                <span className="font-raleway font-semibold text-[11px] tracking-[0.22em] uppercase text-[#aa7130]">
+                  Your PM Rep
+                </span>
+              </div>
               <h2
-                className="font-raleway font-extrabold text-[#02385a] leading-[1.15] mb-12"
+                className="font-raleway font-extrabold text-white leading-[1.1] mb-6"
                 style={{ fontSize: "clamp(28px, 3.5vw, 44px)" }}
               >
-                The difference is
+                Think of them as your
                 <br />
-                in the detail.
+                <span style={{
+                  background: "linear-gradient(135deg, #aa7130, #d4a050)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}>
+                  healthcare project manager.
+                </span>
               </h2>
+              <p className="text-white/60 text-[15px] leading-[1.85] mb-10 max-w-md">
+                Every TriageConcierge client is assigned a dedicated Care Coordinator,
+                your single point of contact for everything health-related. They know
+                your history, your preferences, and your family.
+              </p>
             </FadeUp>
 
-            <div className="flex flex-col gap-2">
-              {WHY.map((item, i) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {PM_REP_DUTIES.map(({ icon: Icon, text }, i) => (
                 <FadeUp key={i} delay={i * 0.06}>
-                  <button
-                    type="button"
-                    onClick={() => setActiveWhy(activeWhy === i ? null : i)}
-                    className="w-full text-left flex items-center justify-between gap-4 rounded-xl border px-5 py-4 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#aa7130]"
-                    style={{
-                      background: activeWhy === i ? "#f0f7ff" : "#fafbfc",
-                      borderColor: activeWhy === i ? "#02385a" : "#e4ebf0",
-                    }}
-                  >
-                    <div className="flex items-center gap-4">
-                      <span className="text-xl flex-shrink-0">{item.icon}</span>
-                      <div>
-                        <span className="font-raleway font-bold text-[#02385a] text-sm block">
-                          {item.reason}
-                        </span>
-                        <span
-                          className="text-slate-500 text-sm font-nunito block overflow-hidden transition-all duration-300"
-                          style={{
-                            maxHeight: activeWhy === i ? "60px" : "0px",
-                            opacity: activeWhy === i ? 1 : 0,
-                            marginTop: activeWhy === i ? 4 : 0,
-                          }}
-                        >
-                          {item.benefit}
-                        </span>
-                      </div>
+                  <div className="flex items-start gap-3 bg-white/[0.05] border border-white/10 rounded-xl px-4 py-3.5">
+                    <div className="w-4 h-4 text-[#aa7130] flex-shrink-0 mt-0.5">
+                      <Icon />
                     </div>
-                    <svg
-                      className="w-4 h-4 text-slate-400 flex-shrink-0 transition-transform duration-200"
-                      style={{ transform: activeWhy === i ? "rotate(180deg)" : "rotate(0deg)" }}
-                      viewBox="0 0 24 24"
-                      fill="none"
-                    >
-                      <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </button>
+                    <span className="text-white/70 text-[13px] leading-snug">{text}</span>
+                  </div>
                 </FadeUp>
               ))}
             </div>
           </div>
 
+          {/* Right, image */}
           <FadeIn className="relative min-h-[400px] lg:min-h-full">
-            <Image
-              src="/images/blog/4.webp"
-              alt="TriageConcierge excellence"
-              fill
-              className="object-cover"
-            />
-            <div className="absolute top-8 right-8 bg-[#02385a]/90 backdrop-blur-md border border-white/20 rounded-2xl p-5">
-              <p className="font-raleway font-extrabold text-white text-3xl leading-none mb-1">
-                7+
+            {/* REPLACE with:
+                <Image src="/images/hero/ml.png" alt="PM Rep briefing an executive" fill className="object-cover" />
+                Image brief: Provider with an iPad briefing an executive in a modern office
+            */}
+           <Image src="/images/hero/pmx.png" alt="PM Rep briefing an executive" fill className="object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#02385a] via-transparent to-transparent lg:block hidden" />
+            {/* Floating card */}
+            <div className="absolute bottom-8 left-8 right-8 lg:left-auto lg:right-8 lg:max-w-[240px] bg-white rounded-2xl p-5 shadow-2xl">
+              <p className="font-raleway font-bold text-[#02385a] text-sm mb-1">Your PM Rep</p>
+              <p className="text-slate-400 text-[12px] leading-relaxed">
+                One person. Every appointment, update, and emergency, coordinated.
               </p>
-              <p className="text-white/60 text-xs font-semibold">
-                Reasons clients choose us
-              </p>
+              <div className="mt-3 flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-[#00b99d] animate-pulse" />
+                <span className="text-[11px] font-semibold text-[#00b99d]">Available 24 / 7</span>
+              </div>
             </div>
           </FadeIn>
         </div>
       </section>
 
-      {/* ================================================================ */}
-      {/* DESIGNED FOR MODERN LIVING */}
-      {/* ================================================================ */}
+      {/* ================================================================
+          PEACE OF MIND JOURNEY, Visual pathway, modern line icons
+      ================================================================ */}
 
-      <section className="relative px-6 py-28 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto">
-          <FadeUp className="mb-16">
-            <p className="text-[#aa7130] font-raleway font-bold text-[11px] tracking-[0.18em] uppercase mb-4">
-              Designed for Modern Living
+      <section className="bg-white py-28 px-6">
+        <div className="max-w-6xl mx-auto">
+          <FadeUp className="text-center mb-20">
+            <p className="text-[#aa7130] font-raleway font-semibold text-[11px] tracking-[0.22em] uppercase mb-4">
+              The Peace of Mind Journey
             </p>
             <h2
-              className="font-raleway font-extrabold text-[#02385a] leading-[1.15] mb-4 max-w-2xl"
-              style={{ fontSize: "clamp(28px, 4vw, 44px)" }}
+              className="font-raleway font-extrabold text-[#0f172a] leading-[1.12] mx-auto"
+              style={{ fontSize: "clamp(28px, 3.5vw, 44px)", maxWidth: 520 }}
             >
-              Across Africa and around the world.
+              From first call to ongoing care.
             </h2>
-            <p className="text-slate-500 text-[16px] leading-relaxed max-w-xl">
-              People managing demanding careers, frequent travel, and responsibilities
-              across multiple cities and countries. TriageConcierge bridges the gap
-              between healthcare, lifestyle management, and peace of mind.
-            </p>
           </FadeUp>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <FadeIn className="lg:col-span-2 lg:row-span-2 relative rounded-3xl overflow-hidden min-h-[400px]">
-              <Image
-                src="/images/blog/8.webp"
-                alt="TriageConcierge modern living"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#02385a]/90 via-[#02385a]/30 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-8">
-                <p className="font-raleway font-bold text-[#00b99d] text-[11px] tracking-[0.18em] uppercase mb-2">
-                  Powered by People. Enhanced by Tech.
-                </p>
-                <p className="text-white text-[15px] leading-[1.8] max-w-lg">
-                  Through our secure digital platform, your PM Rep monitors early health
-                  risks, manages your digital Health Snapshot, and streams real-time
-                  updates directly to you.
-                </p>
-              </div>
-            </FadeIn>
+          {/* Horizontal journey on desktop, vertical on mobile */}
+          <div className="relative">
+            {/* Connecting line, desktop */}
+            <div className="hidden lg:block absolute top-10 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-slate-200 to-transparent" style={{ top: "28px" }} />
 
-            <FadeUp delay={0.05} className="bg-[#02385a] rounded-3xl p-7 flex flex-col">
-              <p className="font-raleway font-bold text-[#aa7130] text-[11px] tracking-[0.18em] uppercase mb-5">
-                Our ecosystem serves
-              </p>
-              <div className="flex flex-col gap-2.5 flex-1">
-                {SERVES.map((item, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#00b99d] flex-shrink-0" />
-                    <span className="text-white/75 text-sm font-nunito">{item}</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-4">
+              {JOURNEY_STEPS.map((step, i) => (
+                <FadeUp key={i} delay={i * 0.07}>
+                  <div className="flex flex-col items-center text-center lg:items-center">
+                    {/* Node */}
+                    <div className="relative mb-5">
+                      <div
+                        className="w-14 h-14 rounded-full flex items-center justify-center font-raleway font-extrabold text-sm border-2 relative z-10"
+                        style={{
+                          background: i === 0 ? "#02385a" : "white",
+                          borderColor: i === 0 ? "#02385a" : "#e2e8f0",
+                          color: i === 0 ? "white" : "#94a3b8",
+                        }}
+                      >
+                        {step.number}
+                      </div>
+                    </div>
+                    <p className="font-raleway font-bold text-[#0f172a] text-sm mb-2 leading-tight">
+                      {step.title}
+                    </p>
+                    <p className="text-slate-400 text-xs leading-relaxed">
+                      {step.desc}
+                    </p>
                   </div>
-                ))}
-              </div>
-            </FadeUp>
-
-            <FadeUp
-              delay={0.1}
-              className="bg-gradient-to-br from-[#aa7130] to-[#8c5c22] rounded-3xl p-7 flex flex-col justify-between"
-            >
-              <p className="font-raleway font-bold text-white/70 text-[11px] tracking-[0.18em] uppercase mb-6">
-                NDPR Compliant
-              </p>
-              <div>
-                <p className="font-raleway font-extrabold text-white text-5xl leading-none mb-2">
-                  100%
-                </p>
-                <p className="text-white/75 text-sm leading-relaxed">
-                  Discreet, confidential service. Your data is always protected.
-                </p>
-              </div>
-            </FadeUp>
+                </FadeUp>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ================================================================ */}
-      {/* ACCESS PLANS */}
-      {/* ================================================================ */}
+      {/* ================================================================
+          GLOBAL REACH, World map with gold lines
+      ================================================================ */}
 
-      <section
-        id="plans"
-        className="relative px-6 py-28 overflow-hidden"
-        style={{ background: "#f8fbfd" }}
-      >
+      <section className="bg-[#0a0f1e] py-28 px-6 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <FadeUp className="text-center mb-16">
-            <p className="text-[#aa7130] font-raleway font-bold text-[11px] tracking-[0.18em] uppercase mb-4">
-              Concierge Access Plans
+            <p className="text-[#aa7130] font-raleway font-semibold text-[11px] tracking-[0.22em] uppercase mb-4">
+              Global Reach
             </p>
             <h2
-              className="font-raleway font-extrabold text-[#02385a] leading-[1.15] mb-4 mx-auto"
-              style={{ fontSize: "clamp(28px, 4vw, 44px)" }}
+              className="font-raleway font-extrabold text-white leading-[1.12] mx-auto mb-5"
+              style={{ fontSize: "clamp(28px, 3.5vw, 44px)", maxWidth: 600 }}
+            >
+              Supporting clients across continents.
+            </h2>
+            <p className="text-white/50 text-[16px] max-w-xl mx-auto">
+              Many of our clients live abroad while caring for loved ones in Nigeria.
+              TriageConcierge bridges that distance.
+            </p>
+          </FadeUp>
+
+          {/* Simple SVG world map with glowing dots */}
+          <FadeIn>
+            <div className="relative rounded-3xl overflow-hidden" style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)" }}>
+              <div className="relative w-full" style={{ paddingBottom: "50%" }}>
+                <svg
+                  viewBox="0 0 100 50"
+                  className="absolute inset-0 w-full h-full"
+                  preserveAspectRatio="xMidYMid meet"
+                >
+                  {/* Subtle grid */}
+                  {[10, 20, 30, 40].map(y => (
+                    <line key={y} x1="0" y1={y} x2="100" y2={y} stroke="rgba(255,255,255,0.04)" strokeWidth="0.2" />
+                  ))}
+                  {[10, 20, 30, 40, 50, 60, 70, 80, 90].map(x => (
+                    <line key={x} x1={x} y1="0" x2={x} y2="50" stroke="rgba(255,255,255,0.04)" strokeWidth="0.2" />
+                  ))}
+
+                  {/* Gold connection lines from Lagos */}
+                  {CITIES.filter(c => !c.primary).map((city, i) => {
+                    const lagos = CITIES.find(c => c.primary)!;
+                    return (
+                      <motion.line
+                        key={city.name}
+                        x1={lagos.x} y1={lagos.y}
+                        x2={city.x} y2={city.y}
+                        stroke="#aa7130"
+                        strokeWidth="0.3"
+                        strokeDasharray="1 1.5"
+                        opacity="0.5"
+                        initial={{ pathLength: 0, opacity: 0 }}
+                        whileInView={{ pathLength: 1, opacity: 0.5 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.2, delay: 0.3 + i * 0.1 }}
+                      />
+                    );
+                  })}
+
+                  {/* City dots */}
+                  {CITIES.map((city, i) => (
+                    <g key={city.name}>
+                      {city.primary && (
+                        <motion.circle
+                          cx={city.x} cy={city.y} r="1.5"
+                          fill="rgba(170,113,48,0.2)"
+                          initial={{ scale: 0 }}
+                          whileInView={{ scale: [1, 1.5, 1] }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1.5, repeat: Infinity, repeatType: "loop", delay: 0.5 }}
+                        />
+                      )}
+                      <motion.circle
+                        cx={city.x} cy={city.y} r={city.primary ? "1" : "0.6"}
+                        fill={city.primary ? "#aa7130" : "#ffffff"}
+                        opacity={city.primary ? 1 : 0.5}
+                        initial={{ scale: 0 }}
+                        whileInView={{ scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: 0.6 + i * 0.08 }}
+                      />
+                      <motion.text
+                        x={city.x + 1.5} y={city.y + 0.5}
+                        fontSize="1.8"
+                        fill={city.primary ? "#aa7130" : "rgba(255,255,255,0.5)"}
+                        fontFamily="system-ui"
+                        fontWeight={city.primary ? "600" : "400"}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.8 + i * 0.08 }}
+                      >
+                        {city.name}
+                      </motion.text>
+                    </g>
+                  ))}
+                </svg>
+              </div>
+
+              {/* City list below */}
+              <div className="flex flex-wrap gap-3 justify-center px-8 pb-8">
+                {CITIES.map((city) => (
+                  <div
+                    key={city.name}
+                    className="flex items-center gap-2 px-4 py-2 rounded-full"
+                    style={{
+                      background: city.primary ? "rgba(170,113,48,0.15)" : "rgba(255,255,255,0.04)",
+                      border: city.primary ? "1px solid rgba(170,113,48,0.35)" : "1px solid rgba(255,255,255,0.08)",
+                    }}
+                  >
+                    <div
+                      className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                      style={{ background: city.primary ? "#aa7130" : "rgba(255,255,255,0.4)" }}
+                    />
+                    <span
+                      className="text-[12px] font-semibold font-raleway"
+                      style={{ color: city.primary ? "#d4a050" : "rgba(255,255,255,0.5)" }}
+                    >
+                      {city.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ================================================================
+          WHY TRIAGEHOME CONCIERGE, Premium icon grid
+      ================================================================ */}
+
+      <section className="bg-white py-28 px-6">
+        <div className="max-w-7xl mx-auto">
+          <FadeUp className="mb-16">
+            <p className="text-[#aa7130] font-raleway font-semibold text-[11px] tracking-[0.22em] uppercase mb-4">
+              Why TriageConcierge
+            </p>
+            <h2
+              className="font-raleway font-extrabold text-[#0f172a] leading-[1.12] max-w-xl"
+              style={{ fontSize: "clamp(28px, 3.5vw, 44px)" }}
+            >
+              The difference is in the detail.
+            </h2>
+          </FadeUp>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {WHY_ICONS.map(({ Icon, title, desc }, i) => (
+              <FadeUp key={i} delay={i * 0.04}>
+                <div
+                  className="group p-6 rounded-2xl border border-slate-100 hover:border-[#02385a]/20 hover:shadow-lg transition-all duration-300 cursor-default"
+                  style={{ background: "#fafafa" }}
+                >
+                  <div
+                    className="w-10 h-10 text-[#02385a] mb-5 group-hover:text-[#aa7130] transition-colors duration-200"
+                  >
+                    <Icon />
+                  </div>
+                  <p className="font-raleway font-bold text-[#0f172a] text-sm mb-2">{title}</p>
+                  <p className="text-slate-400 text-[13px] leading-relaxed">{desc}</p>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================================
+          ACCESS PLANS, Luxury plan cards
+      ================================================================ */}
+
+      <section id="plans" className="bg-[#fafafa] border-y border-slate-100 py-28 px-6">
+        <div className="max-w-6xl mx-auto">
+          <FadeUp className="text-center mb-16">
+            <p className="text-[#aa7130] font-raleway font-semibold text-[11px] tracking-[0.22em] uppercase mb-4">
+              Access Plans
+            </p>
+            <h2
+              className="font-raleway font-extrabold text-[#0f172a] leading-[1.12] mx-auto mb-4"
+              style={{ fontSize: "clamp(28px, 3.5vw, 44px)" }}
             >
               Find the plan that fits your life.
             </h2>
-            <p className="text-slate-500 text-[16px] max-w-lg mx-auto">
-              Plans start from{" "}
-              <span className="font-bold text-[#02385a]">₦450,000 per month.</span>
+            <p className="text-slate-400 text-[16px] max-w-lg mx-auto">
+              Every plan includes a dedicated PM Rep, verified providers, and
+              access to the TriageSnapshot health summary.
             </p>
           </FadeUp>
 
@@ -648,85 +833,108 @@ export default function ConciergePage() {
             {PLANS.map((plan, i) => (
               <FadeUp key={i} delay={i * 0.1}>
                 <div
-                  className="group relative rounded-3xl overflow-hidden flex flex-col h-full"
+                  className="relative flex flex-col h-full rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
                   style={{
-                    border: plan.featured
-                      ? `2px solid ${plan.accent}`
-                      : "2px solid #e4ebf0",
+                    background: plan.featured ? "#02385a" : "white",
+                    border: plan.featured ? "none" : "1px solid #e2e8f0",
                     boxShadow: plan.featured
-                      ? `0 20px 60px ${plan.accent}25`
-                      : "0 2px 20px rgba(2,56,90,0.06)",
+                      ? "0 32px 64px rgba(2,56,90,0.25)"
+                      : "0 2px 16px rgba(0,0,0,0.04)",
                   }}
                 >
-                  <div className="relative h-52 overflow-hidden">
-                    <Image
-                      src={plan.image}
-                      alt={plan.name}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent" />
-                    <div
-                      className="absolute top-4 left-4 px-3 py-1.5 rounded-full text-[11px] font-raleway font-bold tracking-widest uppercase"
-                      style={{
-                        background: `${plan.accent}20`,
-                        color: plan.accent,
-                        backdropFilter: "blur(8px)",
-                      }}
-                    >
-                      {plan.tag}
-                    </div>
-                    {plan.featured && (
-                      <div className="absolute top-4 right-4 bg-[#aa7130] px-3 py-1.5 rounded-full text-[10px] font-raleway font-bold tracking-widest uppercase text-white">
-                        Most Popular
-                      </div>
-                    )}
-                  </div>
+                  {/* Gold top bar */}
+                  <div
+                    className="h-[3px] w-full"
+                    style={{
+                      background: plan.featured
+                        ? "linear-gradient(90deg, #aa7130, #d4a050)"
+                        : `${plan.accent}50`,
+                    }}
+                  />
 
-                  <div className="bg-white flex-1 flex flex-col p-7">
-                    <h3 className="font-raleway font-extrabold text-[#02385a] text-2xl mb-3">
-                      {plan.name}
-                    </h3>
-                    <p className="text-slate-500 text-sm leading-relaxed mb-6">
-                      {plan.desc}
-                    </p>
-                    <div className="flex flex-col gap-2 mb-8 flex-1">
+                  <div className="p-8 flex flex-col flex-1">
+                    {/* Tag + name */}
+                    <div className="mb-6">
+                      <span
+                        className="inline-block text-[10px] font-raleway font-bold tracking-[0.2em] uppercase px-3 py-1 rounded-full mb-3"
+                        style={{
+                          background: plan.featured ? "rgba(170,113,48,0.2)" : `${plan.accent}12`,
+                          color: plan.featured ? "#d4a050" : plan.accent,
+                        }}
+                      >
+                        {plan.tag}
+                      </span>
+                      <h3
+                        className="font-raleway font-extrabold text-2xl mb-1"
+                        style={{ color: plan.featured ? "white" : "#0f172a" }}
+                      >
+                        {plan.name}
+                      </h3>
+                      <p
+                        className="text-sm"
+                        style={{ color: plan.featured ? "rgba(255,255,255,0.5)" : "#94a3b8" }}
+                      >
+                        {plan.tagline}
+                      </p>
+                    </div>
+
+                    {/* Price */}
+                    <div className="mb-8 pb-8 border-b"
+                      style={{ borderColor: plan.featured ? "rgba(255,255,255,0.1)" : "#f1f5f9" }}>
+                      <span
+                        className="font-raleway font-extrabold"
+                        style={{ fontSize: "2.25rem", color: plan.featured ? "white" : "#0f172a", lineHeight: 1 }}
+                      >
+                        {plan.price}
+                      </span>
+                      {plan.period && (
+                        <span
+                          className="text-sm ml-1"
+                          style={{ color: plan.featured ? "rgba(255,255,255,0.4)" : "#94a3b8" }}
+                        >
+                          {plan.period}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Features */}
+                    <div className="flex flex-col gap-3 flex-1 mb-8">
                       {plan.features.map((f) => (
                         <div key={f} className="flex items-center gap-3">
                           <div
                             className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
-                            style={{ background: `${plan.accent}15` }}
+                            style={{
+                              background: plan.featured ? "rgba(170,113,48,0.25)" : `${plan.accent}15`,
+                              color: plan.featured ? "#d4a050" : plan.accent,
+                            }}
                           >
-                            <svg
-                              className="w-3 h-3"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              style={{ color: plan.accent }}
-                            >
-                              <path
-                                d="M5 13l4 4L19 7"
-                                stroke="currentColor"
-                                strokeWidth="2.5"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              />
-                            </svg>
+                            <Icons.Check />
                           </div>
-                          <span className="text-slate-600 text-sm">{f}</span>
+                          <span
+                            className="text-[13px]"
+                            style={{ color: plan.featured ? "rgba(255,255,255,0.7)" : "#475569" }}
+                          >
+                            {f}
+                          </span>
                         </div>
                       ))}
                     </div>
+
+                    {/* CTA */}
                     <a
                       href={WHATSAPP}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full text-center py-3.5 rounded-xl font-raleway font-bold text-sm transition-all duration-200"
+                      className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl font-raleway font-semibold text-sm tracking-wide transition-all duration-200"
                       style={{
-                        background: plan.featured ? plan.accent : `${plan.accent}12`,
+                        background: plan.featured
+                          ? "linear-gradient(135deg, #aa7130, #8c5c22)"
+                          : `${plan.accent}12`,
                         color: plan.featured ? "white" : plan.accent,
                       }}
                     >
-                      Get Started
+                      {plan.cta}
+                      <Icons.ArrowRight />
                     </a>
                   </div>
                 </div>
@@ -736,379 +944,227 @@ export default function ConciergePage() {
         </div>
       </section>
 
-      {/* ================================================================ */}
-      {/* HOW IT WORKS */}
-      {/* ================================================================ */}
+      {/* ================================================================
+          TRIAGESNAPSHOT TEASER
+          Replace /images/concierge/snapshot.jpg with:
+          "Professional PM Rep on a video call with family abroad"
+      ================================================================ */}
 
-      <section className="relative px-6 py-28 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto">
-          <FadeUp className="mb-16">
-            <p className="text-[#aa7130] font-raleway font-bold text-[11px] tracking-[0.18em] uppercase mb-4">
-              How It Works
-            </p>
-            <h2
-              className="font-raleway font-extrabold text-[#02385a] leading-[1.15] max-w-xl"
-              style={{ fontSize: "clamp(28px, 4vw, 44px)" }}
-            >
-              3 steps to peace of mind.
-            </h2>
-          </FadeUp>
+      <section className="bg-[#0a0f1e] py-28 px-6 overflow-hidden">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
 
-          <div className="flex flex-col gap-6">
-            {STEPS.map((step, i) => {
-              const isEven = i % 2 === 0;
-              return (
-                <FadeUp key={i} delay={i * 0.1}>
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden min-h-[320px] border border-slate-200">
-                    <div
-                      className={`relative min-h-[280px] lg:min-h-full ${
-                        !isEven ? "lg:order-2" : ""
-                      }`}
-                    >
-                      <Image
-                        src={step.image}
-                        alt={step.title}
-                        fill
-                        className="object-cover"
-                      />
-                      <div className="absolute top-6 left-6 bg-[#02385a]/80 backdrop-blur-sm rounded-2xl px-4 py-3">
-                        <span className="font-raleway font-extrabold text-white text-3xl leading-none">
-                          {step.number}
-                        </span>
-                      </div>
-                      <div className="absolute bottom-6 left-6 bg-[#aa7130] rounded-full px-4 py-1.5">
-                        <span className="font-raleway font-bold text-white text-[11px] tracking-widest uppercase">
-                          {step.tag}
-                        </span>
-                      </div>
-                    </div>
-                    <div
-                      className={`bg-white flex flex-col justify-center px-10 py-12 ${
-                        !isEven ? "lg:order-1" : ""
-                      }`}
-                    >
-                      <h3 className="font-raleway font-extrabold text-[#02385a] text-2xl mb-4">
-                        {step.title}
-                      </h3>
-                      <p className="text-slate-500 text-[16px] leading-[1.9] max-w-md">
-                        {step.desc}
-                      </p>
-                    </div>
-                  </div>
-                </FadeUp>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ================================================================ */}
-      {/* TRIAGESNAPSHOT TEASER */}
-      {/* ================================================================ */}
-
-      <section className="relative bg-[#02385a] overflow-hidden px-6 py-28">
-        <div className="absolute inset-0 opacity-[0.04] bg-[url('/images/pattern.png')]" />
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full bg-[#00b99d]/10 blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-[#b745d8]/10 blur-3xl pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full bg-[#aa7130]/5 blur-3xl pointer-events-none" />
-
-        <div className="relative z-10 max-w-7xl mx-auto">
-
-          {/* Section header */}
-          <FadeUp className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 bg-[#00b99d]/20 border border-[#00b99d]/30 rounded-full px-4 py-2 mb-6">
-              <div className="w-1.5 h-1.5 rounded-full bg-[#00b99d] animate-pulse" />
-              <span className="font-raleway font-bold text-[11px] tracking-[0.14em] uppercase text-[#00b99d]">
-                Coming Soon · TriageSnapshot
-              </span>
-            </div>
-            <h2
-              className="font-raleway font-extrabold text-white leading-[1.1] mb-5 mx-auto"
-              style={{ fontSize: "clamp(30px, 5vw, 56px)", maxWidth: 700 }}
-            >
-              Your health results.
-              <br />
-              <span
-                style={{
-                  background: "linear-gradient(90deg, #00b99d, #a6d200)",
+          {/* Left */}
+          <div>
+            <FadeUp>
+              <div className="inline-flex items-center gap-3 mb-8">
+                <div className="w-8 h-[1px] bg-[#00b99d]" />
+                <span className="font-raleway font-semibold text-[11px] tracking-[0.22em] uppercase text-[#00b99d]">
+                  TriageSnapshot
+                </span>
+              </div>
+              <h2
+                className="font-raleway font-extrabold text-white leading-[1.1] mb-5"
+                style={{ fontSize: "clamp(28px, 3.5vw, 44px)" }}
+              >
+                Your health story in
+                <br />
+                <span style={{
+                  background: "linear-gradient(135deg, #00b99d, #a6d200)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
-                }}
-              >
-                In real time.
-              </span>
-            </h2>
-            <p className="text-white/65 text-[17px] leading-[1.85] max-w-2xl mx-auto">
-              After every home visit, your clinical provider logs your vitals directly
-              into the TriageSnapshot system. Your results are instantly compiled into
-              a personal Health Passport and delivered to you in seconds — wherever
-              you are in the world.
-            </p>
-          </FadeUp>
+                }}>
+                  one secure view.
+                </span>
+              </h2>
+              <p className="text-white/55 text-[16px] leading-[1.85] mb-10 max-w-md">
+                A digital health summary that captures vital signs, medications,
+                care history, assessments and visit records in one shareable format.
+              </p>
+            </FadeUp>
 
-          {/* Feature grid + mock passport side by side */}
-          <div className="grid lg:grid-cols-2 gap-14 items-center">
-
-            {/* Left — feature list */}
-            <div className="flex flex-col gap-4">
-              {SNAPSHOT_FEATURES.map((f, i) => (
-                <FadeUp key={i} delay={i * 0.07}>
-                  <div className="flex items-start gap-5 bg-white/[0.06] hover:bg-white/[0.1] border border-white/10 rounded-2xl px-6 py-5 transition-colors duration-200">
-                    <div className="w-11 h-11 rounded-xl bg-[#aa7130]/20 flex items-center justify-center text-xl flex-shrink-0">
-                      {f.icon}
+            <FadeUp delay={0.1}>
+              <div className="flex flex-col gap-3 mb-10">
+                {SNAPSHOT_POINTS.map((p, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-[#00b99d]"
+                      style={{ background: "rgba(0,185,157,0.1)" }}>
+                      <Icons.Check />
                     </div>
-                    <div>
-                      <p className="font-raleway font-bold text-white text-sm mb-1">
-                        {f.title}
-                      </p>
-                      <p className="text-white/55 text-sm leading-relaxed">
-                        {f.desc}
-                      </p>
-                    </div>
+                    <span className="text-white/60 text-sm">{p}</span>
                   </div>
-                </FadeUp>
-              ))}
-            </div>
+                ))}
+              </div>
+              <a
+                href={WHATSAPP}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-[#aa7130] hover:bg-[#8c5c22] text-white font-raleway font-semibold text-sm px-7 py-3.5 rounded-full transition-colors"
+              >
+                Included in all plans <Icons.ArrowRight />
+              </a>
+            </FadeUp>
+          </div>
 
-            {/* Right — mock Health Passport card */}
-            <FadeIn delay={0.2}>
+          {/* Right, Passport mock card */}
+          <FadeIn delay={0.15}>
+            <div className="relative">
+              {/* Glow */}
+              <div className="absolute inset-0 scale-110 rounded-3xl bg-gradient-to-br from-[#aa7130]/20 via-[#00b99d]/15 to-[#b745d8]/10 blur-3xl pointer-events-none" />
+
+              {/* Mock passport */}
               <div
-                className="relative mx-auto"
-                style={{ maxWidth: 480 }}
+                className="relative rounded-2xl overflow-hidden"
+                style={{ background: "#0f172a", border: "1px solid rgba(255,255,255,0.07)" }}
               >
-                {/* Glow behind card */}
-                <div className="absolute inset-0 scale-105 rounded-3xl bg-gradient-to-br from-[#aa7130]/30 via-[#00b99d]/20 to-[#b745d8]/20 blur-2xl" />
-
-                {/* Card */}
-                <div
-                  className="relative rounded-2xl overflow-hidden shadow-2xl"
-                  style={{ background: "#0f172a", border: "1px solid rgba(255,255,255,0.08)" }}
-                >
-                  {/* Passport header */}
-                  <div
-                    className="px-6 py-5 flex items-center justify-between"
-                    style={{ background: "#b45309" }}
-                  >
-                    <div className="flex items-center gap-3">
-                      {/* Mini logo */}
-                      <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-                        <svg viewBox="0 0 60 60" width="20" height="20">
-                          <path
-                            fill="white"
-                            d="M5 22 C5 18 7 16 10 16 L18 16 L18 10 C18 7 20 5 23 5 L37 5 C40 5 42 7 42 10 L42 16 L18 16 L18 22 L42 22 L42 16 L48 16 C51 16 53 18 53 22 L53 38 C53 41 51 43 48 43 L42 43 L42 55 C28 47 15 38 5 38 Z"
-                          />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="font-bold text-white text-sm leading-none">TriageHome</p>
-                        <p className="text-white/70 text-[10px] mt-0.5">Health Passport</p>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-white/60 text-[10px]">{new Date().toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })}</p>
-                      <p className="text-white text-[10px] font-semibold mt-0.5">www.triage-home.com</p>
-                    </div>
+                {/* Header */}
+                <div className="px-6 py-4 flex items-center justify-between" style={{ background: "#b45309" }}>
+                  <div>
+                    <p className="font-raleway font-bold text-white text-sm leading-none">TriageHome</p>
+                    <p className="text-white/60 text-[10px] mt-0.5">Health Passport · TriageSnapshot</p>
                   </div>
-
-                  {/* Passport body */}
-                  <div className="px-6 py-5 flex flex-col gap-4">
-
-                    {/* Patient row */}
-                    <div className="bg-white/5 rounded-xl px-4 py-3 flex items-center justify-between">
-                      <div>
-                        <p className="text-white/50 text-[10px] font-semibold uppercase tracking-wider mb-0.5">Client</p>
-                        <p className="text-white font-raleway font-bold text-base">Adebayo Tunde</p>
-                        <p className="text-white/50 text-[11px]">Male · 42 yrs</p>
-                      </div>
-                      <div className="w-10 h-10 rounded-full bg-[#aa7130]/30 flex items-center justify-center text-lg">
-                        👤
-                      </div>
-                    </div>
-
-                    {/* Vitals grid */}
-                    <div>
-                      <p className="text-white/50 text-[10px] font-semibold uppercase tracking-wider mb-2 px-1">
-                        ❤️ Vital Signs
-                      </p>
-                      <div className="grid grid-cols-2 gap-2">
-                        {[
-                          { label: "Temperature", value: "36.8°C", status: "normal" },
-                          { label: "Blood Pressure", value: "118/76", status: "normal" },
-                          { label: "Pulse Rate", value: "82 bpm", status: "normal" },
-                          { label: "Blood Sugar", value: "105 mg/dL", status: "warning" },
-                          { label: "SpO₂", value: "98%", status: "normal" },
-                          { label: "BMI", value: "23.4", status: "normal" },
-                        ].map((v) => (
-                          <div
-                            key={v.label}
-                            className="rounded-xl px-3 py-2.5 flex items-center justify-between gap-2"
-                            style={{ background: "rgba(255,255,255,0.05)" }}
-                          >
-                            <div>
-                              <p className="text-white/40 text-[9px] font-semibold mb-0.5">
-                                {v.label}
-                              </p>
-                              <p className="text-white font-raleway font-bold text-sm leading-none">
-                                {v.value}
-                              </p>
-                            </div>
-                            <div
-                              className="w-2 h-2 rounded-full flex-shrink-0"
-                              style={{
-                                background: v.status === "normal" ? "#00b99d" : "#aa7130",
-                              }}
-                            />
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* BMI result */}
-                    <div className="grid grid-cols-2 gap-2">
-                      <div className="bg-white/5 rounded-xl px-4 py-3 text-center">
-                        <p className="text-white/50 text-[10px] font-semibold uppercase tracking-wider mb-1">BMI</p>
-                        <p className="font-raleway font-extrabold text-white text-2xl leading-none">23.4</p>
-                        <p className="text-white/40 text-[10px] mt-0.5">kg/m²</p>
-                      </div>
-                      <div className="rounded-xl px-4 py-3 text-center" style={{ background: "rgba(16,185,129,0.15)", border: "1px solid rgba(16,185,129,0.25)" }}>
-                        <p className="text-white/50 text-[10px] font-semibold uppercase tracking-wider mb-1">Category</p>
-                        <p className="font-raleway font-extrabold text-[#10b981] text-xl leading-none">Normal</p>
-                      </div>
-                    </div>
-
-                    {/* Provider note */}
-                    <div className="rounded-xl px-4 py-3" style={{ background: "rgba(170,113,48,0.12)", border: "1px solid rgba(170,113,48,0.25)" }}>
-                      <p className="text-[#aa7130] text-[10px] font-bold tracking-wider uppercase mb-1">📝 Provider Note</p>
-                      <p className="text-white/60 text-[12px] leading-relaxed">
-                        Blood sugar slightly elevated. Recommend dietary review and follow-up in 2 weeks. All other vitals within healthy range.
-                      </p>
-                      <p className="text-white/35 text-[10px] mt-2">
-                        — Kemisola I., RN · TriageHome
-                      </p>
-                    </div>
-
-                    {/* CTA strip */}
-                    <div className="rounded-xl px-4 py-3 text-center" style={{ background: "#fefce8", border: "2px solid #ca8a04" }}>
-                      <p className="font-bold text-[#854d0e] text-[12px] mb-0.5">
-                        READY FOR PROFESSIONAL CARE AT HOME?
-                      </p>
-                      <p className="text-[#713f12] text-[11px]">
-                        Book a certified nurse visit
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Passport footer */}
-                  <div
-                    className="px-6 py-3 text-center"
-                    style={{ background: "#1e2937" }}
-                  >
-                    <p className="text-slate-400 text-[10px]">
-                      For informational purposes only. Consult a licensed professional for medical advice.
-                    </p>
+                  <div className="text-right">
+                    <p className="text-white/60 text-[10px]">{new Date().toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })}</p>
+                    <p className="text-white/40 text-[10px]">www.triage-home.com</p>
                   </div>
                 </div>
 
-                {/* Floating delivered badge */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8, y: 10 }}
-                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.8, duration: 0.4 }}
-                  className="absolute -top-4 -right-4 bg-white rounded-2xl px-4 py-3 shadow-2xl flex items-center gap-2.5"
-                  style={{ border: "1px solid #e4ebf0" }}
-                >
-                  <div className="w-8 h-8 rounded-full bg-[#00b99d]/15 flex items-center justify-center text-base flex-shrink-0">
-                    📱
+                <div className="px-6 py-5 flex flex-col gap-4">
+                  {/* Client */}
+                  <div className="flex items-center justify-between bg-white/[0.04] rounded-xl px-4 py-3">
+                    <div>
+                      <p className="text-white/40 text-[10px] uppercase tracking-wider mb-0.5">Client</p>
+                      <p className="text-white font-raleway font-bold">Adebayo Tunde</p>
+                      <p className="text-white/40 text-[11px]">Male · 42 yrs</p>
+                    </div>
+                    <div className="w-9 h-9 rounded-full bg-[#aa7130]/20 flex items-center justify-center">
+                      <div className="w-5 h-5 text-[#aa7130]"><Icons.UserShield /></div>
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-raleway font-bold text-[#02385a] text-[11px] leading-tight">
-                      Sent to WhatsApp
-                    </p>
-                    <p className="text-slate-400 text-[10px]">Instant delivery</p>
-                  </div>
-                </motion.div>
 
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8, y: -10 }}
-                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 1.1, duration: 0.4 }}
-                  className="absolute -bottom-4 -left-4 bg-white rounded-2xl px-4 py-3 shadow-2xl flex items-center gap-2.5"
-                  style={{ border: "1px solid #e4ebf0" }}
-                >
-                  <div className="w-8 h-8 rounded-full bg-[#aa7130]/15 flex items-center justify-center text-base flex-shrink-0">
-                    📄
-                  </div>
+                  {/* Vitals */}
                   <div>
-                    <p className="font-raleway font-bold text-[#02385a] text-[11px] leading-tight">
-                      PDF ready to download
-                    </p>
-                    <p className="text-slate-400 text-[10px]">Health Passport</p>
+                    <p className="text-white/30 text-[10px] uppercase tracking-wider mb-2 font-semibold">Vital Signs</p>
+                    <div className="grid grid-cols-3 gap-2">
+                      {[
+                        { l: "Temp", v: "36.8°C", ok: true },
+                        { l: "BP", v: "118/76", ok: true },
+                        { l: "Pulse", v: "82 bpm", ok: true },
+                        { l: "Sugar", v: "105", ok: false },
+                        { l: "SpO₂", v: "98%", ok: true },
+                        { l: "BMI", v: "23.4", ok: true },
+                      ].map((v) => (
+                        <div key={v.l} className="bg-white/[0.04] rounded-lg px-2.5 py-2">
+                          <p className="text-white/30 text-[9px] mb-0.5">{v.l}</p>
+                          <p className="text-white font-raleway font-bold text-xs leading-none">{v.v}</p>
+                          <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ background: v.ok ? "#00b99d" : "#aa7130" }} />
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </motion.div>
+
+                  {/* Note */}
+                  <div className="rounded-xl px-4 py-3" style={{ background: "rgba(170,113,48,0.1)", border: "1px solid rgba(170,113,48,0.2)" }}>
+                    <p className="text-[#aa7130] text-[10px] font-bold uppercase tracking-wider mb-1">Provider Note</p>
+                    <p className="text-white/50 text-[11px] leading-relaxed">Blood sugar slightly elevated. Dietary review recommended. All other vitals normal.</p>
+                    <p className="text-white/25 text-[10px] mt-1.5">— Kemisola I., RN · TriageHome</p>
+                  </div>
+                </div>
+
+                {/* Footer */}
+                <div className="px-6 py-3 text-center" style={{ background: "#1e2937" }}>
+                  <p className="text-slate-500 text-[10px]">For informational purposes only. Consult a licensed professional.</p>
+                </div>
               </div>
-            </FadeIn>
-          </div>
 
-          {/* Bottom CTA */}
-          <FadeUp delay={0.2} className="text-center mt-20">
-            <p className="text-white/50 text-sm font-nunito mb-6">
-              TriageSnapshot is included in all TriageConcierge plans.
-            </p>
-            <a
-              href={WHATSAPP}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 bg-[#aa7130] hover:bg-[#8c5c22] text-white font-raleway font-bold text-sm px-8 py-4 rounded-2xl transition-colors"
-            >
-              Get access with your Concierge Plan
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
-                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </a>
-          </FadeUp>
+              {/* Floating badges */}
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.9 }}
+                className="absolute -top-4 -right-4 bg-white rounded-2xl px-4 py-3 shadow-xl flex items-center gap-2.5"
+                style={{ border: "1px solid #e4ebf0" }}
+              >
+                <div className="w-5 h-5 text-[#00b99d]"><Icons.Phone /></div>
+                <div>
+                  <p className="font-raleway font-bold text-[#02385a] text-[11px]">Sent to WhatsApp</p>
+                  <p className="text-slate-400 text-[10px]">Instant delivery</p>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: -8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 1.1 }}
+                className="absolute -bottom-4 -left-4 bg-white rounded-2xl px-4 py-3 shadow-xl flex items-center gap-2.5"
+                style={{ border: "1px solid #e4ebf0" }}
+              >
+                <div className="w-5 h-5 text-[#aa7130]"><Icons.Shield /></div>
+                <div>
+                  <p className="font-raleway font-bold text-[#02385a] text-[11px]">PDF Health Passport</p>
+                  <p className="text-slate-400 text-[10px]">Ready to download</p>
+                </div>
+              </motion.div>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
-      {/* ================================================================ */}
-      {/* FINAL CTA */}
-      {/* ================================================================ */}
+      {/* ================================================================
+          FINAL CTA
+          Replace /images/concierge/cta.jpg with:
+          "Split screen, PM Rep on video call with family abroad /
+           dashboard showing care summary"
+      ================================================================ */}
 
-      <section className="relative min-h-[600px] flex items-center justify-center px-6 py-32 overflow-hidden">
+      <section className="relative min-h-[580px] flex items-center justify-center px-6 py-28 overflow-hidden">
+        {/* Background */}
         <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/blog/5.webp"
-            alt="TriageConcierge peace of mind"
-            fill
-            className="object-cover object-center"
+          {/* REPLACE with:
+              <Image src="/images/concierge/cta.jpg" fill className="object-cover" />
+              Brief: PM Rep on video call with family abroad / dashboard showing care summary
+          */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0a0c14] via-[#02385a] to-[#061428]" />
+          <div className="absolute inset-0 flex items-center justify-center opacity-[0.04]"
+            style={{
+              backgroundImage: "linear-gradient(#aa7130 1px, transparent 1px), linear-gradient(90deg, #aa7130 1px, transparent 1px)",
+              backgroundSize: "60px 60px",
+            }}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#02385a]/95 via-[#02385a]/85 to-[#024a78]/90" />
+          {/* Placeholder label */}
+          <div className="absolute bottom-6 right-6 bg-black/40 backdrop-blur-sm rounded-lg px-3 py-1.5">
+            <p className="text-white/40 text-[10px] font-mono uppercase tracking-wider">
+              📸 Replace: PM Rep on video call, care dashboard visible
+            </p>
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0c14]/90 via-transparent to-[#0a0c14]/60" />
         </div>
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-gradient-to-b from-[#b745d8]/20 via-[#00b99d]/15 to-transparent blur-3xl pointer-events-none z-10" />
 
-        <div className="relative z-20 max-w-4xl mx-auto text-center">
+        {/* Gold orb */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-[#aa7130]/10 blur-3xl pointer-events-none z-0" />
+
+        <div className="relative z-10 max-w-3xl mx-auto text-center">
           <FadeUp>
-            <div className="inline-flex items-center gap-2 bg-[#aa7130]/25 border border-[#aa7130]/50 rounded-full px-4 py-2 mb-8">
-              <div className="w-1.5 h-1.5 rounded-full bg-[#aa7130] animate-pulse" />
-              <span className="font-raleway font-bold text-[11px] tracking-[0.14em] uppercase text-amber-300">
+            <div className="inline-flex items-center gap-3 mb-8">
+              <div className="w-8 h-[1px] bg-[#aa7130]" />
+              <span className="font-raleway font-semibold text-[11px] tracking-[0.22em] uppercase text-[#aa7130]">
                 More Than Healthcare
               </span>
+              <div className="w-8 h-[1px] bg-[#aa7130]" />
             </div>
 
             <h2
-              className="font-raleway font-extrabold text-white leading-[1.1] mb-6"
+              className="font-raleway font-extrabold text-white leading-[1.08] mb-6 tracking-tight"
               style={{ fontSize: "clamp(34px, 5.5vw, 64px)" }}
             >
               Peace of mind.
             </h2>
-
-            <p className="text-white/70 text-lg leading-[1.85] max-w-2xl mx-auto mb-12">
+            <p className="text-white/55 text-lg leading-[1.85] max-w-xl mx-auto mb-12">
               TriageConcierge isn't about waiting until you are ill. It is about
-              having an elite team standing right behind you. You focus on your work,
-              your travel, and your life — knowing that your personal Care Coordinator
-              is managing every detail that matters.
+              having an elite team standing behind you, while you focus on your
+              work, your family, and your life.
             </p>
           </FadeUp>
 
@@ -1118,23 +1174,25 @@ export default function ConciergePage() {
                 href={WHATSAPP}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 rounded-2xl bg-[#aa7130] hover:bg-[#8c5c22] px-10 py-5 font-raleway font-bold text-base text-white transition-all duration-200 shadow-xl shadow-[#aa7130]/30"
+                className="group inline-flex items-center gap-3 rounded-full px-10 py-4 font-raleway font-semibold text-sm text-white transition-all duration-200"
+                style={{
+                  background: "linear-gradient(135deg, #aa7130, #8c5c22)",
+                  boxShadow: "0 20px 40px rgba(170,113,48,0.3)",
+                }}
               >
                 Request Concierge Access
-                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none">
-                  <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                <Icons.ArrowRight />
               </a>
               <a
                 href={WHATSAPP}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-2xl border border-white/25 hover:border-white/50 backdrop-blur-sm px-10 py-5 font-raleway font-bold text-base text-white transition-all duration-200"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 hover:border-[#aa7130]/60 px-10 py-4 font-raleway font-semibold text-sm text-white/80 hover:text-white transition-all duration-200"
               >
                 Speak to a Specialist
               </a>
             </div>
-            <p className="text-white/35 text-sm font-raleway font-semibold tracking-wider">
+            <p className="text-white/25 text-xs font-raleway font-semibold tracking-[0.2em] uppercase">
               #HomeHealth, Powered by People
             </p>
           </FadeUp>
