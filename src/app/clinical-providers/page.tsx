@@ -343,35 +343,49 @@ function ProviderAvatar({
   if (!imgError) {
     return (
       <div
-        className={`${sizeClass} rounded-full overflow-hidden ring-2 ring-white shadow-md flex-shrink-0 relative`}
+        className={`${sizeClass} rounded-full overflow-hidden flex-shrink-0 relative`}
+        style={{
+          padding: "2px",
+          background: "linear-gradient(135deg, #02385a, #00b99d, #aa7130)",
+          boxShadow: "0 4px 12px rgba(2,56,90,0.2)",
+        }}
       >
-        <Image
-          src={`/images/providers/${provider.imageSlug}.jpg`}
-          alt={`${provider.displayName} headshot`}
-          fill
-          // Scale up and shift down slightly so only the face shows
-          className="object-cover scale-[2] translate-y-[30%]"
-          sizes={`${px}px`}
-          onError={() => setImgError(true)}
-        />
+        <div className="w-full h-full rounded-full overflow-hidden relative">
+          <Image
+            src={`/images/providers/${provider.imageSlug}.jpg`}
+            alt={`${provider.displayName} headshot`}
+            fill
+            className="object-cover scale-[2] translate-y-[30%]"
+            sizes={`${px}px`}
+            onError={() => setImgError(true)}
+          />
+        </div>
       </div>
     );
   }
 
   return (
     <div
-      className={`${sizeClass} rounded-full flex-shrink-0 flex items-center justify-center shadow-md`}
-      style={{ background: getGradient(provider.id) }}
+      className={`${sizeClass} rounded-full flex-shrink-0 flex items-center justify-center`}
+      style={{
+        padding: "2px",
+        background: "linear-gradient(135deg, #02385a, #00b99d, #aa7130)",
+        boxShadow: "0 4px 12px rgba(2,56,90,0.2)",
+      }}
     >
-      <span
-        className={`${textClass} font-bold tracking-wide text-white font-raleway`}
+      <div
+        className="w-full h-full rounded-full flex items-center justify-center"
+        style={{ background: getGradient(provider.id) }}
       >
-        {provider.initials}
-      </span>
+        <span
+          className={`${textClass} font-bold tracking-wide text-white font-raleway`}
+        >
+          {provider.initials}
+        </span>
+      </div>
     </div>
   );
 }
-
 // ─── Detail Card ──────────────────────────────────────────────────────────────
 
 function DetailCard({
